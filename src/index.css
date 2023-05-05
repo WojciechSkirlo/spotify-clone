@@ -1,5 +1,23 @@
+:root {
+    --sp-body-bg: #000000;
+    --sp-body-color: white;   
+    --sp-panel-gap: 8px;
+    --sp-tile-border-radius: 8px;
+}
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+
+body {
+    background: var(--sp-body-bg);
+    color: var(--sp-body-color);
+}
+
+#root {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
 }

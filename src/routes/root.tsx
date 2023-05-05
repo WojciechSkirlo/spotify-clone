@@ -1,62 +1,59 @@
-import { useEffect } from "react";
-import { Outlet, Link, useLoaderData } from "react-router-dom";
-// import { getContacts } from "../contacts";
+import styled from "styled-components";
+import { Outlet } from "react-router-dom";
+
+const Wrapper = styled.div`
+    flex-grow: 1;
+    background: #000000;
+    padding: var(--sp-panel-gap);
+    display: grid;
+    grid-template-columns: 420px 1fr;
+    grid-template-rows: 1fr;
+    gap: var(--sp-panel-gap);
+`;
+
+const Nav = styled.nav`
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-panel-gap);
+`;
+
+const NavTop = styled.div`
+    background: #121212;
+    padding: 8px 12px;
+    border-radius: var(--sp-tile-border-radius);
+    height: 112px;
+`;
+
+const NavBottom = styled.div`
+    background: #121212;
+    padding: 8px 12px;
+    border-radius: var(--sp-tile-border-radius);
+    flex-grow: 1;
+`;
+
+const Main = styled.main`
+    background: #121212;
+    border-radius: var(--sp-tile-border-radius);
+    flex-grow: 1;
+`;
+
+const Footer = styled.footer`
+    height: 72px;
+`;
 
 export default function Root() {
-    // const { contacts } = useLoaderData() as any;
-
-    // useEffect(() => {
-    //   console.log("testt")
-    // })
-    
     return (
         <>
-            <div id="sidebar">
-                <h1>React Router Contacts</h1>
-                <div>
-                    <form id="search-form" role="search">
-                        <input id="q" aria-label="Search contacts" placeholder="Search" type="search" name="q" />
-                        <div id="search-spinner" aria-hidden hidden={true} />
-                        <div className="sr-only" aria-live="polite"></div>
-                    </form>
-                    <form method="post">
-                        <button type="submit">New</button>
-                    </form>
-                </div>
-                <nav>
-                    asd
-                    {/* {contacts.length ? (
-                        <ul>
-                            {contacts.map((contact: any) => (
-                                <li key={contact.id}>
-                                    <Link to={`contacts/${contact.id}`}>
-                                        {contact.first || contact.last ? (
-                                            <>
-                                                {contact.first} {contact.last}
-                                            </>
-                                        ) : (
-                                            <i>No Name</i>
-                                        )}{" "}
-                                        {contact.favorite && <span>★</span>}
-                                    </Link>
-                                </li>
-                            ))}
-                        </ul>
-                    ) : (
-                        <p>
-                            <i>No contacts</i>
-                        </p>
-                    )} */}
-                </nav>
-            </div>
-            <div id="detail">
-                <Outlet />
-            </div>
+            <Wrapper>
+                <Nav>
+                    <NavTop></NavTop>
+                    <NavBottom></NavBottom>
+                </Nav>
+                <Main>
+                    <Outlet />
+                </Main>
+            </Wrapper>
+            <Footer></Footer>
         </>
     );
 }
-
-// export async function loader() {
-//     const contacts = await getContacts();
-//     return { contacts };
-// }
