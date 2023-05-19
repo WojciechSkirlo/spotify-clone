@@ -1,14 +1,46 @@
+@font-face {
+    font-family: "CircularSp";
+    src: url("./fonts/CircularStd-Black.otf") format("opentype");
+    font-weight: 900;
+}
+
+@font-face {
+    font-family: "CircularSp";
+    src: url("./fonts/CircularStd-Bold.otf") format("opentype");
+    font-weight: 700;
+}
+
+@font-face {
+    font-family: "CircularSp";
+    src: url("./fonts/CircularStd-Medium.otf") format("opentype");
+    font-weight: 500;
+}
+
+@font-face {
+    font-family: "CircularSp";
+    src: url("./fonts/CircularStd-Book.otf") format("opentype");
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: "CircularSp";
+    src: url("./fonts/CircularStd-Light.otf") format("opentype");
+    font-weight: 300;
+}
+
 :root {
     --sp-body-bg: #000000;
-    --sp-body-color: white;   
+    --sp-body-color: white;
     --sp-panel-gap: 8px;
     --sp-tile-border-radius: 8px;
+    --font-family: CircularSp;
 }
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: var(--font-family, CircularSp, CircularSp-Arab, CircularSp-Hebr, CircularSp-Cyrl, CircularSp-Grek, CircularSp-Deva);
 }
 
 body {
