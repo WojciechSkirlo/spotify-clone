@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Outlet } from "react-router-dom";
+import { Outlet, Link } from "react-router-dom";
 
 const Wrapper = styled.div`
     flex-grow: 1;
@@ -22,6 +22,8 @@ const NavTop = styled.div`
     padding: 8px 12px;
     border-radius: var(--sp-tile-border-radius);
     height: 112px;
+    display: flex;
+    flex-direction: column;
 `;
 
 const NavBottom = styled.div`
@@ -46,7 +48,16 @@ export default function Root() {
         <>
             <Wrapper>
                 <Nav>
-                    <NavTop></NavTop>
+                    <NavTop>
+                        <ul>
+                            <li>
+                                <Link to="/">Home</Link>
+                            </li>
+                            <li>
+                                <Link to="/search">Szukaj</Link>
+                            </li>
+                        </ul>
+                    </NavTop>
                     <NavBottom></NavBottom>
                 </Nav>
                 <Main>
