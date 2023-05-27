@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { Outlet, Link } from "react-router-dom";
+import TheFooter from "../components/the/Footer";
 
 const Wrapper = styled.div`
     flex-grow: 1;
@@ -21,9 +22,31 @@ const NavTop = styled.div`
     background: #121212;
     padding: 8px 12px;
     border-radius: var(--sp-tile-border-radius);
-    height: 112px;
     display: flex;
     flex-direction: column;
+
+    ul {
+        list-style: none;
+
+        li {
+            padding: 4px 12px;
+
+            a {
+                text-decoration: none;
+                color: #b3b3b3;
+                font-weight: 700;
+                display: flex;
+                align-items: center;
+                gap: 20px;
+                height: 40px;
+                transition: color 0.2s linear;
+
+                &:hover {
+                    color: #ffffff;
+                }
+            }
+        }
+    }
 `;
 
 const NavBottom = styled.div`
@@ -39,9 +62,7 @@ const Main = styled.main`
     flex-grow: 1;
 `;
 
-const Footer = styled.footer`
-    height: 72px;
-`;
+const NavItem = styled.li``;
 
 export default function Root() {
     return (
@@ -51,10 +72,16 @@ export default function Root() {
                     <NavTop>
                         <ul>
                             <li>
-                                <Link to="/">Home</Link>
+                                <Link to="/">
+                                    <i style={{ fontSize: "1.25rem" }} className="sp-home-outline-icon"></i>
+                                    <span>Home</span>
+                                </Link>
                             </li>
                             <li>
-                                <Link to="/search">Szukaj</Link>
+                                <Link to="/search">
+                                    <i style={{ fontSize: "1.25rem" }} className="sp-search-outline-icon"></i>
+                                    <span>Szukaj</span>
+                                </Link>
                             </li>
                         </ul>
                     </NavTop>
@@ -64,7 +91,7 @@ export default function Root() {
                     <Outlet />
                 </Main>
             </Wrapper>
-            <Footer></Footer>
+            <TheFooter />
         </>
     );
 }
