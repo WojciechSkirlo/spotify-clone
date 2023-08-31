@@ -9,7 +9,8 @@
     "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "chromatic": "npx chromatic --project-token=chpt_a51c910d97f2afa"
   },
   "dependencies": {
     "localforage": "^1.10.0",
@@ -36,6 +37,7 @@
     "@typescript-eslint/eslint-plugin": "^5.57.1",
     "@typescript-eslint/parser": "^5.57.1",
     "@vitejs/plugin-react": "^4.0.0-beta.0",
+    "chromatic": "^6.24.1",
     "eslint": "^8.38.0",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.3.4",
@@ -44,5 +46,7 @@
     "storybook": "^7.4.0",
     "typescript": "^5.0.2",
     "vite": "^4.3.0"
-  }
+  },
+  "readme": "ERROR: No README data found!",
+  "_id": "spotify-clone@0.0.0"
 }
