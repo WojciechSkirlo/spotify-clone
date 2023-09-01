@@ -1,9 +1,11 @@
 {
-    "recommendations": [
-        "dsznajder.es7-react-js-snippets",
-        "styled-components.vscode-styled-components",
-        "yoavbls.pretty-ts-errors",
-        "esbenp.prettier-vscode",
-        "adpyke.codesnap"
-    ]
+  "recommendations": [
+    "dsznajder.es7-react-js-snippets",
+    "styled-components.vscode-styled-components",
+    "yoavbls.pretty-ts-errors",
+    "esbenp.prettier-vscode",
+    "adpyke.codesnap",
+    "bradlc.vscode-tailwindcss",
+    "heybourn.headwind"
+  ]
 }

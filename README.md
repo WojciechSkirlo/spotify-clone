@@ -58,8 +58,8 @@ Run a storybook server on http://localhost:6006
 npm run storybook
 ```
 
-
 ## Test environments
+
 - [App](https://spotify-clone-application.netlify.app/)
 - [Storybook](https://64f0ef9c0e0176275a0d5c2c-zpsvfumodd.chromatic.com)
 - [Chromatic](https://www.chromatic.com/builds?appId=64f0ef9c0e0176275a0d5c2c)
