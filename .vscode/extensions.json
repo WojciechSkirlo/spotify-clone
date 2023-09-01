@@ -4,6 +4,8 @@
         "styled-components.vscode-styled-components",
         "yoavbls.pretty-ts-errors",
         "esbenp.prettier-vscode",
-        "adpyke.codesnap"
+        "adpyke.codesnap",
+        "bradlc.vscode-tailwindcss",
+        "heybourn.headwind"
     ]
 }
