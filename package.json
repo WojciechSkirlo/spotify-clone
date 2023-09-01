@@ -54,5 +54,9 @@
     "vite": "^4.3.0"
   },
   "readme": "ERROR: No README data found!",
-  "_id": "spotify-clone@0.0.0"
+  "_id": "spotify-clone@0.0.0",
+  "volta": {
+    "node": "18.17.1",
+    "npm": "9.8.1"
+  }
 }
