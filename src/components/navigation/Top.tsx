@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { NavLink } from 'react-router-dom';
 
 export default function NavigationTop() {
   return (
@@ -8,7 +8,7 @@ export default function NavigationTop() {
           <NavLink to="/">
             {({ isActive }) => (
               <>
-                <i className={isActive ? "sp-home-icon" : "sp-home-outline-icon"}></i>
+                <i className={isActive ? 'sp-home-icon' : 'sp-home-outline-icon'}></i>
                 <span>Home</span>
               </>
             )}
@@ -18,7 +18,7 @@ export default function NavigationTop() {
           <NavLink to="/search">
             {({ isActive }) => (
               <>
-                <i className={isActive ? "sp-search-icon" : "sp-search-outline-icon"}></i>
+                    <i className={isActive ? 'sp-search-icon' : 'sp-search-outline-icon'}></i>
                 <span>Szukaj</span>
               </>
             )}
