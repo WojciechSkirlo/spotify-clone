@@ -18,7 +18,7 @@ export default function NavigationTop() {
           <NavLink to="/search">
             {({ isActive }) => (
               <>
-                    <i className={isActive ? 'sp-search-icon' : 'sp-search-outline-icon'}></i>
+                <i className={isActive ? 'sp-search-icon' : 'sp-search-outline-icon'}></i>
                 <span>Szukaj</span>
               </>
             )}
