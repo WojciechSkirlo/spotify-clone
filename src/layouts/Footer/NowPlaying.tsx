@@ -7,13 +7,13 @@ export default function NowPlaying() {
           alt="cover"
           className="rounded w-14 h-14"
         />
-        <div className="flex flex-col mx-4 mr-2">
+        <div className="flex flex-col mx-4 mr-1.5">
           <span className="text-sm">
             <a href="#" className="hover:underline">
-              Love Story (Taylor's Version)
+              Love Story (Taylor’s Version)
             </a>
           </span>
-          <span className="text-[11px] text-subtle">
+          <span className="text-xs text-subtle">
             <a href="#" className="hover:text-white hover:underline">
               Taylor Swift
             </a>
