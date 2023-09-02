@@ -1,15 +1,15 @@
 import { NavLink } from 'react-router-dom';
 
-export default function NavigationTop() {
+export default function TheNavigation() {
   return (
-    <div className="px-3 py-2 rounded-lg bg-dark-gray">
+    <nav className="px-3 py-2 rounded-lg bg-dark-gray">
       <ul>
         <li className="px-3 py-1">
           <NavLink to="/">
             {({ isActive }) => (
               <div className="flex items-center h-10 gap-5">
                 <i className={`text-xl ${isActive ? 'sp-home-icon' : 'sp-home-outline-icon'}`}></i>
-                <span className="text-base">Home</span>
+                <span className="font-bold">Home</span>
               </div>
             )}
           </NavLink>
@@ -19,12 +19,12 @@ export default function NavigationTop() {
             {({ isActive }) => (
               <div className="flex items-center h-10 gap-5">
                 <i className={`text-xl ${isActive ? 'sp-search-icon' : 'sp-search-outline-icon'}`}></i>
-                <span>Szukaj</span>
+                <span className="font-bold">Szukaj</span>
               </div>
             )}
           </NavLink>
         </li>
       </ul>
-    </div>
+    </nav>
   );
 }
