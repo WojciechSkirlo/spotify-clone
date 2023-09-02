@@ -1,3 +1,31 @@
-export default function Player() {
-  return <section className="w-[40%] bg-slate-600">player</section>;
-}
+import IconButton from '~~/IconButton';
+import Icon from '~~/Icon';
+
+const Player = () => {
+  return (
+    <section className="flex flex-col items-center justify-center col-span-4 ml-4">
+      <div className="flex gap-4 mb-2">
+        <div className="flex gap-2">
+          <IconButton icon="shuffle" />
+          <IconButton icon="previous" />
+        </div>
+        <button type="button" className="flex items-center justify-center w-8 h-8 text-black bg-white rounded-full">
+          <Icon name="play" />
+        </button>
+        <div className="flex gap-2">
+          <IconButton icon="next" />
+          <IconButton icon="repeat" />
+        </div>
+      </div>
+      <div className="flex items-center w-full">
+        <span className="w-10 mr-2 text-xs text-right text-subtle">0:00</span>
+        <div className="flex items-center flex-1 h-3 item">
+          <div className="w-full h-1 bg-[#4D4D4D] rounded-full"></div>
+        </div>
+        <span className="w-10 ml-2 text-xs text-left text-subtle">3:55</span>
+      </div>
+    </section>
+  );
+};
+
+export default Player;

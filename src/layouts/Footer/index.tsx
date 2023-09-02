@@ -2,12 +2,14 @@ import NowPlaying from '@/layouts/Footer/NowPlaying';
 import Player from '@/layouts/Footer/Player';
 import Controls from '@/layouts/Footer/Controls';
 
-export default function Footer() {
+const Footer = () => {
   return (
-    <footer className="h-[72px] col-span-4 flex">
+    <footer className="h-[72px] col-span-4 grid grid-cols-10">
       <NowPlaying />
       <Player />
       <Controls />
     </footer>
   );
-}
+};
+
+export default Footer;

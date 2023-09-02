@@ -1,6 +1,8 @@
-export default function NowPlaying() {
+import IconButton from '~~/IconButton';
+
+const NowPlaying = () => {
   return (
-    <div className="w-[30%] flex items-center">
+    <div className="flex items-center col-span-3">
       <div className="flex items-center px-2">
         <img
           src="https://i.scdn.co/image/ab67616d00004851877ea8fa223c26f19aaef92d"
@@ -20,12 +22,10 @@ export default function NowPlaying() {
           </span>
         </div>
       </div>
-      <button className="flex items-center justify-center w-8 h-8 text-subtle">
-        <i className="sp-heart-icon"></i>
-      </button>
-      <button className="flex items-center justify-center w-8 h-8 text-subtle">
-        <i className="sp-minimize-icon"></i>
-      </button>
+      <IconButton icon="heart" />
+      <IconButton icon="minimize" />
     </div>
   );
-}
+};
+
+export default NowPlaying;

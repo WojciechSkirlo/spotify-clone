@@ -2,7 +2,7 @@ import { Outlet } from 'react-router-dom';
 import Footer from '@/layouts/Footer';
 import Navigation from '@/layouts/Navigation';
 
-export default function Root() {
+const Root = () => {
   return (
     <div className="grid h-full grid-cols-4 grid-rows-1 gap-2 p-2">
       <aside className="flex flex-col gap-2">
@@ -15,4 +15,6 @@ export default function Root() {
       <Footer />
     </div>
   );
-}
+};
+
+export default Root;
