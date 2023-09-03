@@ -13,6 +13,7 @@
 
 - Mateusz Kapuściński
 - Wojciech Skirło
+- Kamil Palej
 
 ## Setup
 
@@ -42,6 +43,14 @@ Locally preview production build:
 
 ```bash
 npm run preview
+```
+
+## Husky
+
+Install husky hooks
+
+```bash
+npm run prepare
 ```
 
 ## Storybook
