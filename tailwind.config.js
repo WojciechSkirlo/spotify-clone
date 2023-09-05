@@ -16,6 +16,9 @@ export default {
         accent: '#1ed760',
         subtle: '#b3b3b3',
         subdued: '#a7a7a7'
+      },
+      spacing: {
+        7.5: '1.875rem'
       }
     }
   },
