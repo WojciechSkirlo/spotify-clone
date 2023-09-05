@@ -1,3 +1,5 @@
-export default function Root() {
+const Search = () => {
   return <>Search page</>;
-}
+};
+
+export default Search;
