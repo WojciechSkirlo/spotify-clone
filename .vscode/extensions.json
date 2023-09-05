@@ -1,11 +1,14 @@
 {
   "recommendations": [
     "dsznajder.es7-react-js-snippets",
-    "styled-components.vscode-styled-components",
     "yoavbls.pretty-ts-errors",
     "esbenp.prettier-vscode",
     "adpyke.codesnap",
     "bradlc.vscode-tailwindcss",
-    "heybourn.headwind"
+    "heybourn.headwind",
+    "eamodio.gitlens",
+    "ms-edgedevtools.vscode-edge-devtools",
+    "SimonSiefke.svg-preview",
+    "dbaeumer.vscode-eslint"
   ]
 }
