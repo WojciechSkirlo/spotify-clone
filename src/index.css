@@ -54,10 +54,17 @@ body {
   color: var(--sp-body-color);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  @apply text-base;
 }
 
 #root {
   height: 100vh;
   display: flex;
   flex-direction: column;
+}
+
+.layout {
+  grid-template-columns: 420px 1fr;
+  grid-template-rows: 1fr auto;
+  @apply grid h-full gap-2 p-2;
 }

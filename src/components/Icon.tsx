@@ -2,7 +2,7 @@ type Sizes = 'sm' | 'md' | 'lg';
 
 type IconProps = {
   name: string;
-  size?: Sizes;
+  size: Sizes;
 };
 
 const defaultProps: Omit<IconProps, 'name'> = {
@@ -20,7 +20,7 @@ const Icon = ({ name, size }: IconProps) => {
     lg: 'w-6 h-6'
   };
 
-  return <div className={`fill-current ${sizes[size!]}`} dangerouslySetInnerHTML={{ __html: selectedIcon }}></div>;
+  return <div className={`fill-current ${sizes[size]}`} dangerouslySetInnerHTML={{ __html: selectedIcon }}></div>;
 };
 
 Icon.defaultProps = defaultProps;
