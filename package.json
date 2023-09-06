@@ -20,7 +20,8 @@
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.11.1",
     "sort-by": "^1.2.0",
-    "swr": "^2.1.5"
+    "swr": "^2.1.5",
+    "zustand": "^4.4.1"
   },
   "devDependencies": {
     "@commitlint/cli": "^17.5.0",
@@ -55,7 +56,6 @@
     "typescript": "^5.0.2",
     "vite": "^4.3.0"
   },
-  "readme": "ERROR: No README data found!",
   "_id": "spotify-clone@0.0.0",
   "volta": {
     "node": "18.17.1",

@@ -4,7 +4,7 @@ import Controls from '@/layouts/Footer/Controls';
 
 const Footer = () => {
   return (
-    <footer className="h-[72px] col-span-4 2xl:col-span-5 grid grid-cols-10">
+    <footer className="h-[72px] col-span-2 grid grid-cols-10">
       <NowPlaying />
       <Player />
       <Controls />
