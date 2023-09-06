@@ -1,4 +1,4 @@
-import useStore from '@/context';
+import { useStore } from '@/context';
 import Button from '@/layouts/Navigation/Button';
 import IconButton from '~~/IconButton';
 import Badge from '~~/Badge';

@@ -1,5 +1,5 @@
 import { Outlet } from 'react-router-dom';
-import useStore from '@/context';
+import { useStore } from '@/context';
 import Footer from '@/layouts/Footer';
 import Navigation from '@/layouts/Navigation';
 

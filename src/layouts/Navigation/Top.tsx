@@ -1,5 +1,5 @@
+import { useStore } from '@/context';
 import Item from '@/layouts/Navigation/Item';
-import useStore from '@/context';
 
 const NavigationTop = () => {
   const isCollapsed = useStore((state) => state.isCollapsed);
