@@ -57,7 +57,7 @@ const Index = () => {
         </div>
         <div className="grid grid-cols-2 gap-6 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-9">
           {DUMMY_DATA.map((item) => (
-            <Card img={item.img} header={item.header} description={item.description} />
+            <Card key={item.id} img={item.img} header={item.header} description={item.description} />
           ))}
         </div>
       </main>
@@ -75,7 +75,7 @@ const Index = () => {
         </div>
         <div className="grid grid-cols-2 gap-6 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-9">
           {DUMMY_DATA.map((item) => (
-            <Card img={item.img} header={item.header} description={item.description} />
+            <Card key={item.id} img={item.img} header={item.header} description={item.description} />
           ))}
         </div>
       </main>

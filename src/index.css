@@ -68,3 +68,7 @@ body {
   grid-template-rows: 1fr auto;
   @apply grid h-full gap-2 p-2;
 }
+
+.layout--collapsed {
+  grid-template-columns: 72px 1fr;
+}

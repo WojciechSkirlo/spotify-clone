@@ -6,9 +6,10 @@ type NavItemProps = {
   name: string;
   icon: string;
   iconActive: string;
+  collapsed?: boolean;
 };
 
-const NavItem = ({ to, name, icon, iconActive }: NavItemProps) => {
+const NavItem = ({ to, name, icon, iconActive, collapsed }: NavItemProps) => {
   return (
     <li className="px-3 py-1">
       <NavLink to={to}>
@@ -18,8 +19,8 @@ const NavItem = ({ to, name, icon, iconActive }: NavItemProps) => {
               isActive ? 'text-white' : 'text-subtle'
             }`}
           >
-            <Icon name={isActive ? icon : iconActive} size="lg" />
-            <span className="font-bold">{name}</span>
+            <Icon name={isActive ? iconActive : icon} size="lg" />
+            {!collapsed && <span className="font-bold">{name}</span>}
           </div>
         )}
       </NavLink>
