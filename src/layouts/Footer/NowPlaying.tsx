@@ -15,7 +15,7 @@ const NowPlaying = () => {
               Love Story (Taylor’s Version)
             </a>
           </span>
-          <span className="text-xs text-subtle">
+          <span className="text-xs text-nobel">
             <a href="#" className="hover:text-white hover:underline">
               Taylor Swift
             </a>

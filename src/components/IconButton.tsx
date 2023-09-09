@@ -10,7 +10,7 @@ const IconButton = ({ icon, ariaLabel }: IconButtonProps) => {
     <button
       type="button"
       aria-label={ariaLabel}
-      className="flex items-center justify-center w-8 h-8 text-subtle hover:text-white"
+      className="flex items-center justify-center w-8 h-8 text-nobel hover:text-white"
     >
       <Icon name={icon} />
     </button>
