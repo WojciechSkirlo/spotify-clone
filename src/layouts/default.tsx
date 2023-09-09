@@ -9,7 +9,7 @@ const DefaultLayout = () => {
   return (
     <div className={`layout ${isCollapsed ? 'layout--collapsed' : ''}`}>
       <Navigation />
-      <main className="px-6 rounded-lg bg-dark-gray">
+      <main className="px-6 rounded-lg bg-cod-gray-500">
         <Outlet />
       </main>
       <Footer />

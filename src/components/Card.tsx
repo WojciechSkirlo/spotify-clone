@@ -16,14 +16,14 @@ const defaultProps: CardProps = {
 const Card = ({ img, header, description }: CardProps) => {
   return (
     <Link to="/search">
-      <div className="p-4 bg-[#181818] transition-colors h-full duration-300 rounded hover:bg-[#282828]">
+      <div className="h-full p-4 transition-colors duration-300 rounded bg-cod-gray-400 hover:bg-mine-shaft-500">
         <div className="mb-4">
           <img src={img} alt="" className="object-cover object-center w-full h-full rounded" />
         </div>
         <Heading size="lg" className="mb-1">
           {header}
         </Heading>
-        <p className="text-sm text-subdued line-clamp-2">{description}</p>
+        <p className="text-sm text-silver-chalice line-clamp-2">{description}</p>
       </div>
     </Link>
   );
