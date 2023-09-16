@@ -75,5 +75,5 @@ body {
   box-shadow:
     0 16px 24px rgba(0, 0, 0, 0.3),
     0 6px 8px rgba(0, 0, 0, 0.2);
-  @apply z-30 transition-opacity duration-300 rounded line-clamp-4 bg-[#282828] py-1 px-2 text-sm text-white;
+  @apply z-30 rounded line-clamp-4 bg-[#282828] py-1 px-2 text-sm text-white;
 }

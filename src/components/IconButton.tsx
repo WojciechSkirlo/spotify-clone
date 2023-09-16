@@ -1,5 +1,5 @@
-import Tippy from '@tippyjs/react/headless';
 import Icon from '~~/Icon';
+import Tooltip from '~~/Tooltip';
 
 type IconButtonProps = {
   icon: string;
@@ -16,22 +16,16 @@ const defaultProps: Omit<IconButtonProps, 'icon'> = {
 const IconButton = ({ icon, ariaLabel, scale, glow }: IconButtonProps) => {
   return (
     <>
-      <Tippy
-        render={(attrs) => (
-          <div className="tooltip" {...attrs}>
-            testowy :)
-          </div>
-        )}
-      >
+      <Tooltip text={ariaLabel}>
         <button
           type="button"
           aria-label={ariaLabel}
-          className={`flex items-center rounded-full transition-colors ease-linear duration-200 justify-center w-8 h-8 transform text-nobel hover:text-white 
-          ${scale ? 'hover:scale-105' : ''} ${glow ? 'hover:bg-red-500' : ''}`}
+          className={`flex items-center rounded-full transition-colors ease-linear duration-200 justify-center w-8 h-8 transform text-silver-chalice hover:text-white 
+          ${scale ? 'hover:scale-105' : ''} ${glow ? 'hover:bg-cod-gray-300' : ''}`}
         >
           <Icon name={icon} />
         </button>
-      </Tippy>
+      </Tooltip>
     </>
   );
 };
