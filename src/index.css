@@ -54,13 +54,11 @@ body {
   color: var(--sp-body-color);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  @apply text-base;
+  @apply overflow-hidden text-base;
 }
 
 #root {
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
+  @apply flex flex-col h-screen;
 }
 
 .layout {
@@ -71,4 +69,11 @@ body {
 
 .layout--collapsed {
   grid-template-columns: 72px 1fr;
+}
+
+.tooltip {
+  box-shadow:
+    0 16px 24px rgba(0, 0, 0, 0.3),
+    0 6px 8px rgba(0, 0, 0, 0.2);
+  @apply z-30 rounded line-clamp-4 bg-[#282828] py-1 px-2 text-sm text-white;
 }

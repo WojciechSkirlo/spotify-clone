@@ -61,24 +61,6 @@ const Index = () => {
           ))}
         </div>
       </main>
-
-      <main className="mt-7 max-w-[1955px]">
-        <div className="flex items-start justify-between mb-4">
-          <Heading size="xl">
-            <Link to="/search" className="hover:underline">
-              Twoje ulubione składanki
-            </Link>
-          </Heading>
-          <Link to="/search" className="text-sm font-bold text-nobel h-7.5 flex items-center hover:underline">
-            Pokaż wszystko
-          </Link>
-        </div>
-        <div className="grid grid-cols-2 gap-6 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-9">
-          {DUMMY_DATA.map((item) => (
-            <Card key={item.id} img={item.img} header={item.header} description={item.description} />
-          ))}
-        </div>
-      </main>
     </>
   );
 };
