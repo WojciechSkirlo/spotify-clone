@@ -7,7 +7,7 @@ const NavigationBottom = () => {
   const [isCollapsed, toggleMenu] = useStore((state) => [state.isCollapsed, state.toggleMenu]);
 
   return (
-    <div className="flex flex-col flex-1 rounded-lg bg-dark-gray">
+    <div className="flex flex-col flex-1 rounded-lg bg-cod-gray-500">
       <div className="flex items-center justify-between gap-2 px-4 py-2">
         <Button
           icon="library"

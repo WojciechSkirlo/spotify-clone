@@ -51,7 +51,7 @@ const Index = () => {
               Przygotowano dla
             </Link>
           </Heading>
-          <Link to="/search" className="text-sm font-bold text-subtle h-7.5 flex items-center hover:underline">
+          <Link to="/search" className="text-sm font-bold text-nobel h-7.5 flex items-center hover:underline">
             Pokaż wszystko
           </Link>
         </div>

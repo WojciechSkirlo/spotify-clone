@@ -12,10 +12,29 @@ export default {
     },
     extend: {
       colors: {
-        'dark-gray': '#121212',
-        accent: '#1ed760',
-        subtle: '#b3b3b3',
-        subdued: '#a7a7a7'
+        black: '#000000',
+        'cod-gray': {
+          300: '#1a1a1a',
+          400: '#181818',
+          500: '#121212'
+        },
+        'mine-shaft': {
+          300: '#2a2a2a',
+          400: '#292929',
+          500: '#282828',
+          600: '#242424'
+        },
+        white: '#ffffff',
+        'silver-chalice': '#a7a7a7',
+        malachite: '#1ed760',
+        carnation: '#f15e6c',
+        sunshade: '#ffa42b',
+        'dodger-blue': '#3d91f4',
+        'dove-gray': '#727272',
+        crimson: '#e91429',
+        'blue-ribbon': '#0d72ea',
+        tundora: '#4d4d4d',
+        nobel: '#b3b3b3'
       },
       spacing: {
         7.5: '1.875rem'

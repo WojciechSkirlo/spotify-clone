@@ -22,11 +22,11 @@ const Player = () => {
         </div>
       </div>
       <div className="flex items-center w-full max-w-[722px]">
-        <span className="w-10 mr-2 text-xs text-right text-subtle">0:00</span>
+        <span className="w-10 mr-2 text-xs text-right text-nobel">0:00</span>
         <div className="flex items-center flex-1 h-3 item">
-          <div className="w-full h-1 bg-[#4D4D4D] rounded-full"></div>
+          <div className="w-full h-1 rounded-full bg-tundora"></div>
         </div>
-        <span className="w-10 ml-2 text-xs text-left text-subtle">3:55</span>
+        <span className="w-10 ml-2 text-xs text-left text-nobel">3:55</span>
       </div>
     </section>
   );

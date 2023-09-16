@@ -16,7 +16,7 @@ const NavItem = ({ to, name, icon, iconActive, collapsed }: NavItemProps) => {
         {({ isActive }) => (
           <div
             className={`flex items-center transition-colors duration-200 h-10 gap-5 hover:text-white ${
-              isActive ? 'text-white' : 'text-subtle'
+              isActive ? 'text-white' : 'text-nobel'
             }`}
           >
             <Icon name={isActive ? iconActive : icon} size="lg" />

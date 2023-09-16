@@ -26,9 +26,8 @@ const IconButton = ({ icon, ariaLabel, scale, glow }: IconButtonProps) => {
         <button
           type="button"
           aria-label={ariaLabel}
-          className={`flex items-center rounded-full transition-colors ease-linear duration-200 justify-center w-8 h-8 transform text-subtle hover:text-white ${
-            scale ? 'hover:scale-105' : ''
-          } ${glow ? 'hover:bg-red-500 hover:text-white' : ''}`}
+          className={`flex items-center rounded-full transition-colors ease-linear duration-200 justify-center w-8 h-8 transform text-nobel hover:text-white 
+          ${scale ? 'hover:scale-105' : ''} ${glow ? 'hover:bg-red-500' : ''}`}
         >
           <Icon name={icon} />
         </button>
