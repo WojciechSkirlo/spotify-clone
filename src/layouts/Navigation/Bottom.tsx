@@ -18,8 +18,8 @@ const NavigationBottom = () => {
         />
         {!isCollapsed && (
           <div className="flex items-center gap-2">
-            <IconButton icon="plus" />
-            <IconButton icon="arrow-right" />
+            <IconButton icon="plus" scale={false} glow={true} />
+            <IconButton icon="arrow-right" scale={false} glow={true} />
           </div>
         )}
       </div>
