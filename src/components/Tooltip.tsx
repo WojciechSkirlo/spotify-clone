@@ -17,21 +17,16 @@ const Tooltip = ({ text, placement, children }: BadgeProps) => {
   };
 
   const onHide = (instance: Instance<Props>) => {
-    const unmountInstance = () => {
-      instance.unmount();
-      instance.popper.firstChild?.removeEventListener('transitionend', unmountInstance);
-    };
-
-    instance.popper.firstChild?.addEventListener('transitionend', unmountInstance);
+    requestAnimationFrame(instance.unmount);
     setIsVisible(false);
   };
 
   return (
     <Tippy
       disabled={!text}
+      placement={placement}
       offset={[0, 8]}
       animation
-      placement={placement}
       render={(attrs) => (
         <div
           className="duration-200 tippy-box"
@@ -45,7 +40,7 @@ const Tooltip = ({ text, placement, children }: BadgeProps) => {
       )}
       delay={[300, 0]}
       onMount={onMount}
-      onHide={(instance) => onHide(instance)}
+      onHide={onHide}
     >
       <div>{children}</div>
     </Tippy>
