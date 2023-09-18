@@ -8,7 +8,13 @@ export default {
       base: ['1rem', '1.6rem'], // 16px
       lg: ['1.125rem', '1.125rem'], // 18px
       xl: ['1.5rem', '1.5rem'], // 24px,
-      '2xl': ['4.5rem', '4.5rem'] // 72px
+      '2xl': ['2rem', '2rem'], // 32px
+      '3xl': ['4.5rem', '4.5rem'] // 72px
+    },
+    boxShadow: {
+      md: '0 8px 8px rgba(0, 0, 0, .3)',
+      DEFAULT: '0 8px 24px rgba(0, 0, 0, .5)',
+      lg: '0 16px 24px rgba(0, 0, 0, .3), 0 6px 8px rgba(0, 0, 0, .2)'
     },
     extend: {
       colors: {

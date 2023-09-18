@@ -35,7 +35,9 @@ const Tooltip = ({ text, placement, children }: BadgeProps) => {
           tabIndex={-1}
           {...attrs}
         >
-          <div className="tippy-content tooltip">{text}</div>
+          <div className="z-30 px-2 py-1 text-sm text-white rounded shadow-lg line-clamp-4 bg-mine-shaft-500">
+            {text}
+          </div>
         </div>
       )}
       delay={[300, 0]}
