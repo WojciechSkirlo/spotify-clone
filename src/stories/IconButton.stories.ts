@@ -25,8 +25,7 @@ type Story = StoryObj<typeof meta>;
 export const Primary: Story = {
   args: {
     icon: 'heart',
-    glow: false,
-    scale: false
+    variant: 'primary'
   }
 };
 
