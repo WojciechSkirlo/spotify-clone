@@ -20,7 +20,7 @@ const Card = ({ img, header, description }: CardProps) => {
         <div className="mb-4">
           <img src={img} alt="" className="object-cover object-center w-full h-full rounded" />
         </div>
-        <Heading size="lg" className="mb-1">
+        <Heading size="base" className="mb-1">
           {header}
         </Heading>
         <p className="text-sm text-silver-chalice line-clamp-2">{description}</p>

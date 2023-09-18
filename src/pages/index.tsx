@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import Heading from '~~/Heading';
 import Card from '~~/Card';
+import Icon from '~~/Icon';
 
 const DUMMY_DATA = [
   {
@@ -44,11 +45,46 @@ const DUMMY_DATA = [
 const Index = () => {
   return (
     <>
-      <main className="mt-7 max-w-[1955px]">
+      {/* Recommended */}
+      <section>
+        <div className="flex items-start justify-between mb-5">
+          <Heading size="2xl">Dobry wieczór</Heading>
+        </div>
+        <div className="grid grid-cols-2 gap-4 pt-px gap-y-3 xl:grid-cols-3">
+          {DUMMY_DATA.map((item) => (
+            <div
+              className="flex h-20 overflow-hidden transition-colors duration-300 rounded cursor-pointer group bg-white/10 hover:bg-white/20"
+              key={item.id}
+            >
+              <div className="shadow">
+                <img
+                  src="https://i.scdn.co/image/ab67616d0000b273e85259a1cae29a8d91f2093d"
+                  alt="img"
+                  className="w-20 h-20"
+                />
+              </div>
+              <div className="flex items-center justify-between flex-1 gap-4 p-4">
+                <a href="#" className="font-semibold">
+                  GUTS
+                </a>
+                <button
+                  type="button"
+                  aria-label="play"
+                  className="flex items-center justify-center w-12 h-12 text-black transition-opacity duration-300 transform rounded-full shadow-md opacity-0 hover:scale-105 bg-malachite group-hover:opacity-100"
+                >
+                  <Icon name="play-smaller" size="lg" />
+                </button>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section className="mt-10">
         <div className="flex items-start justify-between mb-4">
           <Heading size="xl">
             <Link to="/search" className="hover:underline">
-              Przygotowano dla
+              Przygotowano dla Jaa
             </Link>
           </Heading>
           <Link to="/search" className="text-sm font-bold text-nobel h-7.5 flex items-center hover:underline">
@@ -60,7 +96,7 @@ const Index = () => {
             <Card key={item.id} img={item.img} header={item.header} description={item.description} />
           ))}
         </div>
-      </main>
+      </section>
     </>
   );
 };

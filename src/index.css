@@ -57,6 +57,13 @@ body {
   @apply overflow-hidden text-base;
 }
 
+h1,
+h2,
+h3,
+h4 {
+  font-family: CircularSpTitle;
+}
+
 #root {
   @apply flex flex-col h-screen;
 }
@@ -69,11 +76,4 @@ body {
 
 .layout--collapsed {
   grid-template-columns: 72px 1fr;
-}
-
-.tooltip {
-  box-shadow:
-    0 16px 24px rgba(0, 0, 0, 0.3),
-    0 6px 8px rgba(0, 0, 0, 0.2);
-  @apply z-30 rounded line-clamp-4 bg-[#282828] py-1 px-2 text-sm text-white;
 }
