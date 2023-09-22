@@ -1,14 +1,14 @@
-import IconButton from '~~/IconButton';
+import Button from '~~/Button';
 
 const Controls = () => {
   return (
     <div className="flex items-center justify-end col-span-3">
-      <IconButton icon="card-play" ariaLabel="Widok teraz odtwarzane" />
-      <IconButton icon="microphone" ariaLabel="Tekst" />
-      <IconButton icon="queue" ariaLabel="Kolejka" />
-      <IconButton icon="device" ariaLabel="Podłącz do urządzenia" />
-      <IconButton icon="volume" ariaLabel="Głośność" />
-      <IconButton icon="maximize" ariaLabel="Pełny ekran" />
+      <Button icon="card-play" ariaLabel="Widok teraz odtwarzane" />
+      <Button icon="microphone" ariaLabel="Tekst" />
+      <Button icon="queue" ariaLabel="Kolejka" />
+      <Button icon="device" ariaLabel="Podłącz do urządzenia" />
+      <Button icon="volume" ariaLabel="Głośność" />
+      <Button icon="maximize" ariaLabel="Pełny ekran" />
     </div>
   );
 };

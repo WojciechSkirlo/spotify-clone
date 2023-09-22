@@ -1,4 +1,4 @@
-import IconButton from '~~/IconButton';
+import Button from '~~/Button';
 
 const NowPlaying = () => {
   return (
@@ -22,8 +22,8 @@ const NowPlaying = () => {
           </span>
         </div>
       </div>
-      <IconButton icon="heart" />
-      <IconButton icon="minimize" />
+      <Button icon="heart" />
+      <Button icon="minimize" />
     </div>
   );
 };

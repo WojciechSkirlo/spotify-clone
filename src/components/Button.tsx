@@ -4,7 +4,7 @@ import Tooltip from '~~/Tooltip';
 
 type Variants = 'primary' | 'secondary' | 'tertiary';
 
-type IconButtonProps = {
+type ButtonProps = {
   icon: string;
   variant: Variants;
   ariaLabel?: string;
@@ -14,12 +14,12 @@ type IconButtonProps = {
   children?: ReactNode;
 };
 
-const defaultProps: Omit<IconButtonProps, 'icon'> = {
+const defaultProps: Omit<ButtonProps, 'icon'> = {
   variant: 'primary',
   scale: true
 };
 
-const IconButton = ({ variant, icon, ariaLabel, scale, glow, disabled, children }: IconButtonProps) => {
+const Button = ({ variant, icon, ariaLabel, scale, glow, disabled, children }: ButtonProps) => {
   return (
     <>
       <Tooltip text={ariaLabel}>
@@ -47,5 +47,5 @@ const IconButton = ({ variant, icon, ariaLabel, scale, glow, disabled, children 
   );
 };
 
-IconButton.defaultProps = defaultProps;
-export default IconButton;
+Button.defaultProps = defaultProps;
+export default Button;
