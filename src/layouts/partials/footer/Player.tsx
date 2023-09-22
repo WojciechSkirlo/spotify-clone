@@ -1,4 +1,4 @@
-import IconButton from '~~/IconButton';
+import Button from '~~/Button';
 import Icon from '~~/Icon';
 
 const Player = () => {
@@ -6,8 +6,8 @@ const Player = () => {
     <section className="flex flex-col items-center justify-center col-span-4 ml-4">
       <div className="flex gap-4 mb-2">
         <div className="flex gap-2">
-          <IconButton icon="shuffle" />
-          <IconButton icon="previous" />
+          <Button icon="shuffle" />
+          <Button icon="previous" />
         </div>
         <button
           type="button"
@@ -17,8 +17,8 @@ const Player = () => {
           <Icon name="play" />
         </button>
         <div className="flex gap-2">
-          <IconButton icon="next" />
-          <IconButton icon="repeat" />
+          <Button icon="next" />
+          <Button icon="repeat" />
         </div>
       </div>
       <div className="flex items-center w-full max-w-[722px]">
