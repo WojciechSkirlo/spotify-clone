@@ -1,5 +1,5 @@
 import { useStore } from '@/context';
-import Button from '@/layouts/Navigation/Button';
+import Button from '@/layouts/partials/navigation/Button';
 import IconButton from '~~/IconButton';
 import Badge from '~~/Badge';
 import Tooltip from '~~/Tooltip';

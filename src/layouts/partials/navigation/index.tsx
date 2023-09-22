@@ -1,5 +1,5 @@
-import Top from '@/layouts/Navigation/Top';
-import Bottom from '@/layouts/Navigation/Bottom';
+import Top from '@/layouts/partials/navigation/Top';
+import Bottom from '@/layouts/partials/navigation/Bottom';
 
 const Navigation = () => {
   return (
