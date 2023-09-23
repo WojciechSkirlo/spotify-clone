@@ -44,7 +44,7 @@ const DUMMY_DATA = [
 
 const Index = () => {
   return (
-    <>
+    <div className="px-6 mt-2">
       <Recommended />
 
       {[1, 2, 3, 4].map((item) => (
@@ -66,7 +66,7 @@ const Index = () => {
           </div>
         </section>
       ))}
-    </>
+    </div>
   );
 };
 

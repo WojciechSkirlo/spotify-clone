@@ -20,7 +20,7 @@ const Header = () => {
                 <img
                   src="https://platform-lookaside.fbsbx.com/platform/profilepic/?asid=1853828564884255&height=50&width=50&ext=1697615769&hash=AeSS139Pv-6jsIgmjQg"
                   alt="profile-pic"
-                  className="object-cover w-full h-full rounded-full"
+                  className="object-cover w-6 h-6 rounded-full"
                 />
               </Button>
             }
