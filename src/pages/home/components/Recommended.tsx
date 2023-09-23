@@ -1,6 +1,4 @@
-import { Link } from 'react-router-dom';
 import Heading from '~~/Heading';
-import Card from '~~/Card';
 import Icon from '~~/Icon';
 
 const DUMMY_DATA = [
@@ -42,15 +40,15 @@ const DUMMY_DATA = [
   }
 ];
 
-const Index = () => {
+const Recommended = () => {
   return (
     <>
-      {/* Recommended */}
-      <section>
+      <div className="h-[332px] w-full absolute top-0 left-0 z-20 gradient"></div>
+      <section className="relative z-20">
         <div className="flex items-start justify-between mb-5">
           <Heading size="2xl">Dobry wieczór</Heading>
         </div>
-        <div className="grid grid-cols-2 gap-4 pt-px gap-y-3 xl:grid-cols-3">
+        <div className="grid gap-4 pt-px md:grid-cols-2 gap-y-3 xl:grid-cols-3">
           {DUMMY_DATA.map((item) => (
             <div
               className="flex h-20 overflow-hidden transition-colors duration-300 rounded cursor-pointer group bg-white/10 hover:bg-white/20"
@@ -79,26 +77,8 @@ const Index = () => {
           ))}
         </div>
       </section>
-
-      <section className="mt-10">
-        <div className="flex items-start justify-between mb-4">
-          <Heading size="xl">
-            <Link to="/search" className="hover:underline">
-              Przygotowano dla Jaa
-            </Link>
-          </Heading>
-          <Link to="/search" className="text-sm font-bold text-nobel h-7.5 flex items-center hover:underline">
-            Pokaż wszystko
-          </Link>
-        </div>
-        <div className="grid grid-cols-2 gap-6 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-9">
-          {DUMMY_DATA.map((item) => (
-            <Card key={item.id} img={item.img} header={item.header} description={item.description} />
-          ))}
-        </div>
-      </section>
     </>
   );
 };
 
-export default Index;
+export default Recommended;

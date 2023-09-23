@@ -1,7 +1,6 @@
 import { useState, ReactNode } from 'react';
 import Tippy from '@tippyjs/react/headless';
 import { Instance, Props, Placement } from 'tippy.js';
-import 'tippy.js/dist/tippy.css';
 
 type BadgeProps = {
   text?: string;

@@ -1,6 +1,5 @@
 import { ReactNode } from 'react';
 import Tippy from '@tippyjs/react/headless';
-import 'tippy.js/dist/tippy.css';
 
 type DropdownProps = {
   button?: ReactNode;

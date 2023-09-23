@@ -1,12 +1,14 @@
 import React from 'react';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { createRoot } from 'react-dom/client';
-import './index.css';
+import 'overlayscrollbars/overlayscrollbars.css';
+import 'tippy.js/dist/tippy.css';
+import '@/index.css';
 
-import DefaultLayout from './layouts/default';
-import Home from './pages/index';
-import Search from './pages/search';
-import ErrorPage from './error-page';
+import DefaultLayout from '@/layouts/default';
+import Home from '@/pages/home';
+import Search from '@/pages/search';
+import ErrorPage from '@/error-page';
 
 const router = createBrowserRouter([
   {
