@@ -16,7 +16,20 @@ export default {
       DEFAULT: '0 8px 24px rgba(0, 0, 0, .5)',
       lg: '0 16px 24px rgba(0, 0, 0, .3), 0 6px 8px rgba(0, 0, 0, .2)'
     },
+    screens: {
+      md: '824px',
+      lg: '1000px',
+      xl: '1420px',
+      '2xl': '1640px',
+      '3xl': '1848px',
+      '4xl': '2052px',
+      '5xl': '2256px'
+    },
     extend: {
+      fontFamily: {
+        'circular-sp': ['CircularSp', 'sans-serif'],
+        'circular-sp-title': ['CircularSpTitle', 'sans-serif']
+      },
       colors: {
         black: '#000000',
         'cod-gray': {

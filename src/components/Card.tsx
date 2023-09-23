@@ -7,18 +7,12 @@ type CardProps = {
   description: string;
 };
 
-const defaultProps: CardProps = {
-  img: '',
-  header: '',
-  description: ''
-};
-
 const Card = ({ img, header, description }: CardProps) => {
   return (
     <Link to="/search">
-      <div className="h-full p-4 transition-colors duration-300 rounded bg-cod-gray-400 hover:bg-mine-shaft-500">
+      <div className="h-full p-4 transition-colors duration-300 rounded-md bg-cod-gray-400 hover:bg-mine-shaft-500">
         <div className="mb-4">
-          <img src={img} alt="" className="object-cover object-center w-full h-full rounded" />
+          <img src={img} alt="card-img" className="object-cover object-center w-full h-full rounded" />
         </div>
         <Heading size="base" className="mb-1">
           {header}
@@ -29,5 +23,4 @@ const Card = ({ img, header, description }: CardProps) => {
   );
 };
 
-Card.defaultProps = defaultProps;
 export default Card;

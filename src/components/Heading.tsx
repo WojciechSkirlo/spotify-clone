@@ -7,12 +7,7 @@ type HeadingProps = {
   className?: string;
 };
 
-const defaultProps: HeadingProps = {
-  size: 'lg',
-  className: ''
-};
-
-const Heading = ({ children, size, className }: HeadingProps) => {
+const Heading = ({ children, size = 'lg', className = '' }: HeadingProps) => {
   const Headings: Record<Sizes, JSX.Element> = {
     '3xl': <h1 className={`text-3xl font-bold ${className}`}>{children}</h1>,
     '2xl': <h2 className={`text-2xl font-bold ${className}`}>{children}</h2>,
@@ -24,5 +19,4 @@ const Heading = ({ children, size, className }: HeadingProps) => {
   return Headings[size];
 };
 
-Heading.defaultProps = defaultProps;
 export default Heading;

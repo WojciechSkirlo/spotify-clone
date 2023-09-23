@@ -10,7 +10,7 @@ const DefaultLayout = () => {
   return (
     <div className={`layout ${isCollapsed ? 'layout--collapsed' : ''}`}>
       <Navigation />
-      <div className="rounded-lg bg-cod-gray-500">
+      <div className="relative overflow-hidden rounded-lg bg-cod-gray-500">
         <Header />
         <main className="px-6 max-w-[1955px] py-2">
           <Outlet />

@@ -5,7 +5,7 @@ import Icon from '~~/Icon';
 
 const Header = () => {
   return (
-    <div className="flex items-center justify-between w-full h-16 px-6">
+    <div className="relative z-30 flex items-center justify-between w-full h-16 px-6">
       <div className="flex gap-2">
         <Button icon="chevron-left" variant="tertiary" scale={false} ariaLabel="Wstecz" />
         <Button icon="chevron-right" variant="tertiary" scale={false} ariaLabel="Dalej" />
