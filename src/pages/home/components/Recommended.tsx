@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import Heading from '~~/Heading';
 import Icon from '~~/Icon';
 
@@ -50,30 +51,30 @@ const Recommended = () => {
         </div>
         <div className="grid gap-4 pt-px md:grid-cols-2 gap-y-3 xl:grid-cols-3">
           {DUMMY_DATA.map((item) => (
-            <div
-              className="flex h-20 overflow-hidden transition-colors duration-300 rounded cursor-pointer group bg-white/10 hover:bg-white/20"
-              key={item.id}
-            >
-              <div className="shadow">
-                <img
-                  src="https://i.scdn.co/image/ab67616d0000b273e85259a1cae29a8d91f2093d"
-                  alt="img"
-                  className="w-20 h-20"
-                />
+            <Link to="/playlist/2" className="font-semibold">
+              <div
+                className="flex h-20 overflow-hidden transition-colors duration-300 rounded cursor-pointer group bg-white/10 hover:bg-white/20"
+                key={item.id}
+              >
+                <div className="shadow">
+                  <img
+                    src="https://i.scdn.co/image/ab67616d0000b273e85259a1cae29a8d91f2093d"
+                    alt="img"
+                    className="w-20 h-20"
+                  />
+                </div>
+                <div className="flex items-center justify-between flex-1 gap-4 p-4">
+                  <span className="font-semibold">GUTS</span>
+                  <button
+                    type="button"
+                    aria-label="play"
+                    className="flex items-center justify-center w-12 h-12 text-black transition-opacity duration-300 transform rounded-full shadow-md opacity-0 hover:scale-105 bg-malachite group-hover:opacity-100"
+                  >
+                    <Icon name="play-smaller" size="lg" />
+                  </button>
+                </div>
               </div>
-              <div className="flex items-center justify-between flex-1 gap-4 p-4">
-                <a href="#" className="font-semibold">
-                  GUTS
-                </a>
-                <button
-                  type="button"
-                  aria-label="play"
-                  className="flex items-center justify-center w-12 h-12 text-black transition-opacity duration-300 transform rounded-full shadow-md opacity-0 hover:scale-105 bg-malachite group-hover:opacity-100"
-                >
-                  <Icon name="play-smaller" size="lg" />
-                </button>
-              </div>
-            </div>
+            </Link>
           ))}
         </div>
       </section>

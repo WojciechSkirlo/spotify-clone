@@ -14,6 +14,7 @@ const DefaultLayout = () => {
       <OverlayScrollbarsComponent
         options={{ scrollbars: { autoHide: 'leave', autoHideDelay: 600 }, overflow: { x: 'hidden' } }}
         defer
+        className="rounded-lg"
       >
         <div className="relative flex-1 rounded-lg bg-cod-gray-500">
           <Header />

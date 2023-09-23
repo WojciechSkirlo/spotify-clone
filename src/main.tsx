@@ -5,10 +5,11 @@ import 'overlayscrollbars/overlayscrollbars.css';
 import 'tippy.js/dist/tippy.css';
 import '@/index.css';
 
+import ErrorPage from '@/error-page';
 import DefaultLayout from '@/layouts/default';
 import Home from '@/pages/home';
 import Search from '@/pages/search';
-import ErrorPage from '@/error-page';
+import Playlist from '@/pages/playlist';
 
 const router = createBrowserRouter([
   {
@@ -23,6 +24,10 @@ const router = createBrowserRouter([
       {
         path: 'search',
         element: <Search />
+      },
+      {
+        path: 'playlist/:playlistId',
+        element: <Playlist />
       }
     ]
   }
