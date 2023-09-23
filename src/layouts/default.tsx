@@ -18,7 +18,7 @@ const DefaultLayout = () => {
       >
         <div className="relative flex-1 rounded-lg bg-cod-gray-500">
           <Header />
-          <main className="px-6 max-w-[1955px] py-2">
+          <main className="max-w-[1955px]">
             <Outlet />
           </main>
         </div>

@@ -6,27 +6,32 @@ type Variants = 'primary' | 'secondary' | 'tertiary';
 
 type ButtonProps = {
   icon: string;
-  variant: Variants;
-  ariaLabel?: string;
+  variant?: Variants;
+  size?: 'md' | 'xl';
   scale?: boolean;
   glow?: boolean;
   disabled?: boolean;
+  ariaLabel?: string;
   children?: ReactNode;
 };
 
-const defaultProps: Omit<ButtonProps, 'icon'> = {
-  variant: 'primary',
-  scale: true
-};
-
-const Button = ({ variant, icon, ariaLabel, scale, glow, disabled, children }: ButtonProps) => {
+const Button = ({
+  icon,
+  variant = 'primary',
+  size = 'md',
+  scale = true,
+  glow,
+  disabled,
+  ariaLabel,
+  children
+}: ButtonProps) => {
   return (
     <>
       <Tooltip text={ariaLabel}>
         <button
           type="button"
           aria-label={ariaLabel}
-          className={`flex items-center rounded-full p-1 transition-colors ease-linear duration-200 justify-center w-8 h-8 transfor 
+          className={`flex items-center rounded-full transition-colors ease-linear duration-200 justify-center transfor 
             ${
               variant === 'primary'
                 ? 'text-silver-chalice hover:text-white'
@@ -36,16 +41,16 @@ const Button = ({ variant, icon, ariaLabel, scale, glow, disabled, children }: B
             }
             ${scale ? 'hover:scale-105' : ''} 
             ${glow ? 'hover:bg-cod-gray-300' : ''}
+            ${size === 'md' ? 'w-8 h-8' : 'w-8 h-14'}
           `}
           disabled={disabled}
         >
           {children && <div>{children}</div>}
-          {!children && <Icon name={icon} />}
+          {!children && <Icon name={icon} size={size} />}
         </button>
       </Tooltip>
     </>
   );
 };
 
-Button.defaultProps = defaultProps;
 export default Button;

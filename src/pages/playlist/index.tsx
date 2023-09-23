@@ -1,14 +1,19 @@
 import { Link } from 'react-router-dom';
 import Heading from '~~/Heading';
+import Icon from '~~/Icon';
+import Button from '~~/Button';
+import Dropdown from '~~/dropdown/Dropdown';
+import DropdownItem from '~~/dropdown/DropdownItem';
+import ListItem from '@/pages/playlist/components/ListItem';
 
 const Playlist = () => {
   return (
     <>
       <div
         style={{ backgroundColor: 'rgb(120, 112, 160)' }}
-        className="h-[30vh] flex items-end max-h-[400px] min-h-[360px] w-full absolute top-0 left-0 z-20 gradient-playlist"
+        className="h-[30vh] flex items-end max-h-[400px] mt-[-64px] min-h-[360px] w-full top-0 left-0 z-20 gradient-playlist"
       >
-        <div className="flex flex-1 p-6 mt-1">
+        <div className="flex flex-1 p-6">
           <div className="w-[232px] h-[232px] bg-black/70 mr-6">
             <img
               src="https://mosaic.scdn.co/300/ab67616d00001e0251601671f5c9bfde9f3465beab67616d00001e0290f0c9b6a8673fafd11c781aab67616d00001e0293768ed78764eaffc45b076dab67616d00001e02aefd88c6793b26679a570036"
@@ -39,6 +44,46 @@ const Playlist = () => {
             </div>
           </div>
         </div>
+      </div>
+
+      <div className="flex items-center gap-8 p-6">
+        <button
+          type="button"
+          aria-label="play"
+          className="flex items-center justify-center text-black transition-opacity duration-300 transform rounded-full shadow-md h-14 w-14 hover:scale-105 bg-malachite"
+        >
+          <Icon name="play-smaller" size="lg" />
+        </button>
+        <Dropdown button={<Button icon="dots" size="xl" ariaLabel="Więcej opcji dla: neww 2022 November" />}>
+          <DropdownItem>Dodaj do kolejki</DropdownItem>
+          <DropdownItem borderBottom>Usuń z profilu</DropdownItem>
+          <DropdownItem>Edytuj szczegóły</DropdownItem>
+          <DropdownItem>Utwórz podobną playlistę</DropdownItem>
+          <DropdownItem>Usuń</DropdownItem>
+          <DropdownItem>Nie uwzględniaj w profilu słuchacza</DropdownItem>
+          <DropdownItem borderBottom>Przenieś do folderu</DropdownItem>
+          <DropdownItem borderBottom>Udostępnij</DropdownItem>
+          <DropdownItem borderBottom>Informacje o rekomendacjach</DropdownItem>
+          <DropdownItem>Otwórz w aplikacji na komputerze</DropdownItem>
+        </Dropdown>
+      </div>
+
+      <div className="px-6 pb-10">
+        <ListItem />
+        <ListItem />
+        <ListItem />
+        <ListItem />
+        <ListItem />
+        <ListItem />
+        <ListItem />
+        <ListItem />
+        <ListItem />
+        <ListItem />
+        <ListItem />
+        <ListItem />
+        <ListItem />
+        <ListItem />
+        <ListItem />
       </div>
     </>
   );

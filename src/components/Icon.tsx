@@ -1,4 +1,4 @@
-type Sizes = 'sm' | 'md' | 'lg';
+type Sizes = 'sm' | 'md' | 'lg' | 'xl';
 
 type IconProps = {
   name: string;
@@ -16,7 +16,8 @@ const Icon = ({ name, size }: IconProps) => {
   const sizes: Record<Sizes, string> = {
     sm: 'w-2 h-2',
     md: 'w-4 h-4',
-    lg: 'w-6 h-6'
+    lg: 'w-6 h-6',
+    xl: 'w-8 h-8'
   };
 
   return <div className={`fill-current ${sizes[size]}`} dangerouslySetInnerHTML={{ __html: selectedIcon }}></div>;
