@@ -47,23 +47,25 @@ const Index = () => {
     <>
       <Recommended />
 
-      <section className="mt-10">
-        <div className="flex items-start justify-between mb-4">
-          <Heading size="xl">
-            <Link to="/search" className="hover:underline">
-              Przygotowano dla Ciebie
+      {[1, 2, 3, 4].map((item) => (
+        <section className="mt-10" key={item}>
+          <div className="flex items-start justify-between mb-4">
+            <Heading size="xl">
+              <Link to="/search" className="hover:underline">
+                Przygotowano dla Ciebie
+              </Link>
+            </Heading>
+            <Link to="/search" className="text-sm font-bold text-nobel h-7.5 flex items-center pb-1 hover:underline">
+              Pokaż wszystko
             </Link>
-          </Heading>
-          <Link to="/search" className="text-sm font-bold text-nobel h-7.5 flex items-center pb-1 hover:underline">
-            Pokaż wszystko
-          </Link>
-        </div>
-        <div className="grid grid-cols-2 gap-6 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 3xl:grid-cols-7 4xl:grid-cols-8 5xl:grid-cols-9">
-          {DUMMY_DATA.map((item) => (
-            <Card key={item.id} img={item.img} header={item.header} description={item.description} />
-          ))}
-        </div>
-      </section>
+          </div>
+          <div className="grid grid-cols-2 gap-6 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 3xl:grid-cols-7 4xl:grid-cols-8 5xl:grid-cols-9">
+            {DUMMY_DATA.map((item) => (
+              <Card key={item.id} img={item.img} header={item.header} description={item.description} />
+            ))}
+          </div>
+        </section>
+      ))}
     </>
   );
 };

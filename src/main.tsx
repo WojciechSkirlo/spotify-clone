@@ -1,6 +1,8 @@
 import React from 'react';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { createRoot } from 'react-dom/client';
+import 'overlayscrollbars/overlayscrollbars.css';
+import 'tippy.js/dist/tippy.css';
 import '@/index.css';
 
 import DefaultLayout from '@/layouts/default';
