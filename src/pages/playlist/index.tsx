@@ -2,8 +2,7 @@ import { Link } from 'react-router-dom';
 import Heading from '~~/Heading';
 import Icon from '~~/Icon';
 import Button from '~~/Button';
-import Dropdown from '~~/dropdown/Dropdown';
-import DropdownItem from '~~/dropdown/DropdownItem';
+import { Dropdown, DropdownItem } from '~~/Dropdown';
 import ListItem from '@/pages/playlist/components/ListItem';
 
 const Playlist = () => {

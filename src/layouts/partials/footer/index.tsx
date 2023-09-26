@@ -1,6 +1,6 @@
-import NowPlaying from '@/layouts/partials/footer/NowPlaying';
-import Player from '@/layouts/partials/footer/Player';
-import Controls from '@/layouts/partials/footer/Controls';
+import NowPlaying from '@/layouts/partials/footer/components/NowPlaying';
+import Player from '@/layouts/partials/footer/components/Player';
+import Controls from '@/layouts/partials/footer/components/Controls';
 
 const Footer = () => {
   return (

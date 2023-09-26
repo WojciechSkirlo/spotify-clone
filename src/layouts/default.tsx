@@ -2,7 +2,7 @@ import { Outlet } from 'react-router-dom';
 import { useStore } from '@/context';
 import { OverlayScrollbarsComponent } from 'overlayscrollbars-react';
 import Navigation from '@/layouts/partials/navigation';
-import Header from '@/layouts/partials/Header';
+import Header from '@/layouts/partials/header';
 import Footer from '@/layouts/partials/footer';
 
 const DefaultLayout = () => {

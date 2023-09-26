@@ -1,6 +1,5 @@
 import Button from '~~/Button';
-import Dropdown from '~~/dropdown/Dropdown';
-import DropdownItem from '~~/dropdown/DropdownItem';
+import { Dropdown, DropdownItem } from '~~/Dropdown';
 import Icon from '~~/Icon';
 
 const Header = () => {

@@ -2,12 +2,13 @@ import { ReactNode } from 'react';
 import Icon from '~~/Icon';
 import Tooltip from '~~/Tooltip';
 
-type Variants = 'primary' | 'secondary' | 'tertiary';
+type Variant = 'primary' | 'secondary' | 'tertiary';
+type Size = 'md' | 'xl';
 
 type ButtonProps = {
   icon: string;
-  variant?: Variants;
-  size?: 'md' | 'xl';
+  variant?: Variant;
+  size?: Size;
   scale?: boolean;
   glow?: boolean;
   disabled?: boolean;
@@ -25,31 +26,35 @@ const Button = ({
   ariaLabel,
   children
 }: ButtonProps) => {
+  const variantClasses = {
+    primary: 'text-silver-chalice hover:text-white',
+    secondary: 'text-silver-chalice hover:text-white bg-black/70',
+    tertiary: 'text-white bg-black/70'
+  };
+
+  const sizeClasses = {
+    md: 'w-8 h-8',
+    xl: 'w-8 h-14'
+  };
+
+  const content = children ? <div>{children}</div> : <Icon name={icon} size={size} />;
+
   return (
-    <>
-      <Tooltip text={ariaLabel}>
-        <button
-          type="button"
-          aria-label={ariaLabel}
-          className={`flex items-center rounded-full transition-colors ease-linear duration-200 justify-center transfor 
-            ${
-              variant === 'primary'
-                ? 'text-silver-chalice hover:text-white'
-                : variant === 'secondary'
-                ? 'text-silver-chalice hover:text-white bg-black/70'
-                : 'text-white bg-black/70'
-            }
+    <Tooltip text={ariaLabel}>
+      <button
+        type="button"
+        aria-label={ariaLabel}
+        className={`flex items-center rounded-full transition-colors ease-linear duration-200 justify-center transform
+            ${variantClasses[variant]}
             ${scale ? 'hover:scale-105' : ''} 
             ${glow ? 'hover:bg-cod-gray-300' : ''}
-            ${size === 'md' ? 'w-8 h-8' : 'w-8 h-14'}
+            ${sizeClasses[size]}
           `}
-          disabled={disabled}
-        >
-          {children && <div>{children}</div>}
-          {!children && <Icon name={icon} size={size} />}
-        </button>
-      </Tooltip>
-    </>
+        disabled={disabled}
+      >
+        {content}
+      </button>
+    </Tooltip>
   );
 };
 

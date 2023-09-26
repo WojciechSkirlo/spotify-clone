@@ -1,5 +1,5 @@
 import { useStore } from '@/context';
-import Item from '@/layouts/partials/navigation/Item';
+import Item from '@/layouts/partials/navigation/components/Item';
 
 const NavigationTop = () => {
   const isCollapsed = useStore((state) => state.isCollapsed);
