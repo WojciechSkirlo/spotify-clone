@@ -2,11 +2,12 @@ import { ReactNode } from 'react';
 import Tippy from '@tippyjs/react/headless';
 
 type DropdownProps = {
+  title?: string;
   button?: ReactNode;
   children?: ReactNode;
 };
 
-const Dropdown = ({ button, children }: DropdownProps) => {
+const Dropdown = ({ title = '', button, children }: DropdownProps) => {
   return (
     <Tippy
       trigger="click"
@@ -16,6 +17,7 @@ const Dropdown = ({ button, children }: DropdownProps) => {
       offset={[0, 8]}
       render={(attrs) => (
         <div className="min-w-[196px] p-1 rounded bg-mine-shaft-500 shadow-lg" {...attrs}>
+          {title && <span className="block p-3 pr-2 text-xs font-bold text-nobel">{title}</span>}
           <ul>{children}</ul>
         </div>
       )}

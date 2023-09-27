@@ -1,11 +1,17 @@
+import { useState } from 'react';
 import { useStore } from '@/context';
 import NavButton from '@/layouts/partials/navigation/components/Button';
 import Button from '~~/Button';
 import Badge from '~~/Badge';
 import Tooltip from '~~/Tooltip';
+import { Dropdown, DropdownItem } from '~~/Dropdown';
+import Icon from '~~/Icon';
+
+const sortingOptions = ['Ostatnie', 'Ostatnio dodane', 'Alfabetycznie', 'Twórca'];
 
 const NavigationBottom = () => {
   const [isCollapsed, toggleMenu] = useStore((state) => [state.isCollapsed, state.toggleMenu]);
+  const [sortingOption, setSortingOption] = useState(sortingOptions[0]);
 
   const actions = (
     <div className="flex items-center gap-2">
@@ -37,6 +43,30 @@ const NavigationBottom = () => {
         {!isCollapsed && actions}
       </div>
       {!isCollapsed && badges}
+      <div className="flex flex-col h-full px-2">
+        <div className="flex items-center justify-between pt-0.5 px-2">
+          <Button icon="library-search" glow />
+          <Dropdown
+            title="Sortuj wg"
+            button={
+              <Button>
+                <div className="flex items-center pl-3 pr-2 ml-2 gap-x-2">
+                  <span>Ostatnie</span>
+                  <Icon name="caret-down" />
+                </div>
+              </Button>
+            }
+          >
+            {sortingOptions.map((option) => (
+              <DropdownItem onClick={() => setSortingOption(option)}>
+                <span>{option}</span>
+                {option === sortingOption && <Icon name="check" />}
+              </DropdownItem>
+            ))}
+          </Dropdown>
+        </div>
+        <div className="grow"></div>
+      </div>
     </div>
   );
 };
