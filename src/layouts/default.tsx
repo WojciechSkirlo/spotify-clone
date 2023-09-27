@@ -1,18 +1,31 @@
 import { Outlet } from 'react-router-dom';
-import Footer from '@/layouts/Footer';
-import Navigation from '@/layouts/Navigation';
+import { useStore } from '@/context';
+import { OverlayScrollbarsComponent } from 'overlayscrollbars-react';
+import Navigation from '@/layouts/partials/navigation';
+import Header from '@/layouts/partials/header';
+import Footer from '@/layouts/partials/footer';
 
-export default function Root() {
+const DefaultLayout = () => {
+  const isCollapsed = useStore((state) => state.isCollapsed);
+
   return (
-    <div className="grid h-full grid-cols-4 grid-rows-1 gap-2 p-2">
-      <aside className="flex flex-col gap-2">
-        <Navigation />
-        <div className="px-6 py-2 rounded-lg bg-dark-gray grow">Your Library</div>
-      </aside>
-      <main className="col-span-3 px-6 rounded-lg bg-dark-gray">
-        <Outlet />
-      </main>
+    <div className={`layout ${isCollapsed ? 'layout--collapsed' : ''}`}>
+      <Navigation />
+      <OverlayScrollbarsComponent
+        options={{ scrollbars: { autoHide: 'leave', autoHideDelay: 600 }, overflow: { x: 'hidden' } }}
+        defer
+        className="rounded-lg"
+      >
+        <div className="relative flex-1 rounded-lg bg-cod-gray-500">
+          <Header />
+          <main className="max-w-[1955px]">
+            <Outlet />
+          </main>
+        </div>
+      </OverlayScrollbarsComponent>
       <Footer />
     </div>
   );
-}
+};
+
+export default DefaultLayout;

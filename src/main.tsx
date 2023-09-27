@@ -1,12 +1,15 @@
 import React from 'react';
-import ReactDOM from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import './index.css';
+import { createRoot } from 'react-dom/client';
+import 'overlayscrollbars/overlayscrollbars.css';
+import 'tippy.js/dist/tippy.css';
+import '@/index.css';
 
-import DefaultLayout from './layouts/default';
-import Home from './pages/index';
-import Search from './pages/search';
-import ErrorPage from './error-page';
+import ErrorPage from '@/error-page';
+import DefaultLayout from '@/layouts/default';
+import Home from '@/pages/home';
+import Search from '@/pages/search';
+import Playlist from '@/pages/playlist';
 
 const router = createBrowserRouter([
   {
@@ -21,12 +24,19 @@ const router = createBrowserRouter([
       {
         path: 'search',
         element: <Search />
+      },
+      {
+        path: 'playlist/:playlistId',
+        element: <Playlist />
       }
     ]
   }
 ]);
 
-ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
+const domNode = document.getElementById('root') as HTMLElement;
+const root = createRoot(domNode);
+
+root.render(
   <React.StrictMode>
     <RouterProvider router={router} />
   </React.StrictMode>

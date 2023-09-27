@@ -3,7 +3,7 @@
 ## Tech Stack:
 
 - [React](https://react.dev/blog/2023/03/16/introducing-react-dev)
-- [Redux](https://redux.js.org/introduction/getting-started)
+- [Zustand](https://docs.pmnd.rs/zustand/getting-started/introduction)
 - [React router](https://reactrouter.com/en/main)
 - [TypeScript](https://www.typescriptlang.org/docs)
 - [SWR](https://swr.vercel.app/docs/getting-started)
@@ -13,6 +13,7 @@
 
 - Mateusz Kapuściński
 - Wojciech Skirło
+- Kamil Palej
 
 ## Setup
 
@@ -42,6 +43,14 @@ Locally preview production build:
 
 ```bash
 npm run preview
+```
+
+## Husky
+
+Install husky hooks
+
+```bash
+npm run prepare
 ```
 
 ## Storybook
