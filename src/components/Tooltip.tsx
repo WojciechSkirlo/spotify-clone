@@ -2,13 +2,13 @@ import { useState, ReactNode } from 'react';
 import Tippy from '@tippyjs/react/headless';
 import { Instance, Props, Placement } from 'tippy.js';
 
-type BadgeProps = {
+type TooltipProps = {
   text?: string;
   placement?: Placement;
   children: ReactNode;
 };
 
-const Tooltip = ({ text, placement, children }: BadgeProps) => {
+const Tooltip = ({ text, placement, children }: TooltipProps) => {
   const [isVisible, setIsVisible] = useState(false);
 
   const onMount = () => {
