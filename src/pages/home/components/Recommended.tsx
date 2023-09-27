@@ -51,7 +51,7 @@ const Recommended = () => {
         </div>
         <div className="grid gap-4 pt-px md:grid-cols-2 gap-y-3 xl:grid-cols-3">
           {DUMMY_DATA.map((item) => (
-            <Link to="/playlist/2" className="font-semibold">
+            <Link to="/playlist/2" className="font-semibold" key={item.id}>
               <div
                 className="flex h-20 overflow-hidden transition-colors duration-300 rounded cursor-pointer group bg-white/10 hover:bg-white/20"
                 key={item.id}
