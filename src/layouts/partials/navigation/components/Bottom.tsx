@@ -6,6 +6,7 @@ import Badge from '~~/Badge';
 import Tooltip from '~~/Tooltip';
 import { Dropdown, DropdownItem } from '~~/Dropdown';
 import Icon from '~~/Icon';
+import ListItem from '@/layouts/partials/navigation/bottom/components/ListItem';
 
 const sortingOptions = ['Ostatnie', 'Ostatnio dodane', 'Alfabetycznie', 'Twórca'];
 
@@ -43,29 +44,35 @@ const NavigationBottom = () => {
         {!isCollapsed && actions}
       </div>
       {!isCollapsed && badges}
-      <div className="flex flex-col h-full px-2">
-        <div className="flex items-center justify-between pt-0.5 px-2">
-          <Button icon="library-search" glow />
-          <Dropdown
-            title="Sortuj wg"
-            button={
-              <Button>
-                <div className="flex items-center pl-3 pr-2 ml-2 gap-x-2">
-                  <span>Ostatnie</span>
-                  <Icon name="caret-down" />
-                </div>
-              </Button>
-            }
-          >
-            {sortingOptions.map((option) => (
-              <DropdownItem onClick={() => setSortingOption(option)}>
-                <span>{option}</span>
-                {option === sortingOption && <Icon name="check" />}
-              </DropdownItem>
-            ))}
-          </Dropdown>
+      <div className={`flex flex-col h-full gap-y-2 ${isCollapsed ? 'px-1' : 'px-2'}`}>
+        {!isCollapsed && (
+          <div className="flex items-center justify-between pt-0.5 px-2">
+            <Button icon="library-search" glow />
+            <Dropdown
+              title="Sortuj wg"
+              button={
+                <Button scale={false}>
+                  <div className="flex items-center pl-3 pr-2 ml-2 gap-x-2">
+                    <span className="text-sm text-white/[0.7]">Ostatnie</span>
+                    <Icon name="caret-down" />
+                  </div>
+                </Button>
+              }
+            >
+              {sortingOptions.map((option) => (
+                <DropdownItem onClick={() => setSortingOption(option)}>
+                  <span>{option}</span>
+                  {option === sortingOption && <Icon name="check" />}
+                </DropdownItem>
+              ))}
+            </Dropdown>
+          </div>
+        )}
+        <div>
+          <ListItem isCollapsed={isCollapsed} />
+          <ListItem isCollapsed={isCollapsed} />
+          <ListItem isCollapsed={isCollapsed} />
         </div>
-        <div className="grow"></div>
       </div>
     </div>
   );
