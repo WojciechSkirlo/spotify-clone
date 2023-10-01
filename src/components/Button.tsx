@@ -6,7 +6,7 @@ type Variant = 'primary' | 'secondary' | 'tertiary';
 type Size = 'md' | 'xl';
 
 type ButtonProps = {
-  icon: string;
+  icon?: string;
   variant?: Variant;
   size?: Size;
   scale?: boolean;
@@ -33,11 +33,11 @@ const Button = ({
   };
 
   const sizeClasses = {
-    md: 'w-8 h-8',
-    xl: 'w-8 h-14'
+    md: icon ? 'w-8 h-8' : 'h-8',
+    xl: icon ? 'w-8 h-14' : 'h-14'
   };
 
-  const content = children ? <div>{children}</div> : <Icon name={icon} size={size} />;
+  const content = icon ? <Icon name={icon} size={size} /> : <>{children}</>;
 
   return (
     <Tooltip text={ariaLabel}>
