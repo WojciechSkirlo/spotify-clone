@@ -5,8 +5,11 @@ import Icon from '~~/Icon';
 const Header = () => {
   return (
     <div className="sticky top-0 left-0 right-0 z-30">
-      <div style={{ opacity: 0, background: 'rgb(72, 32, 176)' }} className="absolute top-0 left-0 w-full h-16"></div>
-      <div className="relative flex items-center justify-between w-full h-16 px-6">
+      {/* <div style={{ opacity: 0, background: 'rgb(72, 32, 176)' }} className="absolute top-0 left-0 right-0 h-16"></div> */}
+      <div
+        style={{ background: 'rgb(72, 32, 176, 0)' }}
+        className="relative flex items-center justify-between w-full h-16 px-6"
+      >
         <div className="flex gap-2">
           <Button icon="chevron-left" variant="tertiary" scale={false} ariaLabel="Wstecz" />
           <Button icon="chevron-right" variant="tertiary" scale={false} ariaLabel="Dalej" />
