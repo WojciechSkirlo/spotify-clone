@@ -4,6 +4,7 @@ import DefaultLayout from '@/layouts/default';
 import Home from '@/pages/home';
 import Search from '@/pages/search';
 import Playlist from '@/pages/playlist';
+import Album from '@/pages/album';
 
 const router = createBrowserRouter([
   {
@@ -22,6 +23,10 @@ const router = createBrowserRouter([
       {
         path: 'playlist/:playlistId',
         element: <Playlist />
+      },
+      {
+        path: 'album/:albumId',
+        element: <Album />
       }
     ]
   }
