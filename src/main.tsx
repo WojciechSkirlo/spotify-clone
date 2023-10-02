@@ -12,13 +12,13 @@ const domNode = document.getElementById('root') as HTMLElement;
 const root = createRoot(domNode);
 
 root.render(
-  // <React.StrictMode>
-  <SWRConfig
-    value={{
-      fetcher
-    }}
-  >
-    <RouterProvider router={router} />
-  </SWRConfig>
-  // </React.StrictMode>
+  <React.StrictMode>
+    <SWRConfig
+      value={{
+        fetcher
+      }}
+    >
+      <RouterProvider router={router} />
+    </SWRConfig>
+  </React.StrictMode>
 );

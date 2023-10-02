@@ -18,7 +18,7 @@ const Header = () => {
           <Button icon="bell" variant="secondary" ariaLabel="Nowości" />
           <Dropdown
             button={
-              <Button icon="volume" variant="secondary" ariaLabel="Jaa">
+              <Button variant="secondary" ariaLabel="Jaa">
                 <img
                   src="https://platform-lookaside.fbsbx.com/platform/profilepic/?asid=1853828564884255&height=50&width=50&ext=1697615769&hash=AeSS139Pv-6jsIgmjQg"
                   alt="profile-pic"

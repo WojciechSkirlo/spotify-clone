@@ -1,9 +1,10 @@
 import { Link } from 'react-router-dom';
+import ListItem from '@/pages/playlist/components/ListItem';
 import Heading from '~~/Heading';
 import Icon from '~~/Icon';
 import Button from '~~/Button';
 import { Dropdown, DropdownItem } from '~~/Dropdown';
-import ListItem from '@/pages/playlist/components/ListItem';
+import type { Album } from '@/types';
 
 const Album = () => {
   return (
