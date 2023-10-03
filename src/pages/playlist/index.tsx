@@ -3,7 +3,7 @@ import Heading from '~~/Heading';
 import Icon from '~~/Icon';
 import Button from '~~/Button';
 import Dropdown from '~~/Dropdown';
-import ListItem from '@/pages/playlist/components/ListItem';
+import List from '~~/List';
 
 const PlaylistPage = () => {
   return (
@@ -68,21 +68,10 @@ const PlaylistPage = () => {
       </div>
 
       <div className="px-6 pb-10">
-        <ListItem />
-        <ListItem />
-        <ListItem />
-        <ListItem />
-        <ListItem />
-        <ListItem />
-        <ListItem />
-        <ListItem />
-        <ListItem />
-        <ListItem />
-        <ListItem />
-        <ListItem />
-        <ListItem />
-        <ListItem />
-        <ListItem />
+        <List>
+          <List.Item />
+          <List.Item />
+        </List>
       </div>
     </>
   );
