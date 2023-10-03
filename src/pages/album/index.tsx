@@ -1,12 +1,12 @@
 import { useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import useSWR from 'swr';
-import ListItem from '@/pages/playlist/components/ListItem';
 import { Album } from '@/types';
 import Heading from '~~/Heading';
 import Icon from '~~/Icon';
 import Button from '~~/Button';
 import Dropdown from '~~/Dropdown';
+import List from '~~/List';
 
 const AlbumPage = () => {
   const { albumId } = useParams();
@@ -80,8 +80,10 @@ const AlbumPage = () => {
       </div>
 
       <div className="px-6 pb-10">
-        <ListItem />
-        <ListItem />
+        <List>
+          <List.Item />
+          <List.Item />
+        </List>
       </div>
     </>
   );

@@ -1,5 +1,14 @@
+import { ReactNode } from 'react';
 import { Link } from 'react-router-dom';
 import Button from '~~/Button';
+
+type TracksProps = {
+  children?: ReactNode;
+};
+
+const List = ({ children }: TracksProps) => {
+  return <div>{children}</div>;
+};
 
 const ListItem = () => {
   return (
@@ -50,4 +59,6 @@ const ListItem = () => {
   );
 };
 
-export default ListItem;
+List.Item = ListItem;
+
+export default List;
