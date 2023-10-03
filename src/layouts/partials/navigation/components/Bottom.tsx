@@ -60,7 +60,7 @@ const NavigationBottom = () => {
               }
             >
               {sortingOptions.map((option) => (
-                <DropdownItem onClick={() => setSortingOption(option)}>
+                <DropdownItem key={option} onClick={() => setSortingOption(option)}>
                   <span>{option}</span>
                   {option === sortingOption && <Icon name="check" />}
                 </DropdownItem>
