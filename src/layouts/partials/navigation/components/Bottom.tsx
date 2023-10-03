@@ -4,7 +4,7 @@ import NavButton from '@/layouts/partials/navigation/components/Button';
 import Button from '~~/Button';
 import Badge from '~~/Badge';
 import Tooltip from '~~/Tooltip';
-import { Dropdown, DropdownItem } from '~~/Dropdown';
+import Dropdown from '~~/Dropdown';
 import Icon from '~~/Icon';
 import ListItem from '@/layouts/partials/navigation/bottom/components/ListItem';
 
@@ -60,10 +60,10 @@ const NavigationBottom = () => {
               }
             >
               {sortingOptions.map((option) => (
-                <DropdownItem key={option} onClick={() => setSortingOption(option)}>
+                <Dropdown.Item key={option} onClick={() => setSortingOption(option)}>
                   <span>{option}</span>
                   {option === sortingOption && <Icon name="check" />}
-                </DropdownItem>
+                </Dropdown.Item>
               ))}
             </Dropdown>
           </div>

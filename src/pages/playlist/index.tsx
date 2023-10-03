@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import Heading from '~~/Heading';
 import Icon from '~~/Icon';
 import Button from '~~/Button';
-import { Dropdown, DropdownItem } from '~~/Dropdown';
+import Dropdown from '~~/Dropdown';
 import ListItem from '@/pages/playlist/components/ListItem';
 
 const PlaylistPage = () => {
@@ -54,16 +54,16 @@ const PlaylistPage = () => {
           <Icon name="play-smaller" size="lg" />
         </button>
         <Dropdown button={<Button icon="dots" size="xl" ariaLabel="Więcej opcji dla: neww 2022 November" />}>
-          <DropdownItem>Dodaj do kolejki</DropdownItem>
-          <DropdownItem borderBottom>Usuń z profilu</DropdownItem>
-          <DropdownItem>Edytuj szczegóły</DropdownItem>
-          <DropdownItem>Utwórz podobną playlistę</DropdownItem>
-          <DropdownItem>Usuń</DropdownItem>
-          <DropdownItem>Nie uwzględniaj w profilu słuchacza</DropdownItem>
-          <DropdownItem borderBottom>Przenieś do folderu</DropdownItem>
-          <DropdownItem borderBottom>Udostępnij</DropdownItem>
-          <DropdownItem borderBottom>Informacje o rekomendacjach</DropdownItem>
-          <DropdownItem>Otwórz w aplikacji na komputerze</DropdownItem>
+          <Dropdown.Item>Dodaj do kolejki</Dropdown.Item>
+          <Dropdown.Item borderBottom>Usuń z profilu</Dropdown.Item>
+          <Dropdown.Item>Edytuj szczegóły</Dropdown.Item>
+          <Dropdown.Item>Utwórz podobną playlistę</Dropdown.Item>
+          <Dropdown.Item>Usuń</Dropdown.Item>
+          <Dropdown.Item>Nie uwzględniaj w profilu słuchacza</Dropdown.Item>
+          <Dropdown.Item borderBottom>Przenieś do folderu</Dropdown.Item>
+          <Dropdown.Item borderBottom>Udostępnij</Dropdown.Item>
+          <Dropdown.Item borderBottom>Informacje o rekomendacjach</Dropdown.Item>
+          <Dropdown.Item>Otwórz w aplikacji na komputerze</Dropdown.Item>
         </Dropdown>
       </div>
 

@@ -5,10 +5,11 @@ import { Instance, Props, Placement } from 'tippy.js';
 type TooltipProps = {
   text?: string;
   placement?: Placement;
+  disabled?: boolean;
   children: ReactNode;
 };
 
-const Tooltip = ({ text, placement, children }: TooltipProps) => {
+const Tooltip = ({ text, placement, disabled, children }: TooltipProps) => {
   const [isVisible, setIsVisible] = useState(false);
 
   const onMount = () => {
@@ -22,7 +23,7 @@ const Tooltip = ({ text, placement, children }: TooltipProps) => {
 
   return (
     <Tippy
-      disabled={!text}
+      disabled={!text || disabled}
       placement={placement}
       offset={[0, 8]}
       animation
