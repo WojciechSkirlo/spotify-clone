@@ -1,5 +1,5 @@
-const Search = () => {
+const SearchPage = () => {
   return <>Search page</>;
 };
 
-export default Search;
+export default SearchPage;

@@ -42,7 +42,7 @@ const DUMMY_DATA = [
   }
 ];
 
-const Index = () => {
+const IndexPage = () => {
   return (
     <div className="px-6 mt-2">
       <Recommended />
@@ -70,4 +70,4 @@ const Index = () => {
   );
 };
 
-export default Index;
+export default IndexPage;

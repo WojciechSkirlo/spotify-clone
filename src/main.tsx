@@ -1,15 +1,14 @@
 import React from 'react';
-import { RouterProvider } from 'react-router-dom';
 import { createRoot } from 'react-dom/client';
-import router from '@/router';
 import { SWRConfig } from 'swr';
 import { fetcher } from '@/api';
+import App from '@/App';
 import 'overlayscrollbars/overlayscrollbars.css';
 import 'tippy.js/dist/tippy.css';
 import '@/index.css';
 
-const domNode = document.getElementById('root') as HTMLElement;
-const root = createRoot(domNode);
+const rootElement = document.getElementById('root') as HTMLElement;
+const root = createRoot(rootElement);
 
 root.render(
   <React.StrictMode>
@@ -18,7 +17,7 @@ root.render(
         fetcher
       }}
     >
-      <RouterProvider router={router} />
+      <App />
     </SWRConfig>
   </React.StrictMode>
 );

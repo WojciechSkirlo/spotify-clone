@@ -48,4 +48,6 @@ const DropdownItem = ({ borderBottom, children, onClick }: DropdownItemProps) =>
   );
 };
 
-export { Dropdown, DropdownItem };
+Dropdown.Item = DropdownItem;
+
+export default Dropdown;

@@ -1,5 +1,5 @@
 import Button from '~~/Button';
-import { Dropdown, DropdownItem } from '~~/Dropdown';
+import Dropdown from '~~/Dropdown';
 import Icon from '~~/Icon';
 
 const Header = () => {
@@ -12,7 +12,7 @@ const Header = () => {
       >
         <div className="flex gap-2">
           <Button icon="chevron-left" variant="tertiary" scale={false} ariaLabel="Wstecz" />
-          <Button icon="chevron-right" variant="tertiary" scale={false} ariaLabel="Dalej" />
+          <Button icon="chevron-right" variant="tertiary" scale={false} disabled ariaLabel="Dalej" />
         </div>
         <div className="flex gap-2">
           <Button icon="bell" variant="secondary" ariaLabel="Nowości" />
@@ -27,13 +27,13 @@ const Header = () => {
               </Button>
             }
           >
-            <DropdownItem>
+            <Dropdown.Item>
               <span>Konto</span>
               <Icon name="external-link" />
-            </DropdownItem>
-            <DropdownItem>Profil</DropdownItem>
-            <DropdownItem borderBottom>Ustawienia</DropdownItem>
-            <DropdownItem>Wyloguj</DropdownItem>
+            </Dropdown.Item>
+            <Dropdown.Item>Profil</Dropdown.Item>
+            <Dropdown.Item borderBottom>Ustawienia</Dropdown.Item>
+            <Dropdown.Item>Wyloguj</Dropdown.Item>
           </Dropdown>
         </div>
       </div>

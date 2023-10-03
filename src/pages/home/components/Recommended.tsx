@@ -20,7 +20,7 @@ const DUMMY_DATA: Recomendation[] = [
     id: 3,
     img: 'https://i.scdn.co/image/ab67616d00001e02ba5db46f4b838ef6027e6f96',
     name: '÷ (Deluxe)',
-    link: '/playlist/2'
+    link: '/album/3T4tUhGYeRNVUGevb0wThu'
   },
   {
     id: 4,
@@ -32,13 +32,13 @@ const DUMMY_DATA: Recomendation[] = [
     id: 5,
     img: 'https://i.scdn.co/image/ab67616d00001e02e787cffec20aa2a396a61647',
     name: 'Lover',
-    link: '/playlist/2'
+    link: '/album/1NAmidJlEaVgA3MpcPFYGq'
   },
   {
     id: 6,
     img: 'https://i.scdn.co/image/ab67616d00001e020c8a0405b0035e48ab780eec',
     name: '(Un)Commentary',
-    link: '/playlist/2'
+    link: '/album/5Wvcnn5547f6xz8F9Kz6rO'
   }
 ];
 

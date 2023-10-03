@@ -37,21 +37,17 @@ const Button = ({
     xl: icon ? 'w-8 h-14' : 'h-14'
   };
 
+  const classes = `flex items-center rounded-full p-1 transition-colors ease-linear duration-200 justify-center transform ${
+    variantClasses[variant]
+  } ${scale ? 'hover:scale-105' : ''} ${glow ? 'hover:bg-cod-gray-300' : ''} ${sizeClasses[size]} ${
+    disabled ? 'opacity-60 cursor-not-allowed' : ''
+  }`;
+
   const content = icon ? <Icon name={icon} size={size} /> : <>{children}</>;
 
   return (
-    <Tooltip text={ariaLabel}>
-      <button
-        type="button"
-        aria-label={ariaLabel}
-        className={`flex items-center rounded-full transition-colors ease-linear duration-200 justify-center transform
-            ${variantClasses[variant]}
-            ${scale ? 'hover:scale-105' : ''} 
-            ${glow ? 'hover:bg-cod-gray-300' : ''}
-            ${sizeClasses[size]}
-          `}
-        disabled={disabled}
-      >
+    <Tooltip text={ariaLabel} disabled={disabled}>
+      <button type="button" aria-label={ariaLabel} className={classes} disabled={disabled}>
         {content}
       </button>
     </Tooltip>

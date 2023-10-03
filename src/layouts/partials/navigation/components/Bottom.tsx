@@ -4,7 +4,7 @@ import NavButton from '@/layouts/partials/navigation/components/Button';
 import Button from '~~/Button';
 import Badge from '~~/Badge';
 import Tooltip from '~~/Tooltip';
-import { Dropdown, DropdownItem } from '~~/Dropdown';
+import Dropdown from '~~/Dropdown';
 import Icon from '~~/Icon';
 import ListItem from '@/layouts/partials/navigation/bottom/components/ListItem';
 
@@ -52,7 +52,7 @@ const NavigationBottom = () => {
               title="Sortuj wg"
               button={
                 <Button scale={false}>
-                  <div className="flex items-center pl-3 pr-2 ml-2 gap-x-2">
+                  <div className="flex items-center pl-3 pr-1 ml-2 gap-x-2">
                     <span className="text-sm text-white/[0.7]">Ostatnie</span>
                     <Icon name="caret-down" />
                   </div>
@@ -60,10 +60,10 @@ const NavigationBottom = () => {
               }
             >
               {sortingOptions.map((option) => (
-                <DropdownItem key={option} onClick={() => setSortingOption(option)}>
+                <Dropdown.Item key={option} onClick={() => setSortingOption(option)}>
                   <span>{option}</span>
                   {option === sortingOption && <Icon name="check" />}
-                </DropdownItem>
+                </Dropdown.Item>
               ))}
             </Dropdown>
           </div>
