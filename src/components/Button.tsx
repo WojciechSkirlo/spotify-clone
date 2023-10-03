@@ -44,7 +44,7 @@ const Button = ({
       <button
         type="button"
         aria-label={ariaLabel}
-        className={`flex items-center rounded-full transition-colors ease-linear duration-200 justify-center transform
+        className={`flex items-center rounded-full p-1 transition-colors ease-linear duration-200 justify-center transform
             ${variantClasses[variant]}
             ${scale ? 'hover:scale-105' : ''} 
             ${glow ? 'hover:bg-cod-gray-300' : ''}

@@ -1,12 +1,24 @@
-import { Link } from 'react-router-dom';
+import { useEffect } from 'react';
+import { Link, useParams } from 'react-router-dom';
+import useSWR from 'swr';
 import ListItem from '@/pages/playlist/components/ListItem';
+import { Album } from '@/types';
 import Heading from '~~/Heading';
 import Icon from '~~/Icon';
 import Button from '~~/Button';
 import { Dropdown, DropdownItem } from '~~/Dropdown';
-import type { Album } from '@/types';
 
-const Album = () => {
+const AlbumPage = () => {
+  const { albumId } = useParams();
+  const { data, error } = useSWR<Album>(`/albums/${albumId}`);
+
+  useEffect(() => {
+    console.log(data);
+  }, [data]);
+
+  if (error) return <>Error :/</>;
+  if (!data) return <>Loading...</>;
+
   return (
     <>
       <div
@@ -15,18 +27,14 @@ const Album = () => {
       >
         <div className="flex flex-1 p-6">
           <div className="w-[232px] h-[232px] bg-black/70 mr-6">
-            <img
-              src="https://i.scdn.co/image/ab67616d00001e02e85259a1cae29a8d91f2093d"
-              alt="cover"
-              className="w-full h-full shadow-cover"
-            />
+            <img src={data.images[1].url} alt="cover" className="w-full h-full shadow-cover" />
           </div>
           <div className="flex flex-col justify-end">
-            <span className="mb-3 text-sm">Album</span>
+            <span className="mb-3 text-sm first-letter:uppercase">{data.album_type}</span>
             <Heading size="3xl" className="mt-1 mb-5">
-              GUTS
+              {data.name}
             </Heading>
-            <div className="flex items-center gap-1 text-sm">
+            <div className="flex items-center text-sm">
               <div className="flex items-center gap-1">
                 <div className="w-6 h-6 overflow-hidden rounded-full">
                   <img
@@ -36,12 +44,14 @@ const Album = () => {
                   />
                 </div>
                 <Link to="/" className="font-bold hover:underline">
-                  Olivia Rodrigo
+                  {data.artists[0].name}
                 </Link>
               </div>
-              <span>• 2023</span>
-              <span>• 12 utwory,</span>
-              <span className="text-white/70">39 min 18 sek.</span>
+              <span className="mx-1">•</span>
+              <span>2023</span>
+              <span className="mx-1">•</span>
+              <span>{data.total_tracks} utworów,</span>
+              <span className="text-white/70">&nbsp;39 min 18 sek.</span>
             </div>
           </div>
         </div>
@@ -77,4 +87,4 @@ const Album = () => {
   );
 };
 
-export default Album;
+export default AlbumPage;

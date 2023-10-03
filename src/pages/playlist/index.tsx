@@ -5,7 +5,7 @@ import Button from '~~/Button';
 import { Dropdown, DropdownItem } from '~~/Dropdown';
 import ListItem from '@/pages/playlist/components/ListItem';
 
-const Playlist = () => {
+const PlaylistPage = () => {
   return (
     <>
       <div
@@ -88,4 +88,4 @@ const Playlist = () => {
   );
 };
 
-export default Playlist;
+export default PlaylistPage;
