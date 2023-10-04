@@ -68,9 +68,9 @@ const PlaylistPage = () => {
       </div>
 
       <div className="px-6 pb-10">
-        <List>
-          <List.Item />
-          <List.Item />
+        <List data={[0, 1, 2]}>
+          <List.Col>asd</List.Col>
+          <List.Col>asd</List.Col>
         </List>
       </div>
     </>
