@@ -1,13 +1,87 @@
-import { useEffect } from 'react';
+import { useEffect, Fragment } from 'react';
 import { useParams } from 'react-router-dom';
 import useSWR from 'swr';
+import { Album, Column, SimplifiedTrackObject } from '@/types';
 import { Link } from 'react-router-dom';
-import { Album } from '@/types';
 import Banner from '@/pages/album/components/Banner';
 import Icon from '~~/Icon';
 import Button from '~~/Button';
 import Dropdown from '~~/Dropdown';
 import List from '~~/List';
+
+const columns: Array<Column> = [
+  {
+    id: 1,
+    header: <List.Header className="justify-end text-base">#</List.Header>,
+    item: (item) => {
+      const track = item as SimplifiedTrackObject;
+
+      return (
+        <List.Item className="w-4 h-4">
+          <span className="absolute group-hover:hidden text-base -top-[3px] right-[3px] tabular-nums">
+            {track.track_number}
+          </span>
+          <button type="button" aria-label="play" className="hidden text-white group-hover:block">
+            <Icon name="play-smaller" />
+          </button>
+        </List.Item>
+      );
+    }
+  },
+  {
+    id: 2,
+    header: <List.Header>Tytuł</List.Header>,
+    item: (item) => {
+      const track = item as SimplifiedTrackObject;
+
+      return (
+        <List.Item>
+          <div className="flex flex-col">
+            <Link to={`/track/${track.id}`} className="text-base text-white hover:underline">
+              {track.name}
+            </Link>
+            <div className="flex items-center">
+              {track.explicit && (
+                <span
+                  title="Treści nieprzyzwoite"
+                  className="rounded-sm mr-2 inline-flex leading-[10px] text-[9px] py-[3px] px-[5px] bg-white/60 text-cod-gray-500"
+                >
+                  E
+                </span>
+              )}
+              {track.artists.map((artist, index) => (
+                <Fragment key={artist.id}>
+                  <Link to={`/artist/${artist.id}`} className="leading-5 hover:underline group-hover:text-white">
+                    {artist.name}
+                  </Link>
+                  {index < track.artists.length - 1 && <span>,&nbsp;</span>}
+                </Fragment>
+              ))}
+            </div>
+          </div>
+        </List.Item>
+      );
+    }
+  },
+  {
+    id: 3,
+    header: (
+      <List.Header className="justify-end mr-8">
+        <Icon name="clock" />
+      </List.Header>
+    ),
+    item: (item) => {
+      const track = item as SimplifiedTrackObject;
+
+      return (
+        <List.Item className="justify-end mr-8 tabular-nums">
+          <Button icon="heart" />
+          <span className="ml-8">{track.duration_ms}</span>
+        </List.Item>
+      );
+    }
+  }
+];
 
 const AlbumPage = () => {
   const { albumId } = useParams();
@@ -42,35 +116,8 @@ const AlbumPage = () => {
         </Dropdown>
       </div>
 
-      <div className="px-6 pb-10 max-w-[1955px]">
-        <List data={data.tracks.items}>
-          <List.Col header="#" center>
-            <span className="text-base lining-nums">1</span>
-          </List.Col>
-          <List.Col header="Tytuł">
-            <div>
-              <Link to="/" className="text-base leading-none text-white hover:underline">
-                a place to call home
-              </Link>
-              <div>
-                <span className="rounded-sm mr-2 inline-flex leading-[10px] text-[9px] py-[3px] px-[5px] bg-white/60 text-cod-gray-500">
-                  E
-                </span>
-                <Link to="/" className="hover:underline">
-                  NÜ
-                </Link>
-                <span>, </span>
-                <Link to="/" className="hover:underline">
-                  Nvr/Mnd
-                </Link>
-              </div>
-            </div>
-          </List.Col>
-          <List.Col header="Time" className="justify-end mr-8">
-            <Button icon="heart" />
-            <span className="ml-8">1:30</span>
-          </List.Col>
-        </List>
+      <div className="px-6 max-w-[1955px]">
+        <List columns={columns} data={data.tracks.items} />
       </div>
     </>
   );

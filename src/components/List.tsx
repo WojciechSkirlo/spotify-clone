@@ -1,14 +1,12 @@
-import { ReactNode } from 'react';
-import { Link } from 'react-router-dom';
-import Button from '~~/Button';
-import Icon from './Icon';
+import { Fragment, ReactNode } from 'react';
+import { Column } from '@/types';
 
 type ListProps = {
-  data: any[];
-  children?: ReactNode;
+  columns: Array<Column>;
+  data: Array<unknown>;
 };
 
-const List = ({ data, children }: ListProps) => {
+const List = ({ columns, data }: ListProps) => {
   return (
     <div>
       <div
@@ -17,45 +15,47 @@ const List = ({ data, children }: ListProps) => {
         }}
         className="grid items-center gap-4 px-4 mx-px mt-px mb-4 text-sm border-b h-9 text-nobel border-white/10"
       >
-        <div className="flex justify-end text-base">
-          <span>#</span>
-        </div>
-        <div>
-          <span>Tytuł</span>
-        </div>
-        <div className="flex justify-end mr-8">
-          <Icon name="clock" />
-        </div>
+        {columns.map((column) => (
+          <div key={column.id}>{column.header}</div>
+        ))}
       </div>
 
-      {data.map((_, index) => (
+      {data.map((item, index) => (
         <div
           key={index}
           style={{
             gridTemplateColumns: '16px 4fr minmax(120px, 1fr)'
           }}
-          className="grid items-center gap-4 px-4 text-sm border border-transparent rounded text-silver-chalice h-14 hover:bg-white/10"
+          className="grid items-center gap-4 px-4 text-sm border border-transparent rounded group text-nobel h-14 hover:bg-white/10"
         >
-          {children}
+          {columns.map((column) => (
+            <Fragment key={column.id}>{column.item(item, index)}</Fragment>
+          ))}
         </div>
       ))}
     </div>
   );
 };
 
-type ListColProps = {
-  header?: string;
-  center?: boolean;
+type ListHeaderProps = {
   className?: string;
   children?: ReactNode;
 };
 
-const ListCol = ({ header, center, className, children }: ListColProps) => {
-  return (
-    <div className={`flex items-center ${center ? 'justify-center text-center' : ''} ${className}`}>{children}</div>
-  );
+const ListHeader = ({ className = '', children }: ListHeaderProps) => {
+  return <div className={`flex ${className}`}>{children}</div>;
 };
 
-List.Col = ListCol;
+type ListItemProps = {
+  className?: string;
+  children: ReactNode;
+};
+
+const ListItem = ({ className = '', children }: ListItemProps) => {
+  return <div className={`flex items-center relative ${className}`}>{children}</div>;
+};
+
+List.Header = ListHeader;
+List.Item = ListItem;
 
 export default List;
