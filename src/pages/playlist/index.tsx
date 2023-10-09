@@ -1,8 +1,7 @@
-import { useEffect, Fragment } from 'react';
+import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import useSWR from 'swr';
-import { PlayList, Column, PlaylistTrackObject, TrackObject } from '@/types';
-import { Link } from 'react-router-dom';
+import { PlayList, Column, PlaylistTrackObject } from '@/types';
 import Banner from '@/pages/playlist/components/Banner';
 import Icon from '~~/Icon';
 import Button from '~~/Button';
@@ -68,7 +67,7 @@ const PlaylistPage = () => {
 
   return (
     <>
-      <Banner data={data} />
+      <Banner />
 
       <div className="flex items-center gap-8 p-6">
         <button

@@ -1,12 +1,7 @@
 import { Link } from 'react-router-dom';
-import { PlayList } from '@/types';
 import Heading from '~~/Heading';
 
-type BannerProps = {
-  data: PlayList;
-};
-
-const Banner = ({ data }: BannerProps) => {
+const Banner = () => {
   return (
     <>
       <div
