@@ -1,10 +1,12 @@
 import { createBrowserRouter } from 'react-router-dom';
 import ErrorPage from '@/error-page';
 import DefaultLayout from '@/layouts/default';
-import Home from '@/pages/home';
-import Search from '@/pages/search';
-import Playlist from '@/pages/playlist';
-import Album from '@/pages/album';
+import HomePage from '@/pages/home';
+import SearchPage from '@/pages/search';
+import PlaylistPage from '@/pages/playlist';
+import AlbumPage from '@/pages/album';
+import TrackPage from '@/pages/track';
+import ArtistPage from '@/pages/artist';
 
 const router = createBrowserRouter([
   {
@@ -14,19 +16,27 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <Home />
+        element: <HomePage />
       },
       {
         path: 'search',
-        element: <Search />
+        element: <SearchPage />
       },
       {
         path: 'playlist/:playlistId',
-        element: <Playlist />
+        element: <PlaylistPage />
       },
       {
         path: 'album/:albumId',
-        element: <Album />
+        element: <AlbumPage />
+      },
+      {
+        path: 'track/:trackId',
+        element: <TrackPage />
+      },
+      {
+        path: 'artist/:artistId',
+        element: <ArtistPage />
       }
     ]
   }

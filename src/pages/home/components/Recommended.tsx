@@ -14,7 +14,7 @@ const DUMMY_DATA: Recomendation[] = [
     id: 2,
     img: 'https://mosaic.scdn.co/300/ab67616d00001e0251601671f5c9bfde9f3465beab67616d00001e0290f0c9b6a8673fafd11c781aab67616d00001e0293768ed78764eaffc45b076dab67616d00001e02aefd88c6793b26679a570036',
     name: 'neww 2022 November',
-    link: '/playlist/2'
+    link: '/playlist/2UEFzPU7FoVhkzrIPeWv7x'
   },
   {
     id: 3,

@@ -1,64 +1,61 @@
-import { ReactNode } from 'react';
-import { Link } from 'react-router-dom';
-import Button from '~~/Button';
+import { Fragment, ReactNode } from 'react';
+import { Column } from '@/types';
 
-type TracksProps = {
-  children?: ReactNode;
+type ListProps = {
+  columns: Array<Column>;
+  data: Array<unknown>;
 };
 
-const List = ({ children }: TracksProps) => {
-  return <div>{children}</div>;
-};
-
-const ListItem = () => {
+const List = ({ columns, data }: ListProps) => {
   return (
-    <div
-      style={{
-        gridTemplateColumns: '16px 6fr 4fr 3fr minmax(120px, 1fr)'
-      }}
-      className="grid items-center gap-4 px-4 text-sm border border-transparent rounded text-silver-chalice h-14 hover:bg-white/30"
-    >
-      <div className="text-center">
-        <span className="text-base lining-nums">1</span>
+    <div>
+      <div
+        style={{
+          gridTemplateColumns: '16px 4fr minmax(120px, 1fr)'
+        }}
+        className="grid items-center gap-4 px-4 mx-px mt-px mb-4 text-sm border-b h-9 text-nobel border-white/10"
+      >
+        {columns.map((column) => (
+          <div key={column.id}>{column.header}</div>
+        ))}
       </div>
-      <div className="flex items-center">
-        <div className="w-10 h-10 mr-4 bg-mine-shaft-500">
-          <img src="https://i.scdn.co/image/ab67616d0000485190f0c9b6a8673fafd11c781a" alt="cover" />
+
+      {data.map((item, index) => (
+        <div
+          key={index}
+          style={{
+            gridTemplateColumns: '16px 4fr minmax(120px, 1fr)'
+          }}
+          className="grid items-center gap-4 px-4 text-sm border border-transparent rounded group text-nobel h-14 hover:bg-white/10"
+        >
+          {columns.map((column) => (
+            <Fragment key={column.id}>{column.item(item, index)}</Fragment>
+          ))}
         </div>
-        <div>
-          <Link to="/" className="text-base leading-none text-white hover:underline">
-            a place to call home
-          </Link>
-          <div>
-            <span className="rounded-sm mr-2 inline-flex leading-[10px] text-[9px] py-[3px] px-[5px] bg-white/60 text-cod-gray-500">
-              E
-            </span>
-            <Link to="/" className="hover:underline">
-              NÜ
-            </Link>
-            <span>, </span>
-            <Link to="/" className="hover:underline">
-              Nvr/Mnd
-            </Link>
-          </div>
-        </div>
-      </div>
-      <div>
-        <Link to="/" className="hover:underline">
-          a place to call home
-        </Link>
-      </div>
-      <div>
-        <span>12 lis 2022</span>
-      </div>
-      <div className="flex items-center">
-        <Button icon="heart" />
-        <span className="ml-8">1:30</span>
-      </div>
+      ))}
     </div>
   );
 };
 
+type ListHeaderProps = {
+  className?: string;
+  children?: ReactNode;
+};
+
+const ListHeader = ({ className = '', children }: ListHeaderProps) => {
+  return <div className={`flex ${className}`}>{children}</div>;
+};
+
+type ListItemProps = {
+  className?: string;
+  children: ReactNode;
+};
+
+const ListItem = ({ className = '', children }: ListItemProps) => {
+  return <div className={`flex items-center relative ${className}`}>{children}</div>;
+};
+
+List.Header = ListHeader;
 List.Item = ListItem;
 
 export default List;
