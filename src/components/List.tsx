@@ -7,11 +7,13 @@ type ListProps = {
 };
 
 const List = ({ columns, data }: ListProps) => {
+  const gridTemplateColumns = columns.map((column) => column.width ?? '1fr').join(' ');
+
   return (
     <div>
       <div
         style={{
-          gridTemplateColumns: '16px 4fr minmax(120px, 1fr)'
+          gridTemplateColumns
         }}
         className="grid items-center gap-4 px-4 mx-px mt-px mb-4 text-sm border-b h-9 text-nobel border-white/10"
       >
@@ -24,7 +26,7 @@ const List = ({ columns, data }: ListProps) => {
         <div
           key={index}
           style={{
-            gridTemplateColumns: '16px 4fr minmax(120px, 1fr)'
+            gridTemplateColumns
           }}
           className="grid items-center gap-4 px-4 text-sm border border-transparent rounded group text-nobel h-14 hover:bg-white/10"
         >

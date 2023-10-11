@@ -7,6 +7,7 @@ import PlaylistPage from '@/pages/playlist';
 import AlbumPage from '@/pages/album';
 import TrackPage from '@/pages/track';
 import ArtistPage from '@/pages/artist';
+import UserPage from '@/pages/user';
 
 const router = createBrowserRouter([
   {
@@ -37,6 +38,10 @@ const router = createBrowserRouter([
       {
         path: 'artist/:artistId',
         element: <ArtistPage />
+      },
+      {
+        path: 'user/:userId',
+        element: <UserPage />
       }
     ]
   }

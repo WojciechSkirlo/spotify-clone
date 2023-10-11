@@ -3,14 +3,14 @@ export default {
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
   theme: {
     fontSize: {
-      xs: ['0.6875rem', '1.125rem'], // 11px
-      sm: ['0.875rem', '1.375rem'], // 14px
-      base: ['1rem', '1.375rem'], // 16px
-      lg: ['1.125rem', '1.125rem'], // 18px
-      xl: ['1.5rem', '1.5rem'], // 24px,
-      '2xl': ['2rem', '2rem'], // 32px
-      '3xl': ['4.5rem', '4.5rem'], // 72px
-      '4xl': ['6rem', '6rem'] // 96px
+      xs: ['0.6875rem', '1.125rem'], // 11px, 18px
+      sm: ['0.875rem', '1.25rem'], // 14px, 20px
+      base: ['1rem', '1.375rem'], // 16px, 22px
+      lg: ['1.125rem', '1.125rem'], // 18px, 18px
+      xl: ['1.5rem', '1.5rem'], // 24px, 24px
+      '2xl': ['2rem', '2rem'], // 32px, 32px
+      '3xl': ['4.5rem', '4.5rem'], // 72px, 72px
+      '4xl': ['6rem', '6rem'] // 96px, 96px
     },
     boxShadow: {
       md: '0 8px 8px rgba(0, 0, 0, .3)',

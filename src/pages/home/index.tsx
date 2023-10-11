@@ -44,7 +44,7 @@ const DUMMY_DATA = [
 
 const IndexPage = () => {
   return (
-    <div className="px-6 mt-2">
+    <div className="px-6 mt-2 max-w-[1955px]">
       <Recommended />
 
       {[1, 2, 3, 4].map((item) => (

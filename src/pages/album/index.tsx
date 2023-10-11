@@ -3,11 +3,11 @@ import { useParams } from 'react-router-dom';
 import useSWR from 'swr';
 import { Album, Column, SimplifiedTrackObject } from '@/types';
 import { Link } from 'react-router-dom';
-import Banner from '@/pages/album/components/Banner';
 import Icon from '~~/Icon';
 import Button from '~~/Button';
 import Dropdown from '~~/Dropdown';
 import List from '~~/List';
+import Banner from '~~/Banner';
 
 const columns: Array<Column> = [
   {
@@ -26,7 +26,8 @@ const columns: Array<Column> = [
           </button>
         </List.Item>
       );
-    }
+    },
+    width: '16px'
   },
   {
     id: 2,
@@ -61,7 +62,8 @@ const columns: Array<Column> = [
           </div>
         </List.Item>
       );
-    }
+    },
+    width: '4fr'
   },
   {
     id: 3,
@@ -79,7 +81,8 @@ const columns: Array<Column> = [
           <span className="ml-8">{track.duration_ms}</span>
         </List.Item>
       );
-    }
+    },
+    width: 'minmax(12px, 1fr)'
   }
 ];
 
@@ -96,7 +99,19 @@ const AlbumPage = () => {
 
   return (
     <>
-      <Banner data={data} />
+      <Banner
+        title={data.name}
+        type={data.album_type}
+        cover={data.images[1].url}
+        user={{
+          img: 'https://i.scdn.co/image/ab6761610000f178e03a98785f3658f0b6461ec4',
+          link: `/artist/${data.artists[0].id}`,
+          name: data.artists[0].name
+        }}
+        date="2023"
+        numberOfTracks={12}
+        duration="39 min 18 sek."
+      />
 
       <div className="flex items-center gap-8 p-6">
         <button
