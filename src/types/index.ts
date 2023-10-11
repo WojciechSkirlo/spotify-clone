@@ -6,6 +6,7 @@ export interface Column {
   id: number;
   header: ReactNode;
   item: (item: unknown, index: number) => ReactNode;
+  width?: string;
 }
 
 export interface ImageObject {
@@ -40,7 +41,7 @@ export interface TrackObject {
     uri: string;
     artists: Array<SimplifiedArtistObject>;
   };
-  artist: Array<ArtistObject>;
+  artists: Array<ArtistObject>;
   available_markets: Array<string>;
   disc_number: number;
   duration_ms: number;
