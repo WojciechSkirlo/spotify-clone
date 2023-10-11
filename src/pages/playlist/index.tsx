@@ -63,7 +63,7 @@ const columns: Array<Column> = [
                       </Link>
 
                       {/* TODO: FIX */}
-                      {index < track.track.artists.length - 1 && <span>,&nbsp;</span>}
+                      {index < (track.track as any).artists.length - 1 && <span>,&nbsp;</span>}
                     </Fragment>
                   ))}
                 </>
