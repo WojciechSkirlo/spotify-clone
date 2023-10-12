@@ -14,6 +14,7 @@ type ButtonProps = {
   disabled?: boolean;
   ariaLabel?: string;
   children?: ReactNode;
+  onClick?: () => void;
 };
 
 const Button = ({
@@ -24,7 +25,8 @@ const Button = ({
   glow,
   disabled,
   ariaLabel,
-  children
+  children,
+  onClick
 }: ButtonProps) => {
   const variantClasses = {
     primary: 'text-silver-chalice hover:text-white',
@@ -33,11 +35,11 @@ const Button = ({
   };
 
   const sizeClasses = {
-    md: icon ? 'w-8 h-8' : 'h-8',
-    xl: icon ? 'w-8 h-14' : 'h-14'
+    md: 'w-8 h-8',
+    xl: 'w-8 h-14'
   };
 
-  const classes = `flex items-center rounded-full p-1 transition-colors ease-linear duration-200 justify-center transform ${
+  const classes = `flex items-center rounded-full transition-colors ease-linear duration-200 justify-center transform ${
     variantClasses[variant]
   } ${scale ? 'hover:scale-105' : ''} ${glow ? 'hover:bg-cod-gray-300' : ''} ${sizeClasses[size]} ${
     disabled ? 'opacity-60 cursor-not-allowed' : ''
@@ -47,7 +49,7 @@ const Button = ({
 
   return (
     <Tooltip text={ariaLabel} disabled={disabled}>
-      <button type="button" aria-label={ariaLabel} className={classes} disabled={disabled}>
+      <button type="button" aria-label={ariaLabel} className={classes} disabled={disabled} onClick={onClick}>
         {content}
       </button>
     </Tooltip>

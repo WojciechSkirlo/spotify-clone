@@ -51,12 +51,12 @@ const NavigationBottom = () => {
             <Dropdown
               title="Sortuj wg"
               button={
-                <Button scale={false}>
-                  <div className="flex items-center pl-3 pr-1 ml-2 gap-x-2">
-                    <span className="text-sm text-white/[0.7]">Ostatnie</span>
+                <button>
+                  <div className="flex items-center pl-3 pr-1 ml-2 gap-x-2 text-white/[0.7]">
+                    <span className="text-sm">Ostatnie</span>
                     <Icon name="caret-down" />
                   </div>
-                </Button>
+                </button>
               }
             >
               {sortingOptions.map((option) => (
