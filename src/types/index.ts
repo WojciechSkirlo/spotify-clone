@@ -9,18 +9,18 @@ export interface Column {
   width?: string;
 }
 
-export interface ImageObject {
+export interface Image {
   url: string;
   height: number | null;
   width: number | null;
 }
 
-export interface CopyrightObject {
+export interface Copyright {
   text: string;
   type: string;
 }
 
-export interface TrackObject {
+export interface Track {
   album: {
     album_type: string;
     total_tracks: number;
@@ -30,7 +30,7 @@ export interface TrackObject {
     };
     href: string;
     id: string;
-    images: Array<ImageObject>;
+    images: Array<Image>;
     name: string;
     release_date: string;
     release_date_precision: string;
@@ -39,9 +39,9 @@ export interface TrackObject {
     };
     type: string;
     uri: string;
-    artists: Array<SimplifiedArtistObject>;
+    artists: Array<SimplifiedArtist>;
   };
-  artists: Array<ArtistObject>;
+  artists: Array<Artist>;
   available_markets: Array<string>;
   disc_number: number;
   duration_ms: number;
@@ -70,7 +70,7 @@ export interface TrackObject {
   is_local: boolean;
 }
 
-export interface EpisodeObject {
+export interface Episode {
   audio_preview_url: string;
   description: string;
   html_description: string;
@@ -81,10 +81,10 @@ export interface EpisodeObject {
   };
   href: string;
   id: string;
-  images: Array<ImageObject>;
+  images: Array<Image>;
   is_externally_hosted: boolean;
   is_playable: boolean;
-  language: string; // Deprecated;
+  language?: string; // Deprecated;
   languages: Array<string>;
   name: string;
   release_date: string;
@@ -98,7 +98,7 @@ export interface EpisodeObject {
   };
   show: {
     available_markets: Array<string>;
-    copyrights: Array<CopyrightObject>;
+    copyrights: Array<Copyright>;
     description: string;
     html_description: string;
     explicit: boolean;
@@ -107,7 +107,7 @@ export interface EpisodeObject {
     };
     href: string;
     id: string;
-    images: Array<ImageObject>;
+    images: Array<Image>;
     is_externally_hosted: boolean;
     languages: Array<string>;
     media_type: string;
@@ -119,7 +119,7 @@ export interface EpisodeObject {
   };
 }
 
-export interface ArtistObject {
+export interface Artist {
   external_urls: {
     spotify: string;
   };
@@ -130,14 +130,14 @@ export interface ArtistObject {
   genres: Array<string>;
   href: string;
   id: string;
-  images: Array<ImageObject>;
+  images: Array<Image>;
   name: string;
   popularity: number;
   type: string;
   uri: string;
 }
 
-export interface SimplifiedArtistObject {
+export interface SimplifiedArtist {
   external_urls: {
     spotify: string;
   };
@@ -148,8 +148,8 @@ export interface SimplifiedArtistObject {
   uri: string;
 }
 
-export interface SimplifiedTrackObject {
-  artists: Array<SimplifiedArtistObject>;
+export interface SimplifiedTrack {
+  artists: Array<SimplifiedArtist>;
   available_markets: Array<string>;
   disc_number: number;
   duration_ms: number;
@@ -180,7 +180,7 @@ export interface SimplifiedTrackObject {
   is_local: boolean;
 }
 
-export interface PlaylistTrackObject {
+export interface PlaylistTrack {
   added_at: string;
   added_by: {
     external_urls: {
@@ -196,7 +196,7 @@ export interface PlaylistTrackObject {
     uri: string;
   };
   is_local: boolean;
-  track: TrackObject | EpisodeObject;
+  track: Track | Episode;
 }
 
 export interface Album {
@@ -208,7 +208,7 @@ export interface Album {
   };
   href: string;
   id: string;
-  images: Array<ImageObject>;
+  images: Array<Image>;
   name: string;
   release_date: string;
   release_date_precision: string;
@@ -217,7 +217,7 @@ export interface Album {
   };
   type: string;
   uri: string;
-  artists: Array<SimplifiedArtistObject>;
+  artists: Array<SimplifiedArtist>;
   tracks: {
     href: string;
     limit: number;
@@ -225,7 +225,7 @@ export interface Album {
     offset: number;
     previous: string;
     total: number;
-    items: Array<SimplifiedTrackObject>;
+    items: Array<SimplifiedTrack>;
   };
   external_ids: {
     isrc: string;
@@ -249,7 +249,7 @@ export interface PlayList {
   };
   href: string;
   id: string;
-  images: Array<ImageObject>;
+  images: Array<Image>;
   name: string;
   owner: {
     external_urls: {
@@ -274,7 +274,7 @@ export interface PlayList {
     offset: number;
     previous: string | null;
     total: number;
-    items: Array<PlaylistTrackObject>;
+    items: Array<PlaylistTrack>;
   };
   type: string;
   uri: string;

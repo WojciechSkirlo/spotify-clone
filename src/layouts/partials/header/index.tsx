@@ -1,8 +1,11 @@
+import { useNavigate } from 'react-router-dom';
 import Button from '~~/Button';
 import Dropdown from '~~/Dropdown';
 import Icon from '~~/Icon';
 
 const Header = () => {
+  const navigate = useNavigate();
+
   return (
     <div className="sticky top-0 left-0 right-0 z-30">
       {/* <div style={{ opacity: 0, background: 'rgb(72, 32, 176)' }} className="absolute top-0 left-0 right-0 h-16"></div> */}
@@ -11,8 +14,22 @@ const Header = () => {
         className="relative flex items-center justify-between w-full h-16 px-6"
       >
         <div className="flex gap-2">
-          <Button icon="chevron-left" variant="tertiary" scale={false} ariaLabel="Wstecz" />
-          <Button icon="chevron-right" variant="tertiary" scale={false} disabled ariaLabel="Dalej" />
+          <Button
+            icon="chevron-left"
+            variant="tertiary"
+            scale={false}
+            disabled={false}
+            ariaLabel="Wstecz"
+            onClick={() => navigate(-1)}
+          />
+          <Button
+            icon="chevron-right"
+            variant="tertiary"
+            scale={false}
+            disabled={false}
+            ariaLabel="Dalej"
+            onClick={() => navigate(1)}
+          />
         </div>
         <div className="flex gap-2">
           <Button icon="bell" variant="secondary" ariaLabel="Nowości" />

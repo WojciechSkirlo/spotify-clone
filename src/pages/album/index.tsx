@@ -1,7 +1,7 @@
 import { useEffect, Fragment } from 'react';
 import { useParams } from 'react-router-dom';
 import useSWR from 'swr';
-import { Album, Column, SimplifiedTrackObject } from '@/types';
+import { Album, Column, SimplifiedTrack } from '@/types';
 import { Link } from 'react-router-dom';
 import Icon from '~~/Icon';
 import Button from '~~/Button';
@@ -14,7 +14,7 @@ const columns: Array<Column> = [
     id: 1,
     header: <List.Header className="justify-end text-base">#</List.Header>,
     item: (item) => {
-      const track = item as SimplifiedTrackObject;
+      const track = item as SimplifiedTrack;
 
       return (
         <List.Item className="w-4 h-4">
@@ -33,7 +33,7 @@ const columns: Array<Column> = [
     id: 2,
     header: <List.Header>Tytuł</List.Header>,
     item: (item) => {
-      const track = item as SimplifiedTrackObject;
+      const track = item as SimplifiedTrack;
 
       return (
         <List.Item>
@@ -73,7 +73,7 @@ const columns: Array<Column> = [
       </List.Header>
     ),
     item: (item) => {
-      const track = item as SimplifiedTrackObject;
+      const track = item as SimplifiedTrack;
 
       return (
         <List.Item className="justify-end mr-8 tabular-nums">
@@ -108,9 +108,11 @@ const AlbumPage = () => {
           link: `/artist/${data.artists[0].id}`,
           name: data.artists[0].name
         }}
-        date="2023"
-        numberOfTracks={12}
-        duration="39 min 18 sek."
+        info={{
+          date: '2020',
+          numberOfTracks: 12,
+          duration: '39 min 18 sek.'
+        }}
       />
 
       <div className="flex items-center gap-8 p-6">

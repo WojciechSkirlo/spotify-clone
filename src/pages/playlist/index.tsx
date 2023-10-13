@@ -1,14 +1,14 @@
 import { useEffect, Fragment } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import useSWR from 'swr';
-import { PlayList, Column, PlaylistTrackObject, TrackObject, EpisodeObject } from '@/types';
+import { PlayList, Column, PlaylistTrack, Track, Episode } from '@/types';
 import Icon from '~~/Icon';
 import Button from '~~/Button';
 import Dropdown from '~~/Dropdown';
 import List from '~~/List';
 import Banner from '~~/Banner';
 
-function isTrackObject(obj: TrackObject | EpisodeObject): obj is TrackObject {
+function isTrackObject(obj: Track | Episode): obj is Track {
   return 'artists' in obj;
 }
 
@@ -32,7 +32,7 @@ const columns: Array<Column> = [
     id: 2,
     header: <List.Header>Tytuł</List.Header>,
     item: (item) => {
-      const track = item as PlaylistTrackObject;
+      const track = item as PlaylistTrack;
 
       return (
         <List.Item>
@@ -79,16 +79,15 @@ const columns: Array<Column> = [
     id: 3,
     header: <List.Header>Album</List.Header>,
     item: (item) => {
-      const track = item as PlaylistTrackObject;
+      const track = item as PlaylistTrack;
 
       return (
         <List.Item>
-          <Link
-            to={`/album/${(track.track as TrackObject).album.id}`}
-            className="hover:underline group-hover:text-white"
-          >
-            {(track.track as TrackObject)?.album.name}
-          </Link>
+          {isTrackObject(track.track) && (
+            <Link to={`/album/${track.track.album.id}`} className="hover:underline group-hover:text-white">
+              {track.track.album.name}
+            </Link>
+          )}
         </List.Item>
       );
     },
@@ -98,7 +97,7 @@ const columns: Array<Column> = [
     id: 4,
     header: <List.Header>Data dodania</List.Header>,
     item: (item) => {
-      const track = item as PlaylistTrackObject;
+      const track = item as PlaylistTrack;
 
       return (
         <List.Item>
@@ -116,7 +115,7 @@ const columns: Array<Column> = [
       </List.Header>
     ),
     item: (item) => {
-      const track = item as PlaylistTrackObject;
+      const track = item as PlaylistTrack;
 
       return (
         <List.Item className="justify-end mr-8 tabular-nums">
@@ -151,8 +150,10 @@ const PlaylistPage = () => {
           link: `/user/${data.owner.id}`,
           name: data.owner.display_name ?? ''
         }}
-        numberOfTracks={12}
-        duration="1 godz. 9 min"
+        info={{
+          numberOfTracks: 12,
+          duration: '39 min 18 sek.'
+        }}
       />
 
       <div className="flex items-center gap-8 p-6">

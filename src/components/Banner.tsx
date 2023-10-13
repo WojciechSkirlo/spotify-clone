@@ -10,12 +10,19 @@ type BannerProps = {
     link: string;
     name: string;
   };
-  date?: string;
-  numberOfTracks?: number;
-  duration?: string;
+  info?: {
+    album?: {
+      name: string;
+      id: string;
+    };
+    date?: string;
+    numberOfTracks?: number;
+    duration?: string;
+    playcount?: number;
+  };
 };
 
-const Banner = ({ title, type, cover, date, user, numberOfTracks, duration }: BannerProps) => {
+const Banner = ({ title, type, cover, user, info }: BannerProps) => {
   return (
     <>
       <div
@@ -40,19 +47,33 @@ const Banner = ({ title, type, cover, date, user, numberOfTracks, duration }: Ba
                   {user.name}
                 </Link>
               </div>
-              {date && (
+              {info?.album && (
                 <>
                   <span className="mx-1">•</span>
-                  <span>{date}</span>
+                  <Link to={`/album/${info.album.id}`} className="hover:underline">
+                    {info.album.name}
+                  </Link>
                 </>
               )}
-              {numberOfTracks && (
+              {info?.date && (
                 <>
                   <span className="mx-1">•</span>
-                  <span>{numberOfTracks} utworów,</span>
+                  <span>{info.date}</span>
                 </>
               )}
-              {duration && <span className="text-white/70">&nbsp;{duration}</span>}
+              {info?.numberOfTracks && (
+                <>
+                  <span className="mx-1">•</span>
+                  <span>{info.numberOfTracks} utworów</span>
+                </>
+              )}
+              {info?.playcount && (
+                <>
+                  <span className="mx-1">•</span>
+                  <span>{info.playcount}</span>
+                </>
+              )}
+              {info?.duration && <span className="text-white/70">&nbsp;{info?.duration}</span>}
             </div>
           </div>
         </div>
