@@ -1,7 +1,6 @@
 import { useEffect, Fragment } from 'react';
 import { useParams } from 'react-router-dom';
 import useSWR from 'swr';
-import { Album, Column, SimplifiedTrack } from '@/types';
 import { Link } from 'react-router-dom';
 import Icon from '~~/Icon';
 import Button from '~~/Button';

@@ -22,7 +22,8 @@
     "paths": {
       "@/*": ["./src/*", "./dist/", ""],
       "~~/*": ["./src/components/*"]
-    }
+    },
+    "types": ["vite/client", "./src/types/index.d.ts"]
   },
   "include": ["src"],
   "references": [{ "path": "./tsconfig.node.json" }]

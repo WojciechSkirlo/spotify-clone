@@ -1,7 +1,6 @@
 import { useEffect, Fragment } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import useSWR from 'swr';
-import { PlayList, Column, PlaylistTrack, Track, Episode } from '@/types';
 import Icon from '~~/Icon';
 import Button from '~~/Button';
 import Dropdown from '~~/Dropdown';

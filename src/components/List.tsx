@@ -1,5 +1,4 @@
 import { Fragment, ReactNode } from 'react';
-import { Column } from '@/types';
 
 type ListProps = {
   columns: Array<Column>;
