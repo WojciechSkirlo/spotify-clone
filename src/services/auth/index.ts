@@ -1,13 +1,5 @@
 import { api } from '@/api';
 
-interface TokenResponse {
-  access_token: string;
-  expires_in: number;
-  refresh_token?: string;
-  scope?: string;
-  token_type: string;
-}
-
 export default class AuthService {
   static async getToken(params: URLSearchParams) {
     const headers = { 'Content-Type': 'application/x-www-form-urlencoded' };
@@ -16,7 +8,7 @@ export default class AuthService {
   }
 
   static async getProfile() {
-    return (await api.get<any>('https://api.spotify.com/v1/me')).data;
+    return (await api.get<UserProfile>('https://api.spotify.com/v1/me')).data;
   }
 }
 

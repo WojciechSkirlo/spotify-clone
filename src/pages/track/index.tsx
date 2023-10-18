@@ -1,7 +1,6 @@
 import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import useSWR from 'swr';
-import { Track } from '@/types';
 import Icon from '~~/Icon';
 import Button from '~~/Button';
 import Dropdown from '~~/Dropdown';

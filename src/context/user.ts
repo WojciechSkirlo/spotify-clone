@@ -1,16 +1,18 @@
 import { create } from 'zustand';
 
 type State = {
-  isCollapsed: boolean;
+  user: UserProfile | null;
 };
 
 type Action = {
-  setUser: () => void;
+  setUser: (user: UserProfile) => void;
 };
 
 const useUserStore = create<State & Action>(() => ({
-  isCollapsed: false,
-  setUser: () => ({})
+  user: null,
+  setUser: () => {
+    console.log('set USer :))');
+  }
 }));
 
 export { useUserStore };

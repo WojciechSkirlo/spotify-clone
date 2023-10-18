@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback, ReactNode } from 'react';
+import { useState, useEffect, ReactNode } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import Cookies from 'js-cookie';
 import AuthService, { generateCodeChallenge, generateCodeVerifier } from '@/services/auth';
@@ -15,7 +15,7 @@ type AuthProps = {
 const Auth = ({ children }: AuthProps) => {
   const [isLoading, setIsLoading] = useState(true);
   const [searchParams] = useSearchParams();
-  const isCollapsed = useUserStore((state) => state.isCollapsed);
+  const setUser = useUserStore((state) => state.setUser);
   const code = searchParams.get('code');
   const refreshToken = Cookies.get('refresh_token') || '';
 
@@ -73,7 +73,7 @@ const Auth = ({ children }: AuthProps) => {
       refresh_token && setRefreshToken(refresh_token);
 
       const user = await AuthService.getProfile();
-      console.log(user);
+      setUser(user);
     }
     setIsLoading(false);
   };
