@@ -3,6 +3,7 @@ import { useSearchParams } from 'react-router-dom';
 import Cookies from 'js-cookie';
 import AuthService, { generateCodeChallenge, generateCodeVerifier } from '@/services/auth';
 import { api } from '@/api';
+import { useUserStore } from '@/context/user';
 
 const CLIENT_ID = import.meta.env.VITE_CLIENT_ID;
 const REDIRECT_URI = import.meta.env.VITE_REDIRECT_URI;
@@ -14,7 +15,9 @@ type AuthProps = {
 const Auth = ({ children }: AuthProps) => {
   const [isLoading, setIsLoading] = useState(true);
   const [searchParams] = useSearchParams();
+  const isCollapsed = useUserStore((state) => state.isCollapsed);
   const code = searchParams.get('code');
+  const refreshToken = Cookies.get('refresh_token') || '';
 
   const redirectToAuth = async () => {
     const verifier = generateCodeVerifier(128);
@@ -33,61 +36,52 @@ const Auth = ({ children }: AuthProps) => {
     document.location = `https://accounts.spotify.com/authorize?${params.toString()}`;
   };
 
-  const getToken = useCallback(async () => {
-    const verifier = Cookies.get('verifier') ?? '';
+  const getToken = async (refreshToken: string) => {
     const params = new URLSearchParams();
 
-    params.append('client_id', CLIENT_ID ?? '');
-    params.append('grant_type', 'authorization_code');
-    params.append('code', code ?? '');
-    params.append('redirect_uri', REDIRECT_URI ?? '');
-    params.append('code_verifier', verifier);
+    if (refreshToken) {
+      params.append('client_id', CLIENT_ID ?? '');
+      params.append('grant_type', 'refresh_token');
+      params.append('refresh_token', refreshToken);
+      params.append('redirect_uri', REDIRECT_URI ?? '');
+    } else {
+      const verifier = Cookies.get('verifier') ?? '';
 
-    const { access_token, refresh_token } = await AuthService.getToken(params);
+      params.append('client_id', CLIENT_ID ?? '');
+      params.append('grant_type', 'authorization_code');
+      params.append('code', code ?? '');
+      params.append('redirect_uri', REDIRECT_URI ?? '');
+      params.append('code_verifier', verifier);
+    }
 
-    return { access_token, refresh_token };
-  }, [code]);
+    return await AuthService.getToken(params);
+  };
 
-  const refreshToken = useCallback(async () => {
-    const token = Cookies.get('token') ?? '';
-    const params = new URLSearchParams();
-
-    params.append('client_id', CLIENT_ID ?? '');
-    params.append('grant_type', 'refresh_token');
-    params.append('refresh_token', token);
-
-    const { access_token, refresh_token } = await AuthService.getToken(params);
-
-    return { access_token, refresh_token };
-  }, []);
-
-  const setToken = useCallback((token: string) => {
+  const setToken = (token: string) => {
     api.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-  }, []);
+  };
 
-  const setRefreshToken = useCallback((token: string) => {
-    Cookies.set('token', token);
-  }, []);
+  const setRefreshToken = (token: string) => {
+    Cookies.set('refresh_token', token);
+  };
+
+  const check = async () => {
+    if (!code && !refreshToken) redirectToAuth();
+    else {
+      const { access_token, refresh_token } = await getToken(refreshToken);
+      access_token && setToken(access_token);
+      refresh_token && setRefreshToken(refresh_token);
+
+      const user = await AuthService.getProfile();
+      console.log(user);
+    }
+    setIsLoading(false);
+  };
 
   useEffect(() => {
-    const token = Cookies.get('token') ?? '';
-
-    const check = async () => {
-      if (!code && !token) redirectToAuth();
-      else {
-        const { access_token, refresh_token } = token ? await refreshToken() : await getToken();
-        access_token && setToken(access_token);
-        refresh_token && setRefreshToken(refresh_token);
-
-        const user = await AuthService.getProfile();
-
-        console.log('user', user);
-      }
-      setIsLoading(false);
-    };
-
     check();
-  }, [code, getToken, setToken, setRefreshToken, refreshToken]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   if (isLoading) return <>Loading...</>;
 

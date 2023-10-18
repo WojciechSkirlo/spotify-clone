@@ -16,7 +16,7 @@ export default class AuthService {
   }
 
   static async getProfile() {
-    return (await api.get('https://api.spotify.com/v1/me')).data;
+    return (await api.get<any>('https://api.spotify.com/v1/me')).data;
   }
 }
 
