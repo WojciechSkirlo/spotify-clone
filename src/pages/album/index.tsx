@@ -2,6 +2,7 @@ import { useEffect, Fragment } from 'react';
 import { useParams } from 'react-router-dom';
 import useSWR from 'swr';
 import { Link } from 'react-router-dom';
+import { msToTime } from '@/utils';
 import Icon from '~~/Icon';
 import Button from '~~/Button';
 import Dropdown from '~~/Dropdown';
@@ -77,7 +78,7 @@ const columns: Array<Column> = [
       return (
         <List.Item className="justify-end mr-8 tabular-nums">
           <Button icon="heart" />
-          <span className="ml-8">{track.duration_ms}</span>
+          <span className="ml-8">{msToTime(track.duration_ms)}</span>
         </List.Item>
       );
     },
@@ -132,7 +133,7 @@ const AlbumPage = () => {
         </Dropdown>
       </div>
 
-      <div className="px-6 max-w-[1955px]">
+      <div className="px-6 max-w-[1955px] pb-6">
         <List columns={columns} data={data.tracks.items} />
       </div>
     </>
