@@ -8,6 +8,8 @@ import AlbumPage from '@/pages/album';
 import TrackPage from '@/pages/track';
 import ArtistPage from '@/pages/artist';
 import UserPage from '@/pages/user';
+import EpisodePage from '@/pages/eposide';
+import ShowPage from '@/pages/show';
 
 const router = createBrowserRouter([
   {
@@ -42,6 +44,14 @@ const router = createBrowserRouter([
       {
         path: 'user/:userId',
         element: <UserPage />
+      },
+      {
+        path: 'episode/:episodeId',
+        element: <EpisodePage />
+      },
+      {
+        path: 'show/:showId',
+        element: <ShowPage />
       }
     ]
   }

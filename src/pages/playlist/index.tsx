@@ -1,15 +1,12 @@
 import { useEffect, Fragment } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import useSWR from 'swr';
+import { isTrackObject } from '@/utils';
 import Icon from '~~/Icon';
 import Button from '~~/Button';
 import Dropdown from '~~/Dropdown';
 import List from '~~/List';
 import Banner from '~~/Banner';
-
-function isTrackObject(obj: Track | Episode): obj is Track {
-  return 'artists' in obj;
-}
 
 const columns: Array<Column> = [
   {

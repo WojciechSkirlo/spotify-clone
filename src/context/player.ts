@@ -1,16 +1,16 @@
 import { create } from 'zustand';
 
 type State = {
-  isCollapsed: boolean;
+  player: Player | null;
 };
 
 type Action = {
-  toggleMenu: () => void;
+  setPlayer: (player: Player) => void;
 };
 
-const usePlayerStore = create<State & Action>(() => ({
-  isCollapsed: false,
-  toggleMenu: () => ({})
+const usePlayerStore = create<State & Action>((set) => ({
+  player: null,
+  setPlayer: (player) => set(() => ({ player }))
 }));
 
 export { usePlayerStore };

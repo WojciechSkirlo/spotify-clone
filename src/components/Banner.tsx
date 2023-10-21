@@ -29,8 +29,8 @@ const Banner = ({ title, type, cover, user, info }: BannerProps) => {
         style={{ backgroundColor: 'rgb(24, 24, 64)' }}
         className="h-[30vh] flex items-end max-h-[400px] mt-[-64px] min-h-[360px] w-full top-0 left-0 z-20 gradient-playlist"
       >
-        <div className="flex flex-1 p-6">
-          <div className="w-[232px] h-[232px] bg-black/70 mr-6">
+        <div className="flex items-end flex-1 p-6">
+          <div className="w-[232px] h-[232px] bg-black/70 mr-6 flex-shrink-0">
             <img src={cover} alt="cover" className="w-full h-full shadow-cover" />
           </div>
           <div className="flex flex-col justify-end">
