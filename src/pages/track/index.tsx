@@ -2,8 +2,8 @@ import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import useSWR from 'swr';
 import Icon from '~~/Icon';
-import Button from '~~/Button';
-import Dropdown from '~~/Dropdown';
+// import Button from '~~/Button';
+// import Dropdown from '~~/Dropdown';
 import Banner from '~~/Banner';
 
 const TrackPage = () => {
@@ -46,14 +46,6 @@ const TrackPage = () => {
         >
           <Icon name="play-smaller" size="lg" />
         </button>
-        <Dropdown button={<Button icon="dots" size="xl" ariaLabel="Więcej opcji dla: neww 2022 November" />}>
-          <Dropdown.Item>Dodaj do biblioteki</Dropdown.Item>
-          <Dropdown.Item>Dodaj do kolejki</Dropdown.Item>
-          <Dropdown.Item borderBottom>Przejdź do radia wykonawcy</Dropdown.Item>
-          <Dropdown.Item borderBottom>Dodaj do playlisty</Dropdown.Item>
-          <Dropdown.Item borderBottom>Udostępnij</Dropdown.Item>
-          <Dropdown.Item>Otwórz w aplikacji na komputerze</Dropdown.Item>
-        </Dropdown>
       </div>
     </>
   );

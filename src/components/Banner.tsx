@@ -40,9 +40,6 @@ const Banner = ({ title, type, cover, user, info }: BannerProps) => {
             </Heading>
             <div className="flex items-center text-sm">
               <div className="flex items-center gap-1">
-                <div className="w-6 h-6 overflow-hidden rounded-full">
-                  <img src={user.img} alt="profile" className="object-cover w-full h-full" />
-                </div>
                 <Link to={user.link} className="font-bold hover:underline">
                   {user.name}
                 </Link>
