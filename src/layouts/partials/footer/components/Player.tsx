@@ -2,7 +2,6 @@ import { useSpotifyPlayer, usePlaybackState } from 'react-spotify-web-playback-s
 import { msToTime } from '@/utils';
 import Button from '~~/Button';
 import Icon from '~~/Icon';
-import { useEffect } from 'react';
 
 const Player = () => {
   const player = useSpotifyPlayer();
@@ -10,17 +9,10 @@ const Player = () => {
 
   const test = () => {
     console.log('playbackState', playbackState);
-    console.log('playerState', playbackState);
 
     player?.togglePlay();
     player?.activateElement();
   };
-
-  useEffect(() => {
-    if (!playbackState) {
-      player?.activateElement();
-    }
-  }, []);
 
   if (!player || !playbackState) return <>player or plaaybackState null</>;
 

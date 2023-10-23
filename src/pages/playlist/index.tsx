@@ -5,7 +5,6 @@ import { isTrackObject, formatDate, msToTime } from '@/utils';
 import { usePlayerStore } from '@/context/player';
 import Icon from '~~/Icon';
 import Button from '~~/Button';
-import Dropdown from '~~/Dropdown';
 import List from '~~/List';
 import Banner from '~~/Banner';
 
@@ -26,8 +25,6 @@ const PlaylistPage = () => {
       id: 1,
       header: <List.Header className="justify-end text-base">#</List.Header>,
       item: (_, index) => {
-        // const track = item as PlaylistTrack;
-
         return (
           <List.Item className="w-4 h-4">
             <span className="absolute group-hover:hidden text-base -top-[3px] right-[3px] tabular-nums">
@@ -171,18 +168,6 @@ const PlaylistPage = () => {
         >
           <Icon name="play-smaller" size="lg" />
         </button>
-        <Dropdown button={<Button icon="dots" size="xl" ariaLabel="Więcej opcji dla: neww 2022 November" />}>
-          <Dropdown.Item>Dodaj do kolejki</Dropdown.Item>
-          <Dropdown.Item borderBottom>Usuń z profilu</Dropdown.Item>
-          <Dropdown.Item>Edytuj szczegóły</Dropdown.Item>
-          <Dropdown.Item>Utwórz podobną playlistę</Dropdown.Item>
-          <Dropdown.Item>Usuń</Dropdown.Item>
-          <Dropdown.Item>Nie uwzględniaj w profilu słuchacza</Dropdown.Item>
-          <Dropdown.Item borderBottom>Przenieś do folderu</Dropdown.Item>
-          <Dropdown.Item borderBottom>Udostępnij</Dropdown.Item>
-          <Dropdown.Item borderBottom>Informacje o rekomendacjach</Dropdown.Item>
-          <Dropdown.Item>Otwórz w aplikacji na komputerze</Dropdown.Item>
-        </Dropdown>
       </div>
 
       <div className="px-6 max-w-[1955px] pb-6">

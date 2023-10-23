@@ -1,5 +1,6 @@
-import { useState, useEffect, ReactNode } from 'react';
+import { useState, useEffect, useCallback, ReactNode } from 'react';
 import { useSearchParams } from 'react-router-dom';
+import { WebPlaybackSDK } from 'react-spotify-web-playback-sdk';
 import Cookies from 'js-cookie';
 import AuthService, { generateCodeChallenge, generateCodeVerifier } from '@/services/auth';
 import { api } from '@/api';
@@ -18,6 +19,9 @@ const Auth = ({ children }: AuthProps) => {
   const setUser = useUserStore((state) => state.setUser);
   const code = searchParams.get('code');
   const refreshToken = Cookies.get('refresh_token') || '';
+  const token = Cookies.get('token');
+
+  const getOAuthToken = useCallback((callback: any) => callback(token), []);
 
   const redirectToAuth = async () => {
     const verifier = generateCodeVerifier(128);
@@ -89,7 +93,11 @@ const Auth = ({ children }: AuthProps) => {
 
   if (isLoading) return <>Loading...</>;
 
-  return <>{children}</>;
+  return (
+    <WebPlaybackSDK initialDeviceName="spotify-clone" getOAuthToken={getOAuthToken} initialVolume={0.5}>
+      {children}
+    </WebPlaybackSDK>
+  );
 };
 
 export default Auth;

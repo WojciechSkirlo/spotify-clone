@@ -4,9 +4,9 @@ import useSWR from 'swr';
 import { Link } from 'react-router-dom';
 import { usePlayerStore } from '@/context/player';
 import { msToTime } from '@/utils';
+import { usePlaybackState } from 'react-spotify-web-playback-sdk';
 import Icon from '~~/Icon';
 import Button from '~~/Button';
-import Dropdown from '~~/Dropdown';
 import List from '~~/List';
 import Banner from '~~/Banner';
 
@@ -14,10 +14,7 @@ const AlbumPage = () => {
   const { albumId } = useParams();
   const { data, error } = useSWR<Album>(`/albums/${albumId}`);
   const play = usePlayerStore((state) => state.play);
-
-  // useEffect(() => {
-  //   console.log(data);
-  // }, [data]);
+  const playbackState = usePlaybackState();
 
   if (error) return <>Error :/</>;
   if (!data) return <>Loading...</>;
@@ -50,11 +47,15 @@ const AlbumPage = () => {
       header: <List.Header>Tytuł</List.Header>,
       item: (item) => {
         const track = item as SimplifiedTrack;
+        const isPlaying = playbackState?.context.metadata?.current_item.uri === track.uri;
 
         return (
           <List.Item>
             <div className="flex flex-col">
-              <Link to={`/track/${track.id}`} className="text-base text-white hover:underline">
+              <Link
+                to={`/track/${track.id}`}
+                className={`text-base text-white hover:underline ${isPlaying ? 'text-malachite' : ''}`}
+              >
                 {track.name}
               </Link>
               <div className="flex items-center">
@@ -128,14 +129,6 @@ const AlbumPage = () => {
         >
           <Icon name="play-smaller" size="lg" />
         </button>
-        <Dropdown button={<Button icon="dots" size="xl" ariaLabel="Więcej opcji dla: neww 2022 November" />}>
-          <Dropdown.Item>Dodaj do biblioteki</Dropdown.Item>
-          <Dropdown.Item>Dodaj do kolejki</Dropdown.Item>
-          <Dropdown.Item borderBottom>Przejdź do radia wykonawcy</Dropdown.Item>
-          <Dropdown.Item borderBottom>Dodaj do playlisty</Dropdown.Item>
-          <Dropdown.Item borderBottom>Udostępnij</Dropdown.Item>
-          <Dropdown.Item>Otwórz w aplikacji na komputerze</Dropdown.Item>
-        </Dropdown>
       </div>
 
       <div className="px-6 max-w-[1955px] pb-6">
