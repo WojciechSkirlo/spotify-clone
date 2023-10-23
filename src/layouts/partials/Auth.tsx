@@ -25,11 +25,13 @@ const Auth = ({ children }: AuthProps) => {
 
     Cookies.set('verifier', verifier);
 
+    const scope =
+      'user-read-private user-read-email user-read-playback-state user-modify-playback-state user-read-currently-playing streaming';
     const params = new URLSearchParams();
     params.append('client_id', CLIENT_ID);
     params.append('response_type', 'code');
     params.append('redirect_uri', REDIRECT_URI);
-    params.append('scope', 'user-read-private user-read-email');
+    params.append('scope', scope);
     params.append('code_challenge_method', 'S256');
     params.append('code_challenge', challenge);
 
@@ -58,6 +60,7 @@ const Auth = ({ children }: AuthProps) => {
   };
 
   const setToken = (token: string) => {
+    Cookies.set('token', token);
     api.defaults.headers.common['Authorization'] = `Bearer ${token}`;
   };
 
@@ -75,6 +78,7 @@ const Auth = ({ children }: AuthProps) => {
       const user = await AuthService.getProfile();
       setUser(user);
     }
+
     setIsLoading(false);
   };
 

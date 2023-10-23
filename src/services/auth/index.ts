@@ -10,6 +10,10 @@ export default class AuthService {
   static async getProfile() {
     return (await api.get<UserProfile>('https://api.spotify.com/v1/me')).data;
   }
+
+  static async getPlayer() {
+    return (await api.get<Player>('https://api.spotify.com/v1/me/player')).data;
+  }
 }
 
 export const generateCodeChallenge = async (codeVerifier: string) => {

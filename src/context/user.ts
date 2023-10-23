@@ -8,11 +8,9 @@ type Action = {
   setUser: (user: UserProfile) => void;
 };
 
-const useUserStore = create<State & Action>(() => ({
+const useUserStore = create<State & Action>((set) => ({
   user: null,
-  setUser: () => {
-    console.log('set USer :))');
-  }
+  setUser: (user) => set(() => ({ user }))
 }));
 
 export { useUserStore };
