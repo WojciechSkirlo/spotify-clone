@@ -4,7 +4,6 @@ import Cookies from 'js-cookie';
 import AuthService, { generateCodeChallenge, generateCodeVerifier } from '@/services/auth';
 import { api } from '@/api';
 import { useUserStore } from '@/context/user';
-import { usePlayerStore } from '@/context/player';
 
 const CLIENT_ID = import.meta.env.VITE_CLIENT_ID;
 const REDIRECT_URI = import.meta.env.VITE_REDIRECT_URI;
@@ -17,7 +16,6 @@ const Auth = ({ children }: AuthProps) => {
   const [isLoading, setIsLoading] = useState(true);
   const [searchParams] = useSearchParams();
   const setUser = useUserStore((state) => state.setUser);
-  const setPlayer = usePlayerStore((state) => state.setPlayer);
   const code = searchParams.get('code');
   const refreshToken = Cookies.get('refresh_token') || '';
 
@@ -62,6 +60,7 @@ const Auth = ({ children }: AuthProps) => {
   };
 
   const setToken = (token: string) => {
+    Cookies.set('token', token);
     api.defaults.headers.common['Authorization'] = `Bearer ${token}`;
   };
 
@@ -78,20 +77,15 @@ const Auth = ({ children }: AuthProps) => {
 
       const user = await AuthService.getProfile();
       setUser(user);
-
-      const player = await AuthService.getPlayer();
-      setPlayer(player);
-
-      console.log('plauer', player);
     }
+
     setIsLoading(false);
   };
 
   useEffect(() => {
-    console.log('testt', refreshToken);
     check();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [refreshToken]);
+  }, []);
 
   if (isLoading) return <>Loading...</>;
 

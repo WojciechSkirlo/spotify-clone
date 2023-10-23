@@ -1,4 +1,4 @@
-import { useEffect, Fragment } from 'react';
+import { Fragment } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import useSWR from 'swr';
 import { isTrackObject, formatDate, msToTime } from '@/utils';
@@ -12,11 +12,11 @@ import Banner from '~~/Banner';
 const PlaylistPage = () => {
   const { playlistId } = useParams();
   const { data, error } = useSWR<PlayList>(`/playlists/${playlistId}`);
-  const [play] = usePlayerStore((state) => [state.play]);
+  const play = usePlayerStore((state) => state.play);
 
-  useEffect(() => {
-    console.log('playlist', data);
-  }, [data]);
+  // useEffect(() => {
+  //   console.log('playlist', data);
+  // }, [data]);
 
   if (error) return <>Error :/</>;
   if (!data) return <>Loading...</>;
@@ -25,8 +25,8 @@ const PlaylistPage = () => {
     {
       id: 1,
       header: <List.Header className="justify-end text-base">#</List.Header>,
-      item: (item, index) => {
-        const track = item as PlaylistTrack;
+      item: (_, index) => {
+        // const track = item as PlaylistTrack;
 
         return (
           <List.Item className="w-4 h-4">
@@ -37,7 +37,7 @@ const PlaylistPage = () => {
               type="button"
               aria-label="play"
               className="hidden text-white group-hover:block"
-              onClick={() => isTrackObject(track.track) && play(data.uri, index)}
+              onClick={() => play(data.uri, index)}
             >
               <Icon name="play-smaller" />
             </button>
