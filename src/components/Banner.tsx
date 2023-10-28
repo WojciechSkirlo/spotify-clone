@@ -6,7 +6,6 @@ type BannerProps = {
   type: string;
   cover: string;
   user: {
-    img: string;
     link: string;
     name: string;
   };
@@ -61,7 +60,7 @@ const Banner = ({ title, type, cover, user, info }: BannerProps) => {
               {info?.numberOfTracks && (
                 <>
                   <span className="mx-1">•</span>
-                  <span>{info.numberOfTracks} utworów</span>
+                  <span>{info.numberOfTracks} utworów, </span>
                 </>
               )}
               {info?.playcount && (

@@ -42,12 +42,14 @@ const DUMMY_DATA = [
   }
 ];
 
+// const link = "https://api-partner.spotify.com/pathfinder/v1/query?operationName=home&variables=%7B%22timeZone%22%3A%22Europe%2FWarsaw%22%2C%22sp_t%22%3A%223abbf88c335847b47c8beecd00165bf3%22%2C%22facet%22%3Anull%7D&extensions=%7B%22persistedQuery%22%3A%7B%22version%22%3A1%2C%22sha256Hash%22%3A%227d7ea6651848f51fed4438106e695403144011b1fcdb7b676d7498241a0b6ca0%22%7D%7D"
+
 const IndexPage = () => {
   return (
     <div className="px-6 mt-2 max-w-[1955px]">
       <Recommended />
 
-      {[1, 2, 3, 4].map((item) => (
+      {[1, 2].map((item) => (
         <section className="mt-10" key={item}>
           <div className="flex items-start justify-between mb-4">
             <Heading size="xl">

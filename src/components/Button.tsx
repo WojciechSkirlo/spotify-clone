@@ -2,7 +2,7 @@ import { ReactNode } from 'react';
 import Icon from '~~/Icon';
 import Tooltip from '~~/Tooltip';
 
-type Variant = 'primary' | 'secondary' | 'tertiary';
+type Variant = 'primary' | 'secondary' | 'tertiary' | 'active';
 type Size = 'md' | 'xl';
 
 type ButtonProps = {
@@ -28,10 +28,11 @@ const Button = ({
   children,
   onClick
 }: ButtonProps) => {
-  const variantClasses = {
+  const variantClasses: Record<Variant, string> = {
     primary: 'text-silver-chalice hover:text-white',
     secondary: 'text-silver-chalice hover:text-white bg-black/70',
-    tertiary: 'text-white bg-black/70'
+    tertiary: 'text-white bg-black/70',
+    active: 'text-malachite'
   };
 
   const sizeClasses = {
