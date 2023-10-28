@@ -24,7 +24,10 @@ const DefaultLayout = () => {
     state.setRefreshToken
   ]);
   const navigation = useNavigate();
-  const getOAuthToken = useCallback((cb: (token: string) => void) => cb(accessToken ?? ''), [accessToken]);
+  const getOAuthToken: Spotify.PlayerInit['getOAuthToken'] = useCallback(
+    (cb: (token: string) => void) => cb(accessToken ?? ''),
+    [accessToken]
+  );
 
   useEffect(() => {
     const check = async () => {
@@ -53,7 +56,12 @@ const DefaultLayout = () => {
   if (!isLoaded) return <>Loading</>;
 
   return (
-    <WebPlaybackSDK initialDeviceName="spotify-clone" getOAuthToken={getOAuthToken} initialVolume={0.5}>
+    <WebPlaybackSDK
+      initialDeviceName="spotify-clone"
+      connectOnInitialized={true}
+      getOAuthToken={getOAuthToken}
+      initialVolume={0.5}
+    >
       <div className={`layout ${isCollapsed ? 'layout--collapsed' : ''}`}>
         <Navigation />
         <OverlayScrollbarsComponent

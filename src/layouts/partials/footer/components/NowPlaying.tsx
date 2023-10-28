@@ -1,8 +1,5 @@
 import { Link } from 'react-router-dom';
-// import { isTrackObject } from '@/utils';
 import { usePlaybackState } from 'react-spotify-web-playback-sdk';
-// import { usePlayerStore } from '@/context/player';
-import Button from '~~/Button';
 
 const NowPlaying = () => {
   const playbackState = usePlaybackState();
@@ -38,7 +35,6 @@ const NowPlaying = () => {
               </span>
             </div>
           </div>
-          <Button icon="heart" />
         </>
       )}
     </div>

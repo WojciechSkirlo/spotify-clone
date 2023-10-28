@@ -1,4 +1,7 @@
-import { useSpotifyPlayer, usePlaybackState } from 'react-spotify-web-playback-sdk';
+import { useEffect } from 'react';
+import PlayerService from '@/services/player';
+import { useSpotifyPlayer, usePlaybackState, usePlayerDevice } from 'react-spotify-web-playback-sdk';
+import { usePlayerStore } from '@/context/player';
 import { msToTime } from '@/utils';
 import Button from '~~/Button';
 import Icon from '~~/Icon';
@@ -6,34 +9,43 @@ import Icon from '~~/Icon';
 const Player = () => {
   const player = useSpotifyPlayer();
   const playbackState = usePlaybackState();
+  const device = usePlayerDevice();
+  const [shuffle, repeat] = usePlayerStore((state) => [state.shuffle, state.repeat]);
 
-  const test = () => {
-    console.log('playbackState', playbackState);
+  useEffect(() => {
+    if (device?.device_id === undefined) return;
 
-    player?.togglePlay();
-    player?.activateElement();
-  };
+    PlayerService.player(device.device_id);
+  }, [device?.device_id]);
 
-  if (!player || !playbackState) return <>player or plaaybackState null</>;
+  if (!player || !playbackState) return null;
 
   return (
     <section className="flex flex-col items-center justify-center col-span-4 ml-4">
       <div className="flex gap-4 mb-2">
         <div className="flex gap-2">
-          <Button icon="shuffle" />
+          <Button
+            icon="shuffle"
+            variant={playbackState.shuffle ? 'active' : 'primary'}
+            onClick={() => shuffle(playbackState.shuffle)}
+          />
           <Button icon="previous" onClick={() => player.previousTrack()} />
         </div>
         <button
           type="button"
           aria-label="play"
           className="flex items-center justify-center w-8 h-8 text-black bg-white rounded-full"
-          onClick={test}
+          onClick={() => player.togglePlay()}
         >
           <Icon name={playbackState.paused ? 'play' : 'pause'} />
         </button>
         <div className="flex gap-2">
           <Button icon="next" onClick={() => player.nextTrack()} />
-          <Button icon="repeat" />
+          <Button
+            icon={playbackState.repeat_mode === 2 ? 'repeat-track' : 'repeat'}
+            variant={playbackState.repeat_mode === 0 ? 'primary' : 'active'}
+            onClick={() => repeat(playbackState.repeat_mode)}
+          />
         </div>
       </div>
       <div className="flex items-center w-full max-w-[722px]">

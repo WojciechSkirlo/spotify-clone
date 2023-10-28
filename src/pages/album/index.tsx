@@ -3,10 +3,9 @@ import { useParams } from 'react-router-dom';
 import useSWR from 'swr';
 import { Link } from 'react-router-dom';
 import { usePlayerStore } from '@/context/player';
-import { msToTime } from '@/utils';
+import { msToTime, formatDate } from '@/utils';
 import { usePlaybackState } from 'react-spotify-web-playback-sdk';
 import Icon from '~~/Icon';
-import Button from '~~/Button';
 import List from '~~/List';
 import Banner from '~~/Banner';
 
@@ -54,7 +53,7 @@ const AlbumPage = () => {
             <div className="flex flex-col">
               <Link
                 to={`/track/${track.id}`}
-                className={`text-base text-white hover:underline ${isPlaying ? 'text-malachite' : ''}`}
+                className={`text-base hover:underline ${isPlaying ? 'text-malachite' : 'text-white'}`}
               >
                 {track.name}
               </Link>
@@ -94,7 +93,6 @@ const AlbumPage = () => {
 
         return (
           <List.Item className="justify-end mr-8 tabular-nums">
-            <Button icon="heart" />
             <span className="ml-8">{msToTime(track.duration_ms)}</span>
           </List.Item>
         );
@@ -110,14 +108,13 @@ const AlbumPage = () => {
         type={data.album_type}
         cover={data.images[1].url}
         user={{
-          img: 'https://i.scdn.co/image/ab6761610000f178e03a98785f3658f0b6461ec4',
           link: `/artist/${data.artists[0].id}`,
           name: data.artists[0].name
         }}
         info={{
-          date: '2020',
-          numberOfTracks: 12,
-          duration: '39 min 18 sek.'
+          date: formatDate(data.release_date),
+          numberOfTracks: data.total_tracks,
+          duration: msToTime(data.tracks.items.reduce((acc, curr) => acc + curr.duration_ms, 0))
         }}
       />
 
@@ -126,6 +123,7 @@ const AlbumPage = () => {
           type="button"
           aria-label="play"
           className="flex items-center justify-center text-black transition-opacity duration-300 transform rounded-full shadow-md h-14 w-14 hover:scale-105 bg-malachite"
+          onClick={() => play(data.uri)}
         >
           <Icon name="play-smaller" size="lg" />
         </button>

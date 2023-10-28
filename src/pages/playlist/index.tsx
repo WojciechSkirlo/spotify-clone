@@ -3,8 +3,8 @@ import { useParams, Link } from 'react-router-dom';
 import useSWR from 'swr';
 import { isTrackObject, formatDate, msToTime } from '@/utils';
 import { usePlayerStore } from '@/context/player';
+import { usePlaybackState } from 'react-spotify-web-playback-sdk';
 import Icon from '~~/Icon';
-import Button from '~~/Button';
 import List from '~~/List';
 import Banner from '~~/Banner';
 
@@ -12,10 +12,7 @@ const PlaylistPage = () => {
   const { playlistId } = useParams();
   const { data, error } = useSWR<PlayList>(`/playlists/${playlistId}`);
   const play = usePlayerStore((state) => state.play);
-
-  // useEffect(() => {
-  //   console.log('playlist', data);
-  // }, [data]);
+  const playbackState = usePlaybackState();
 
   if (error) return <>Error :/</>;
   if (!data) return <>Loading...</>;
@@ -48,6 +45,7 @@ const PlaylistPage = () => {
       header: <List.Header>Tytuł</List.Header>,
       item: (item) => {
         const track = item as PlaylistTrack;
+        const isPlaying = playbackState?.context.metadata?.current_item.uri === (track.track as Track).uri;
 
         return (
           <List.Item>
@@ -57,7 +55,10 @@ const PlaylistPage = () => {
               </div>
             )}
             <div className="flex flex-col">
-              <Link to={`/track/${track.track.id}`} className="text-base text-white hover:underline">
+              <Link
+                to={`/track/${track.track.id}`}
+                className={`text-base hover:underline ${isPlaying ? 'text-malachite' : 'text-white'}`}
+              >
                 {track.track.name}
               </Link>
               <div className="flex items-center">
@@ -134,7 +135,6 @@ const PlaylistPage = () => {
 
         return (
           <List.Item className="justify-end mr-8 tabular-nums">
-            <Button icon="heart" />
             <span className="ml-8">{msToTime(track.track.duration_ms)}</span>
           </List.Item>
         );
@@ -150,13 +150,12 @@ const PlaylistPage = () => {
         type={data.type}
         cover={data.images[1].url}
         user={{
-          img: 'https://i.scdn.co/image/ab6761610000f178e03a98785f3658f0b6461ec4',
           link: `/user/${data.owner.id}`,
           name: data.owner.display_name ?? ''
         }}
         info={{
-          numberOfTracks: 12,
-          duration: '39 min 18 sek.'
+          numberOfTracks: data.tracks.total,
+          duration: msToTime(data.tracks.items.reduce((acc, curr) => acc + curr.track.duration_ms, 0))
         }}
       />
 
@@ -165,6 +164,7 @@ const PlaylistPage = () => {
           type="button"
           aria-label="play"
           className="flex items-center justify-center text-black transition-opacity duration-300 transform rounded-full shadow-md h-14 w-14 hover:scale-105 bg-malachite"
+          onClick={() => play(data.uri)}
         >
           <Icon name="play-smaller" size="lg" />
         </button>
