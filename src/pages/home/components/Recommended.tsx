@@ -79,12 +79,12 @@ const Recommended = () => {
                 <div className="shadow">
                   <img src={item.img} alt="img" className="w-20 h-20" />
                 </div>
-                <div className="flex items-center justify-between flex-1 gap-4 p-4">
+                <div className="flex items-center justify-between flex-1 gap-2 p-4">
                   <span className="font-semibold">{item.name}</span>
                   <button
                     type="button"
                     aria-label="play"
-                    className="flex items-center justify-center w-12 h-12 text-black transition-opacity duration-300 transform rounded-full shadow-md opacity-0 hover:scale-105 bg-malachite group-hover:opacity-100"
+                    className="flex items-center justify-center w-12 h-12 text-black transition-opacity duration-300 transform rounded-full shadow-md opacity-0 shrink-0 hover:scale-105 bg-malachite group-hover:opacity-100"
                   >
                     <Icon name="play-smaller" size="lg" />
                   </button>

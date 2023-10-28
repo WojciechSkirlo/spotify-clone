@@ -10,23 +10,19 @@ const Header = () => {
   const user = useUserStore((state) => state.user);
 
   const redirectToAccount = () => {
-    // if (!user) return;
-
     window.open(
       'https://www.spotify.com/pl/account/overview/?utm_source=spotify&utm_medium=menu&utm_campaign=your_account',
       '_blank',
       'noopener noreferrer'
     );
-
-    // navigate(user.href, { });
-
-    // console.log('redirect to account');
   };
 
   const handleLogout = () => {
+    Cookies.remove('access_token');
     Cookies.remove('refresh_token');
+    Cookies.remove('verifier');
 
-    navigate('/');
+    navigate('/auth/login');
   };
 
   return (
@@ -55,7 +51,6 @@ const Header = () => {
           />
         </div>
         <div className="flex gap-2">
-          {/* <Button icon="bell" variant="secondary" ariaLabel="Nowości" /> */}
           {user && (
             <Dropdown
               button={
@@ -68,8 +63,6 @@ const Header = () => {
                 <span>Konto</span>
                 <Icon name="external-link" />
               </Dropdown.Item>
-              {/* <Dropdown.Item>Profil</Dropdown.Item> */}
-              {/* <Dropdown.Item borderBottom>Ustawienia</Dropdown.Item> */}
               <Dropdown.Item onClick={handleLogout}>Wyloguj</Dropdown.Item>
             </Dropdown>
           )}

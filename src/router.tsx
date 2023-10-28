@@ -1,6 +1,8 @@
-import { createBrowserRouter } from 'react-router-dom';
-import ErrorPage from '@/error-page';
+import { createBrowserRouter, redirect } from 'react-router-dom';
 import DefaultLayout from '@/layouts/default';
+import AuthLayout from '@/layouts/auth';
+import AuthLoginPage from '@/pages/auth/login';
+import AuthCallbackPage from '@/pages/auth/callback';
 import HomePage from '@/pages/home';
 import SearchPage from '@/pages/search';
 import PlaylistPage from '@/pages/playlist';
@@ -10,6 +12,7 @@ import ArtistPage from '@/pages/artist';
 import UserPage from '@/pages/user';
 import EpisodePage from '@/pages/eposide';
 import ShowPage from '@/pages/show';
+import ErrorPage from '@/error-page';
 
 const router = createBrowserRouter([
   {
@@ -52,6 +55,25 @@ const router = createBrowserRouter([
       {
         path: 'show/:showId',
         element: <ShowPage />
+      }
+    ]
+  },
+  {
+    path: '/auth',
+    element: <AuthLayout />,
+    errorElement: <ErrorPage />,
+    children: [
+      {
+        index: true,
+        loader: () => redirect('/auth/login')
+      },
+      {
+        path: 'login',
+        element: <AuthLoginPage />
+      },
+      {
+        path: 'callback',
+        element: <AuthCallbackPage />
       }
     ]
   }
