@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import useSWR from 'swr';
 import { formatDate, msToTime } from '@/utils';
@@ -10,10 +9,6 @@ const TrackPage = () => {
   const { trackId } = useParams();
   const { data, error } = useSWR<Track>(`/tracks/${trackId}`);
   const play = usePlayerStore((state) => state.play);
-
-  useEffect(() => {
-    console.log('track', data);
-  }, [data]);
 
   if (error) return <>Error :/</>;
   if (!data) return <>Loading...</>;
@@ -38,7 +33,7 @@ const TrackPage = () => {
         }}
       />
 
-      <div className="flex items-center gap-8 p-6">
+      <div className="flex items-center gap-8 py-6">
         <button
           type="button"
           aria-label="play"

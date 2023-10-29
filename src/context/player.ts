@@ -19,7 +19,6 @@ const usePlayerStore = create<Action>(() => ({
     };
 
     PlayerService.play(data);
-    console.log('play', context_uri);
   },
 
   pause: () => {

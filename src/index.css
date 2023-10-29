@@ -63,6 +63,10 @@ body {
   @apply overflow-hidden text-base;
 }
 
+#root {
+  @apply flex flex-col h-[100svh];
+}
+
 .layout {
   grid-template-columns: 420px 1fr;
   grid-template-rows: 1fr auto;

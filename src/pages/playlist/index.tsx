@@ -159,7 +159,7 @@ const PlaylistPage = () => {
         }}
       />
 
-      <div className="flex items-center gap-8 p-6">
+      <div className="flex items-center gap-8 py-6">
         <button
           type="button"
           aria-label="play"
@@ -170,9 +170,7 @@ const PlaylistPage = () => {
         </button>
       </div>
 
-      <div className="px-2 lg:px-6 max-w-[1955px] pb-6">
-        <List columns={columns} data={data.tracks.items} />
-      </div>
+      <List columns={columns} data={data.tracks.items} />
     </>
   );
 };
