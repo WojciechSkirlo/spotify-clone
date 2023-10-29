@@ -157,18 +157,20 @@ const PlaylistPage = () => {
         <span>{msToTime(data.tracks.items.reduce((acc, curr) => acc + curr.track.duration_ms, 0))}</span>
       </Banner>
 
-      <div className="flex items-center gap-8 py-6">
-        <button
-          type="button"
-          aria-label="play"
-          className="flex items-center justify-center text-black transition-opacity duration-300 transform rounded-full shadow-md h-14 w-14 hover:scale-105 bg-malachite"
-          onClick={() => play(data.uri, 0)}
-        >
-          <Icon name="play-smaller" size="lg" />
-        </button>
-      </div>
+      <div className="relative z-30">
+        <div className="flex items-center gap-8 py-6">
+          <button
+            type="button"
+            aria-label="play"
+            className="flex items-center justify-center text-black transition-opacity duration-300 transform rounded-full shadow-md h-14 w-14 hover:scale-105 bg-malachite"
+            onClick={() => play(data.uri, 0)}
+          >
+            <Icon name="play-smaller" size="lg" />
+          </button>
+        </div>
 
-      <List columns={columns} data={data.tracks.items} />
+        <List columns={columns} data={data.tracks.items} />
+      </div>
     </>
   );
 };
