@@ -16,7 +16,7 @@ const NowPlaying = () => {
         <>
           <div className="flex items-center px-2">
             <img
-              src={playbackState.context.metadata?.current_item.images[0].url}
+              src={playbackState.context.metadata?.current_item.images?.[0]?.url}
               alt="cover"
               className="rounded w-14 h-14"
             />

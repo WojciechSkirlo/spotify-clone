@@ -51,7 +51,7 @@ const PlaylistPage = () => {
           <List.Item>
             {isTrackObject(track.track) && (
               <div className="w-10 h-10 mr-4 bg-mine-shaft-500">
-                <img src={track.track.album.images[1].url} alt="cover" />
+                <img src={track.track.album.images?.[0]?.url} alt="cover" />
               </div>
             )}
             <div className="flex flex-col">
@@ -148,7 +148,7 @@ const PlaylistPage = () => {
       <Banner
         title={data.name}
         type={data.type}
-        cover={data.images[1].url}
+        cover={data.images?.[0]?.url}
         user={{
           link: `/user/${data.owner.id}`,
           name: data.owner.display_name ?? ''
@@ -170,7 +170,7 @@ const PlaylistPage = () => {
         </button>
       </div>
 
-      <div className="px-6 max-w-[1955px] pb-6">
+      <div className="px-2 lg:px-6 max-w-[1955px] pb-6">
         <List columns={columns} data={data.tracks.items} />
       </div>
     </>

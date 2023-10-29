@@ -106,7 +106,7 @@ const AlbumPage = () => {
       <Banner
         title={data.name}
         type={data.album_type}
-        cover={data.images[1].url}
+        cover={data.images?.[0]?.url}
         user={{
           link: `/artist/${data.artists[0].id}`,
           name: data.artists[0].name
@@ -129,7 +129,7 @@ const AlbumPage = () => {
         </button>
       </div>
 
-      <div className="px-6 max-w-[1955px] pb-6">
+      <div className="px-2 lg:px-6 max-w-[1955px] pb-6">
         <List columns={columns} data={data.tracks.items} />
       </div>
     </>

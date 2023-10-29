@@ -8,7 +8,7 @@ import Icon from '~~/Icon';
 
 const Player = () => {
   const player = useSpotifyPlayer();
-  const playbackState = usePlaybackState();
+  const playbackState = usePlaybackState(true, 1000);
   const device = usePlayerDevice();
   const [shuffle, repeat] = usePlayerStore((state) => [state.shuffle, state.repeat]);
 
@@ -19,6 +19,8 @@ const Player = () => {
   }, [device?.device_id]);
 
   if (!player || !playbackState) return null;
+
+  const progress = (playbackState?.position / playbackState?.duration) * 100;
 
   return (
     <section className="flex flex-col items-center justify-center col-span-4 ml-4">
@@ -49,11 +51,19 @@ const Player = () => {
         </div>
       </div>
       <div className="flex items-center w-full max-w-[722px]">
-        <span className="w-10 mr-2 text-xs text-right text-nobel">{msToTime(playbackState.position)}</span>
-        <div className="flex items-center flex-1 h-3 item">
-          <div className="w-full h-1 rounded-full bg-tundora"></div>
+        <span className="w-10 mr-2 text-xs text-right text-nobel tabular-nums">{msToTime(playbackState.position)}</span>
+        <div className="flex items-center flex-1 h-3 group item">
+          <div className="w-full h-1 rounded-full bg-tundora">
+            <div
+              style={{
+                width: `${progress}%`
+              }}
+              className="h-full bg-white rounded-full group-hover:bg-malachite"
+            />
+            {/* <input type="range" min={0} max={100} step={1} placeholder="zakres" className='w-full' value={progress} /> */}
+          </div>
         </div>
-        <span className="w-10 ml-2 text-xs text-left text-nobel">{msToTime(playbackState.duration)}</span>
+        <span className="w-10 ml-2 text-xs text-left text-nobel tabular-nums">{msToTime(playbackState.duration)}</span>
       </div>
     </section>
   );
