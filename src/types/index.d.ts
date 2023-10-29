@@ -338,4 +338,34 @@ declare global {
       };
     };
   }
+
+  interface Search {
+    artists: {
+      href: string;
+      limit: number;
+      next: string;
+      offset: number;
+      previous: string;
+      total: number;
+      items: Array<Artist>;
+    };
+    albums: {
+      href: string;
+      limit: number;
+      next: string;
+      offset: number;
+      previous: string;
+      total: number;
+      items: Array<Album>;
+    };
+    playlists: {
+      href: string;
+      items: Array<PlayList>;
+      limit: number;
+      next: string;
+      offset: number;
+      previous: string;
+      total: number;
+    };
+  }
 }

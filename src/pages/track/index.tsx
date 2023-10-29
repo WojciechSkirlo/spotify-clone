@@ -23,7 +23,7 @@ const TrackPage = () => {
       <Banner
         title={data.name}
         type={data.type}
-        cover={data.album.images[1].url}
+        cover={data.album.images?.[0]?.url}
         user={{
           link: `/artist/${data.artists[0].id}}`,
           name: data.artists[0].name

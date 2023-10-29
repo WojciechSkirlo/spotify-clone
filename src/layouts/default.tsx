@@ -51,7 +51,7 @@ const DefaultLayout = () => {
 
     check();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [refreshToken]);
+  }, []);
 
   if (!isLoaded) return <>Loading</>;
 

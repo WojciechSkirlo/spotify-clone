@@ -69,7 +69,7 @@ const Recommended = () => {
         <div className="flex items-start justify-between mb-5">
           <Heading size="2xl">Dobry wieczór</Heading>
         </div>
-        <div className="grid gap-4 pt-px md:grid-cols-2 gap-y-3 xl:grid-cols-3">
+        <div className="grid gap-4 pt-px md:grid-cols-2 gap-y-2 lg:gap-y-3 xl:grid-cols-3">
           {data.map((item) => (
             <Link to={item.link} className="font-semibold" key={item.id}>
               <div

@@ -46,7 +46,7 @@ const DUMMY_DATA = [
 
 const IndexPage = () => {
   return (
-    <div className="px-6 mt-2 max-w-[1955px]">
+    <div className="px-2 lg:px-6 mt-2 max-w-[1955px]">
       <Recommended />
 
       {[1, 2].map((item) => (
@@ -61,9 +61,15 @@ const IndexPage = () => {
               Pokaż wszystko
             </Link>
           </div>
-          <div className="grid grid-cols-2 gap-6 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 3xl:grid-cols-7 4xl:grid-cols-8 5xl:grid-cols-9">
+          <div className="grid grid-cols-2 gap-2 lg:gap-6 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 3xl:grid-cols-7 4xl:grid-cols-8 5xl:grid-cols-9">
             {DUMMY_DATA.map((item) => (
-              <Card key={item.id} img={item.img} header={item.header} description={item.description} />
+              <Card
+                key={item.id}
+                img={item.img}
+                header={item.header}
+                description={item.description}
+                link={`/album/${item.id}`}
+              />
             ))}
           </div>
         </section>
