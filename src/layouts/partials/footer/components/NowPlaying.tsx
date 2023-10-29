@@ -4,8 +4,8 @@ import { usePlaybackState } from 'react-spotify-web-playback-sdk';
 const NowPlaying = () => {
   const playbackState = usePlaybackState();
 
-  const albumId = playbackState?.context.metadata?.current_item.group.uri.split(':').at(-1);
-  const artistId = playbackState?.context.metadata?.current_item.artists[0].uri.split(':').at(-1);
+  const albumId = playbackState?.context.metadata?.current_item?.group?.uri?.split?.(':')?.at?.(-1);
+  const artistId = playbackState?.context.metadata?.current_item?.artists?.[0]?.uri?.split?.(':')?.at(-1);
 
   const albumEpisodeLink = `/album/${albumId}`;
   const artistShowLink = `/artist/${artistId}`;
@@ -16,7 +16,7 @@ const NowPlaying = () => {
         <>
           <div className="flex items-center px-2">
             <img
-              src={playbackState.context.metadata?.current_item.images?.[0]?.url}
+              src={playbackState.context.metadata?.current_item?.images?.[0]?.url}
               alt="cover"
               className="rounded w-14 h-14"
             />

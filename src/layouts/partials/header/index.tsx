@@ -28,7 +28,7 @@ const Header = () => {
   };
 
   return (
-    <div className="sticky top-0 left-0 right-0 z-30">
+    <div className="sticky top-0 left-0 right-0 z-40">
       {/* <div style={{ opacity: 0, background: 'rgb(72, 32, 176)' }} className="absolute top-0 left-0 right-0 h-16"></div> */}
       <div
         style={{ background: 'rgb(72, 32, 176, 0)' }}

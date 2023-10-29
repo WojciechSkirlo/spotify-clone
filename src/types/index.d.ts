@@ -340,6 +340,15 @@ declare global {
   }
 
   interface Search {
+    tracks: {
+      href: string;
+      limit: number;
+      next: string;
+      offset: number;
+      previous: string;
+      total: number;
+      items: Array<Track>;
+    };
     artists: {
       href: string;
       limit: number;
@@ -367,5 +376,13 @@ declare global {
       previous: string;
       total: number;
     };
+  }
+
+  interface PlayData {
+    context_uri?: string;
+    offset?: {
+      position: number;
+    };
+    position_ms?: number;
   }
 }
