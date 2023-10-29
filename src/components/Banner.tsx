@@ -16,7 +16,7 @@ const Banner = ({ title, type, image, children }: BannerProps) => {
     <>
       <div
         style={{ backgroundColor: color }}
-        className="absolute top-0 left-0 z-20 flex items-end w-full gradient-banner h-[30vh] max-h-[400px] min-h-[360px];"
+        className="absolute top-0 left-0 z-20 flex items-end w-full gradient-banner h-[30vh] max-h-[400px] min-h-[360px]"
       >
         <div style={{ backgroundColor: color }} className="absolute gradient h-[232px] left-0 w-full top-full"></div>
       </div>

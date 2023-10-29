@@ -24,13 +24,13 @@ const NowPlaying = () => {
               <span className="text-sm">
                 {/* ALBUM / EPISODE */}
                 <Link to={albumEpisodeLink} className="hover:underline">
-                  {playbackState.context.metadata?.current_item.name}
+                  {playbackState.context.metadata?.current_item?.name}
                 </Link>
               </span>
               <span className="text-xs text-nobel">
                 {/* ARTIST / SHOW */}
                 <Link to={artistShowLink} className="hover:text-white hover:underline">
-                  {playbackState.context.metadata?.current_item.artists[0].name}
+                  {playbackState.context.metadata?.current_item?.artists?.[0]?.name}
                 </Link>
               </span>
             </div>
