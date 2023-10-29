@@ -11,12 +11,12 @@ import Banner from '~~/Banner';
 
 const AlbumPage = () => {
   const { albumId } = useParams();
-  const { data, error } = useSWR<Album>(`/albums/${albumId}`);
+  const { data, error, isLoading } = useSWR<Album>(`/albums/${albumId}`);
   const play = usePlayerStore((state) => state.play);
   const playbackState = usePlaybackState();
 
-  if (error) return <>Error :/</>;
-  if (!data) return <>Loading...</>;
+  if (isLoading) return <>Loading...</>;
+  if (error || data === undefined) return <>Error :/</>;
 
   const columns: Array<Column> = [
     {
@@ -103,27 +103,26 @@ const AlbumPage = () => {
 
   return (
     <>
-      <Banner
-        title={data.name}
-        type={data.album_type}
-        cover={data.images?.[0]?.url}
-        user={{
-          link: `/artist/${data.artists[0].id}`,
-          name: data.artists[0].name
-        }}
-        info={{
-          date: formatDate(data.release_date),
-          numberOfTracks: data.total_tracks,
-          duration: msToTime(data.tracks.items.reduce((acc, curr) => acc + curr.duration_ms, 0))
-        }}
-      />
+      <Banner title={data.name} type={data.album_type} image={data.images?.[0]?.url}>
+        <div className="flex items-center gap-1">
+          <Link to={`/artist/${data.artists?.[0]?.id}`} className="font-bold hover:underline">
+            {data.artists?.[0]?.name}
+          </Link>
+        </div>
+        <span className="mx-1">•</span>
+        <span>{formatDate(data.release_date)}</span>
+        <span className="mx-1">•</span>
+        <span>{data.total_tracks} utworów</span>
+        <span className="mx-1">•</span>
+        <span>{msToTime(data.tracks.items.reduce((acc, curr) => acc + curr.duration_ms, 0))}</span>
+      </Banner>
 
       <div className="flex items-center gap-8 py-6">
         <button
           type="button"
           aria-label="play"
           className="flex items-center justify-center text-black transition-opacity duration-300 transform rounded-full shadow-md h-14 w-14 hover:scale-105 bg-malachite"
-          onClick={() => play(data.uri)}
+          onClick={() => play(data.uri, 0)}
         >
           <Icon name="play-smaller" size="lg" />
         </button>

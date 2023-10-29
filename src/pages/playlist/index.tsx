@@ -10,12 +10,12 @@ import Banner from '~~/Banner';
 
 const PlaylistPage = () => {
   const { playlistId } = useParams();
-  const { data, error } = useSWR<PlayList>(`/playlists/${playlistId}`);
+  const { data, error, isLoading } = useSWR<PlayList>(`/playlists/${playlistId}`);
   const play = usePlayerStore((state) => state.play);
   const playbackState = usePlaybackState();
 
-  if (error) return <>Error :/</>;
-  if (!data) return <>Loading...</>;
+  if (isLoading) return <>Loading...</>;
+  if (error || data === undefined) return <>Error :/</>;
 
   const columns: Array<Column> = [
     {
@@ -145,26 +145,24 @@ const PlaylistPage = () => {
 
   return (
     <>
-      <Banner
-        title={data.name}
-        type={data.type}
-        cover={data.images?.[0]?.url}
-        user={{
-          link: `/user/${data.owner.id}`,
-          name: data.owner.display_name ?? ''
-        }}
-        info={{
-          numberOfTracks: data.tracks.total,
-          duration: msToTime(data.tracks.items.reduce((acc, curr) => acc + curr.track.duration_ms, 0))
-        }}
-      />
+      <Banner title={data.name} type={data.type} image={data.images?.[0]?.url}>
+        <div className="flex items-center gap-1">
+          <Link to={`/user/${data.owner.id}`} className="font-bold hover:underline">
+            {data.owner.display_name}
+          </Link>
+        </div>
+        <span className="mx-1">•</span>
+        <span>{data.tracks.total} utwory</span>
+        <span className="mx-1">•</span>
+        <span>{msToTime(data.tracks.items.reduce((acc, curr) => acc + curr.track.duration_ms, 0))}</span>
+      </Banner>
 
       <div className="flex items-center gap-8 py-6">
         <button
           type="button"
           aria-label="play"
           className="flex items-center justify-center text-black transition-opacity duration-300 transform rounded-full shadow-md h-14 w-14 hover:scale-105 bg-malachite"
-          onClick={() => play(data.uri)}
+          onClick={() => play(data.uri, 0)}
         >
           <Icon name="play-smaller" size="lg" />
         </button>

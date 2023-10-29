@@ -2,21 +2,22 @@ import { create } from 'zustand';
 import PlayerService from '@/services/player';
 
 type Action = {
-  play: (context_uri?: string, position?: number) => void;
+  play: (context_uri: string, position?: number) => void;
   pause: () => void;
   shuffle: (state: boolean) => void;
   repeat: (repeatMode: number) => void;
 };
 
 const usePlayerStore = create<Action>(() => ({
-  play: (context_uri, position = 0) => {
-    const data = {
+  play: (context_uri, position) => {
+    const data: PlayData = {
       context_uri,
-      offset: {
-        position
-      },
       position_ms: 0
     };
+
+    if (position) {
+      data.offset = { position };
+    }
 
     PlayerService.play(data);
   },

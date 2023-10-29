@@ -26,3 +26,7 @@ export function formatDate(date: string) {
   const formattedDate = `${day} ${month} ${year}`;
   return formattedDate;
 }
+
+export function formatNumber(number: number) {
+  return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
+}

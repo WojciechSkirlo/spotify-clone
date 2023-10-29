@@ -377,4 +377,12 @@ declare global {
       total: number;
     };
   }
+
+  interface PlayData {
+    context_uri?: string;
+    offset?: {
+      position: number;
+    };
+    position_ms?: number;
+  }
 }

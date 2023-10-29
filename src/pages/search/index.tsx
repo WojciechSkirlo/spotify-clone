@@ -10,7 +10,7 @@ import Icon from '~~/Icon';
 const SearchPage = () => {
   const [searchParams] = useSearchParams();
   const query = searchParams.get('q');
-  const { data, error } = useSWR<Search>(`/search?q=${query}&type=track,artist,album,playlist&limit=8`);
+  const { data, error, isLoading } = useSWR<Search>(`/search?q=${query}&type=track,artist,album,playlist&limit=8`);
 
   const columns: Array<Column> = [
     {
@@ -79,8 +79,8 @@ const SearchPage = () => {
     }
   ];
 
-  if (error) return <>Error :/</>;
-  if (!data) return <>Loading...</>;
+  if (isLoading) return <>Loading...</>;
+  if (error || data === undefined) return <>Error :/</>;
 
   return (
     <>

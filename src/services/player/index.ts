@@ -26,11 +26,3 @@ export default class PlayerService {
     return (await api.put(`me/player/repeat?state=${state}`)).data;
   }
 }
-
-interface PlayData {
-  context_uri?: string;
-  offset: {
-    position: number;
-  };
-  position_ms?: number;
-}
