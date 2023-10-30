@@ -2,8 +2,8 @@ import { useParams } from 'react-router-dom';
 import { formatNumber } from '@/utils';
 import { usePlayerStore } from '@/context/player';
 import useSWR from 'swr';
-import Icon from '~~/Icon';
 import Banner from '~~/Banner';
+import PlayButton from '~~/PlayButton';
 
 const ArtistPage = () => {
   const { artistId } = useParams();
@@ -20,16 +20,7 @@ const ArtistPage = () => {
       </Banner>
 
       <div className="relative z-30">
-        <div className="flex items-center gap-8 py-6">
-          <button
-            type="button"
-            aria-label="play"
-            className="flex items-center justify-center text-black transition-opacity duration-300 transform rounded-full shadow-md h-14 w-14 hover:scale-105 bg-malachite"
-            onClick={() => play(data.uri)}
-          >
-            <Icon name="play-smaller" size="lg" />
-          </button>
-        </div>
+        <PlayButton onClick={() => play(data.uri)} />
       </div>
     </>
   );

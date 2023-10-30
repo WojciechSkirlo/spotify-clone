@@ -18,7 +18,7 @@ const Search = () => {
       value={query}
       type="text"
       placeholder="Czego chcesz posłuchać?"
-      className="h-12 border-0 bg-mine-shaft-600 py-1.5 w-32 md:w-48 lg:w-[364px] px-5 rounded-full text-sm placeholder:text-dove-gray"
+      className="h-12 border-0 bg-mine-shaft-600 py-1.5 w-36 md:w-48 lg:w-[364px] px-5 rounded-full text-sm placeholder:text-dove-gray"
       onInput={(e) => setQuery(e.currentTarget.value)}
     />
   );

@@ -8,6 +8,7 @@ import { usePlaybackState } from 'react-spotify-web-playback-sdk';
 import Icon from '~~/Icon';
 import List from '~~/List';
 import Banner from '~~/Banner';
+import PlayButton from '~~/PlayButton';
 
 const AlbumPage = () => {
   const { albumId } = useParams();
@@ -25,7 +26,7 @@ const AlbumPage = () => {
       item: (_, index) => {
         return (
           <List.Item className="w-4 h-4">
-            <span className="absolute group-hover:hidden text-base -top-[3px] right-[3px] tabular-nums">
+            <span className="absolute group-hover:hidden text-sm md:text-base -top-[3px] right-[3px] tabular-nums">
               {index + 1}
             </span>
             <button
@@ -53,7 +54,7 @@ const AlbumPage = () => {
             <div className="flex flex-col">
               <Link
                 to={`/track/${track.id}`}
-                className={`text-base hover:underline ${isPlaying ? 'text-malachite' : 'text-white'}`}
+                className={`text-sm md:text-base hover:underline ${isPlaying ? 'text-malachite' : 'text-white'}`}
               >
                 {track.name}
               </Link>
@@ -84,7 +85,7 @@ const AlbumPage = () => {
     {
       id: 3,
       header: (
-        <List.Header className="justify-end mr-8">
+        <List.Header className="justify-end md:mr-4 lg:mr-8">
           <Icon name="clock" />
         </List.Header>
       ),
@@ -92,8 +93,8 @@ const AlbumPage = () => {
         const track = item as SimplifiedTrack;
 
         return (
-          <List.Item className="justify-end mr-8 tabular-nums">
-            <span className="ml-8">{msToTime(track.duration_ms)}</span>
+          <List.Item className="justify-end md:mr-4 lg:mr-8 tabular-nums">
+            <span>{msToTime(track.duration_ms)}</span>
           </List.Item>
         );
       },
@@ -118,17 +119,7 @@ const AlbumPage = () => {
       </Banner>
 
       <div className="relative z-30">
-        <div className="flex items-center gap-8 py-6">
-          <button
-            type="button"
-            aria-label="play"
-            className="flex items-center justify-center text-black transition-opacity duration-300 transform rounded-full shadow-md h-14 w-14 hover:scale-105 bg-malachite"
-            onClick={() => play(data.uri, 0)}
-          >
-            <Icon name="play-smaller" size="lg" />
-          </button>
-        </div>
-
+        <PlayButton onClick={() => play(data.uri, 0)} />
         <List columns={columns} data={data.tracks.items} />
       </div>
     </>

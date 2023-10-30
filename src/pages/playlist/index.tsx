@@ -7,6 +7,7 @@ import { usePlaybackState } from 'react-spotify-web-playback-sdk';
 import Icon from '~~/Icon';
 import List from '~~/List';
 import Banner from '~~/Banner';
+import PlayButton from '~~/PlayButton';
 
 const PlaylistPage = () => {
   const { playlistId } = useParams();
@@ -24,7 +25,7 @@ const PlaylistPage = () => {
       item: (_, index) => {
         return (
           <List.Item className="w-4 h-4">
-            <span className="absolute group-hover:hidden text-base -top-[3px] right-[3px] tabular-nums">
+            <span className="absolute group-hover:hidden text-sm md:text-base -top-[3px] right-[3px] tabular-nums">
               {index + 1}
             </span>
             <button
@@ -50,14 +51,14 @@ const PlaylistPage = () => {
         return (
           <List.Item>
             {isTrackObject(track.track) && (
-              <div className="w-10 h-10 mr-4 bg-mine-shaft-500">
+              <div className="flex-shrink-0 w-10 h-10 mr-4 bg-mine-shaft-500">
                 <img src={track.track.album.images?.[0]?.url} alt="cover" />
               </div>
             )}
             <div className="flex flex-col">
               <Link
                 to={`/track/${track.track.id}`}
-                className={`text-base hover:underline ${isPlaying ? 'text-malachite' : 'text-white'}`}
+                className={`text-sm md:text-base hover:underline ${isPlaying ? 'text-malachite' : 'text-white'}`}
               >
                 {track.track.name}
               </Link>
@@ -89,7 +90,7 @@ const PlaylistPage = () => {
           </List.Item>
         );
       },
-      width: '6fr'
+      width: 'minmax(200px, 6fr)'
     },
     {
       id: 3,
@@ -107,7 +108,7 @@ const PlaylistPage = () => {
           </List.Item>
         );
       },
-      width: '4fr'
+      width: 'minmax(78px, 4fr)'
     },
     {
       id: 4,
@@ -121,12 +122,12 @@ const PlaylistPage = () => {
           </List.Item>
         );
       },
-      width: '3fr'
+      width: 'minmax(78px, 3fr)'
     },
     {
       id: 5,
       header: (
-        <List.Header className="justify-end mr-8">
+        <List.Header className="justify-end mr-4 lg:mr-8">
           <Icon name="clock" />
         </List.Header>
       ),
@@ -134,12 +135,12 @@ const PlaylistPage = () => {
         const track = item as PlaylistTrack;
 
         return (
-          <List.Item className="justify-end mr-8 tabular-nums">
-            <span className="ml-8">{msToTime(track.track.duration_ms)}</span>
+          <List.Item className="justify-end mr-4 lg:mr-8 tabular-nums">
+            <span>{msToTime(track.track.duration_ms)}</span>
           </List.Item>
         );
       },
-      width: 'minmax(120px, 1fr)'
+      width: 'minmax(36px, 1fr)'
     }
   ];
 
@@ -158,18 +159,10 @@ const PlaylistPage = () => {
       </Banner>
 
       <div className="relative z-30">
-        <div className="flex items-center gap-8 py-6">
-          <button
-            type="button"
-            aria-label="play"
-            className="flex items-center justify-center text-black transition-opacity duration-300 transform rounded-full shadow-md h-14 w-14 hover:scale-105 bg-malachite"
-            onClick={() => play(data.uri, 0)}
-          >
-            <Icon name="play-smaller" size="lg" />
-          </button>
+        <PlayButton onClick={() => play(data.uri, 0)} />
+        <div className="overflow-x-auto overflow-y-hidden">
+          <List columns={columns} data={data.tracks.items} className="min-w-[550px]" />
         </div>
-
-        <List columns={columns} data={data.tracks.items} />
       </div>
     </>
   );

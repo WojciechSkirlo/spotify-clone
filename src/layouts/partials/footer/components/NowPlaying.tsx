@@ -11,19 +11,19 @@ const NowPlaying = () => {
   const artistShowLink = `/artist/${artistId}`;
 
   return (
-    <div className="flex items-center col-span-3">
+    <div className="flex items-center col-span-5 md:col-span-4 lg:col-span-3">
       {playbackState && (
         <>
-          <div className="flex items-center px-2">
+          <div className="flex items-center md:px-2">
             <img
               src={playbackState.context.metadata?.current_item?.images?.[0]?.url}
               alt="cover"
               className="rounded w-14 h-14"
             />
-            <div className="flex flex-col mx-4 mr-1.5">
+            <div className="flex flex-col ml-3 md:ml-4 mr-1.5">
               <span className="text-sm">
                 {/* ALBUM / EPISODE */}
-                <Link to={albumEpisodeLink} className="hover:underline">
+                <Link to={albumEpisodeLink} className="hover:underline line-clamp-2 md:line-clamp-none">
                   {playbackState.context.metadata?.current_item?.name}
                 </Link>
               </span>
