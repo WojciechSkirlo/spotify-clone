@@ -22,12 +22,15 @@ const SearchPage = () => {
         return (
           <List.Item>
             {isTrackObject(track) && (
-              <div className="w-10 h-10 mr-4 bg-mine-shaft-500">
+              <div className="flex-shrink-0 w-10 h-10 mr-4 bg-mine-shaft-500">
                 <img src={track.album.images?.[0]?.url} alt="cover" />
               </div>
             )}
             <div className="flex flex-col">
-              <Link to={`/track/${track.id}`} className={`text-base hover:underline text-white`}>
+              <Link
+                to={`/track/${track.id}`}
+                className={`text-sm md:text-base line-clamp-2 hover:underline text-white`}
+              >
                 {track.name}
               </Link>
               <div className="flex items-center">
@@ -57,12 +60,12 @@ const SearchPage = () => {
           </List.Item>
         );
       },
-      width: '4fr'
+      width: 'minmax(180px, 4fr)'
     },
     {
       id: 2,
       header: (
-        <List.Header className="justify-end mr-8">
+        <List.Header className="justify-end md:mr-4 lg:mr-8">
           <Icon name="clock" />
         </List.Header>
       ),
@@ -70,8 +73,8 @@ const SearchPage = () => {
         const track = item as Track | Episode;
 
         return (
-          <List.Item className="justify-end mr-8 tabular-nums">
-            <span className="ml-8">{msToTime(track.duration_ms)}</span>
+          <List.Item className="justify-end md:mr-4 lg:mr-8 tabular-nums">
+            <span>{msToTime(track.duration_ms)}</span>
           </List.Item>
         );
       },
@@ -125,7 +128,7 @@ const SearchPage = () => {
             </div>
             <div
               style={{ gridTemplateRows: '1fr 0 0 0 0 0' }}
-              className="grid grid-cols-2 overflow-hidden gap-x-6 custom-grid md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 3xl:grid-cols-7 4xl:grid-cols-8 5xl:grid-cols-9"
+              className="grid grid-cols-2 overflow-hidden gap-x-2 lg:gap-x-6 custom-grid md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 3xl:grid-cols-7 4xl:grid-cols-8 5xl:grid-cols-9"
             >
               {data.albums.items.map((item) => (
                 <Card
@@ -147,7 +150,7 @@ const SearchPage = () => {
             </div>
             <div
               style={{ gridTemplateRows: '1fr 0 0 0 0 0' }}
-              className="grid grid-cols-2 overflow-hidden gap-x-6 custom-grid md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 3xl:grid-cols-7 4xl:grid-cols-8 5xl:grid-cols-9"
+              className="grid grid-cols-2 overflow-hidden gap-x-2 lg:gap-x-6 custom-grid md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 3xl:grid-cols-7 4xl:grid-cols-8 5xl:grid-cols-9"
             >
               {data.playlists.items.map((item) => (
                 <Card

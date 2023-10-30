@@ -9,7 +9,7 @@ type HeadingProps = {
 
 const Heading = ({ children, size = 'lg', className = '' }: HeadingProps) => {
   const Headings: Record<Size, JSX.Element> = {
-    '3xl': <h1 className={`text-2xl xl:text-3xl 2xl:text-4xl font-black ${className}`}>{children}</h1>,
+    '3xl': <h1 className={`text-2xl lg:text-3xl 2xl:text-4xl font-black ${className}`}>{children}</h1>,
     '2xl': <h2 className={`text-2xl font-bold ${className}`}>{children}</h2>,
     xl: <h2 className={`text-xl font-bold ${className}`}>{children}</h2>,
     lg: <h3 className={`text-lg font-bold ${className}`}>{children}</h3>,

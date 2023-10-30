@@ -23,9 +23,9 @@ const Player = () => {
   const progress = (playbackState?.position / playbackState?.duration) * 100;
 
   return (
-    <section className="flex flex-col items-center justify-center col-span-4 ml-4">
-      <div className="flex gap-4 mb-2">
-        <div className="flex gap-2">
+    <section className="flex flex-col items-center justify-center col-span-5 mr-5 md:mr-0 md:col-span-6 lg:ml-4 lg:col-span-4">
+      <div className="flex gap-2 mb-2 md:gap-4">
+        <div className="flex gap-1 md:gap-2">
           <Button
             icon="shuffle"
             variant={playbackState.shuffle ? 'active' : 'primary'}
@@ -41,7 +41,7 @@ const Player = () => {
         >
           <Icon name={playbackState.paused ? 'play' : 'pause'} />
         </button>
-        <div className="flex gap-2">
+        <div className="flex gap-1 md:gap-2">
           <Button icon="next" onClick={() => player.nextTrack()} />
           <Button
             icon={playbackState.repeat_mode === 2 ? 'repeat-track' : 'repeat'}
@@ -51,7 +51,9 @@ const Player = () => {
         </div>
       </div>
       <div className="flex items-center w-full max-w-[722px]">
-        <span className="w-10 mr-2 text-xs text-right text-nobel tabular-nums">{msToTime(playbackState.position)}</span>
+        <span className="w-6 mr-2 text-xs text-right md:w-10 text-nobel tabular-nums">
+          {msToTime(playbackState.position)}
+        </span>
         <div className="flex items-center flex-1 h-3 group item">
           <div className="w-full h-1 rounded-full bg-tundora">
             <div
@@ -60,10 +62,11 @@ const Player = () => {
               }}
               className="h-full bg-white rounded-full group-hover:bg-malachite"
             />
-            {/* <input type="range" min={0} max={100} step={1} placeholder="zakres" className='w-full' value={progress} /> */}
           </div>
         </div>
-        <span className="w-10 ml-2 text-xs text-left text-nobel tabular-nums">{msToTime(playbackState.duration)}</span>
+        <span className="w-6 ml-2 text-xs text-left md:w-10 text-nobel tabular-nums">
+          {msToTime(playbackState.duration)}
+        </span>
       </div>
     </section>
   );
