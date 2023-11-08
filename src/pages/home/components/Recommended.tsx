@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import Heading from '~~/Heading';
-import Icon from '~~/Icon';
 
 const DUMMY_DATA: Recomendation[] = [
   {
