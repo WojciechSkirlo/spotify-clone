@@ -367,15 +367,17 @@ declare global {
       total: number;
       items: Array<Album>;
     };
-    playlists: {
-      href: string;
-      items: Array<PlayList>;
-      limit: number;
-      next: string;
-      offset: number;
-      previous: string;
-      total: number;
-    };
+    playlists: Playlists;
+  }
+
+  interface Playlists {
+    href: string;
+    items: Array<PlayList>;
+    limit: number;
+    next: string;
+    offset: number;
+    previous: string;
+    total: number;
   }
 
   interface PlayData {
