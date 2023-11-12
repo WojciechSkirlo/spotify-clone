@@ -58,7 +58,10 @@ const PlaylistPage = () => {
             <div className="flex flex-col">
               <Link
                 to={`/track/${track.track.id}`}
-                className={`text-sm md:text-base hover:underline ${isPlaying ? 'text-malachite' : 'text-white'}`}
+                className={`text-sm md:text-base hover:underline line-clamp-1 ${
+                  isPlaying ? 'text-malachite' : 'text-white'
+                }`}
+                title={track.track.name}
               >
                 {track.track.name}
               </Link>
@@ -101,7 +104,10 @@ const PlaylistPage = () => {
         return (
           <List.Item>
             {isTrackObject(track.track) && (
-              <Link to={`/album/${track.track.album.id}`} className="hover:underline group-hover:text-white">
+              <Link
+                to={`/album/${track.track.album.id}`}
+                className="hover:underline line-clamp-2 group-hover:text-white"
+              >
                 {track.track.album.name}
               </Link>
             )}
@@ -136,7 +142,7 @@ const PlaylistPage = () => {
 
         return (
           <List.Item className="justify-end mr-4 lg:mr-8 tabular-nums">
-            <span>{msToTime(track.track.duration_ms)}</span>
+            <span>{msToTime(track.track?.duration_ms)}</span>
           </List.Item>
         );
       },
@@ -155,7 +161,7 @@ const PlaylistPage = () => {
         <span className="mx-1">•</span>
         <span>{data.tracks.total} utwory</span>
         <span className="mx-1">•</span>
-        <span>{msToTime(data.tracks.items.reduce((acc, curr) => acc + curr.track.duration_ms, 0))}</span>
+        <span>{msToTime(data.tracks.items.reduce((acc, curr) => acc + curr.track?.duration_ms ?? 0, 0))}</span>
       </Banner>
 
       <div className="relative z-30">

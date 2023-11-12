@@ -68,9 +68,15 @@ body {
 }
 
 .layout {
-  grid-template-columns: 420px 1fr;
+  grid-template-columns: 72px 1fr;
   grid-template-rows: 1fr auto;
   @apply grid h-full gap-2 p-2;
+}
+
+@media (min-width: 824px) {
+  .layout {
+    grid-template-columns: 420px 1fr;
+  }
 }
 
 .layout--collapsed {

@@ -16,7 +16,7 @@ const Button = ({ name, icon, iconCollapsed, collapsed, onClick }: ButtonProps) 
       onClick={onClick}
     >
       <Icon name={collapsed ? iconCollapsed : icon} size="lg" />
-      {!collapsed && <span className="font-bold">{name}</span>}
+      {!collapsed && <span className="hidden font-bold md:block">{name}</span>}
     </button>
   );
 };
