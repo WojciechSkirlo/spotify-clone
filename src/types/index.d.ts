@@ -370,6 +370,22 @@ declare global {
     playlists: Playlists;
   }
 
+  interface User {
+    display_name: string;
+    external_urls: {
+      spotify: string;
+    };
+    followers: {
+      href: string | null;
+      total: number;
+    };
+    href: string;
+    id: string;
+    images: Array<Image>;
+    type: string;
+    uri: string;
+  }
+
   interface Playlists {
     href: string;
     items: Array<PlayList>;

@@ -54,7 +54,10 @@ const AlbumPage = () => {
             <div className="flex flex-col">
               <Link
                 to={`/track/${track.id}`}
-                className={`text-sm md:text-base hover:underline ${isPlaying ? 'text-malachite' : 'text-white'}`}
+                className={`text-sm md:text-base line-clamp-1 hover:underline ${
+                  isPlaying ? 'text-malachite' : 'text-white'
+                }`}
+                title={track.name}
               >
                 {track.name}
               </Link>

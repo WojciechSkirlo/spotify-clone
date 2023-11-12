@@ -20,7 +20,7 @@ const NavItem = ({ to, name, icon, iconActive, collapsed }: NavItemProps) => {
             }`}
           >
             <Icon name={isActive ? iconActive : icon} size="lg" />
-            {!collapsed && <span className="font-bold">{name}</span>}
+            {!collapsed && <span className="hidden font-bold md:block">{name}</span>}
           </div>
         )}
       </NavLink>

@@ -16,7 +16,7 @@ const ListItem = ({ isCollapsed, img, name, link, type, owner }: ListItemProps) 
         <img src={img} alt={name} className="object-cover" />
       </div>
       {!isCollapsed && (
-        <div className="text-left flex flex-col gap-y-0.5">
+        <div className="text-left hidden md:flex flex-col gap-y-0.5">
           <p className="">{name}</p>
           <p className="text-sm capitalize text-silver-chalice">
             {type} {owner ? `• ${owner}` : ''}

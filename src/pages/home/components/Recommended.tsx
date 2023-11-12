@@ -66,7 +66,7 @@ const Recommended = () => {
       <div className="h-[332px] w-full absolute top-0 left-0 z-20 gradient"></div>
       <section className="relative z-20">
         <div className="flex items-start justify-between mb-5">
-          <Heading size="2xl">Dobry wieczór</Heading>
+          <Heading size="2xl">Polecane</Heading>
         </div>
         <div className="grid gap-4 pt-px md:grid-cols-2 gap-y-2 lg:gap-y-3 xl:grid-cols-3">
           {data.map((item) => (

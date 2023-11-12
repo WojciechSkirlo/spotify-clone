@@ -30,7 +30,7 @@ const NavigationBottom = () => {
         defer
         style={{ height: 'calc(100vh - 272px)' }}
       >
-        <div className={`flex flex-col gap-y-2 ${isCollapsed ? 'px-1' : 'px-2'}`}>
+        <div className={`flex flex-col gap-y-2 ${isCollapsed ? 'px-1' : 'px-1 md:px-2'}`}>
           {data.items.map((item) => (
             <ListItem
               isCollapsed={isCollapsed}
