@@ -10,13 +10,14 @@ const Player = () => {
   const player = useSpotifyPlayer();
   const playbackState = usePlaybackState(true, 1000);
   const device = usePlayerDevice();
-  const [shuffle, repeat] = usePlayerStore((state) => [state.shuffle, state.repeat]);
+  const [shuffle, repeat, setDeviceId] = usePlayerStore((state) => [state.shuffle, state.repeat, state.setDeviceId]);
 
   useEffect(() => {
     if (device?.device_id === undefined) return;
 
     PlayerService.player(device.device_id);
-  }, [device?.device_id]);
+    setDeviceId(device.device_id);
+  }, [device?.device_id, setDeviceId]);
 
   if (!player || !playbackState) return null;
 

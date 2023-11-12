@@ -46,7 +46,7 @@ const PlaylistPage = () => {
       header: <List.Header>Tytuł</List.Header>,
       item: (item) => {
         const track = item as PlaylistTrack;
-        const isPlaying = playbackState?.context.metadata?.current_item.uri === (track.track as Track).uri;
+        const isPlaying = playbackState?.context.metadata?.current_item?.uri === (track.track as Track)?.uri;
 
         return (
           <List.Item>

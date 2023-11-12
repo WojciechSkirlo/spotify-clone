@@ -1,8 +1,8 @@
 import { api } from '@/api';
 
 export default class PlayerService {
-  static async play(data: PlayData) {
-    return (await api.put('me/player/play', data)).data;
+  static async play(data: PlayData, deviceId: string) {
+    return (await api.put(`me/player/play?device_id=${deviceId}`, data)).data;
   }
 
   static async pause() {
