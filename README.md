@@ -13,7 +13,6 @@
 
 - Mateusz Kapuściński
 - Wojciech Skirło
-- Kamil Palej
 
 ## Setup
 
