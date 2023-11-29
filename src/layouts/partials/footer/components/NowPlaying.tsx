@@ -4,8 +4,8 @@ import { usePlaybackState } from 'react-spotify-web-playback-sdk';
 const NowPlaying = () => {
   const playbackState = usePlaybackState();
 
-  const albumId = playbackState?.context.metadata?.current_item?.group?.uri?.split?.(':')?.at?.(-1);
-  const artistId = playbackState?.context.metadata?.current_item?.artists?.[0]?.uri?.split?.(':')?.at(-1);
+  const albumId = playbackState?.track_window?.current_track?.album?.uri?.split?.(':')?.at?.(-1);
+  const artistId = playbackState?.track_window?.current_track?.artists?.[0]?.uri?.split?.(':')?.at?.(-1);
 
   const albumEpisodeLink = `/album/${albumId}`;
   const artistShowLink = `/artist/${artistId}`;
@@ -16,7 +16,7 @@ const NowPlaying = () => {
         <>
           <div className="flex items-center md:px-2">
             <img
-              src={playbackState.context.metadata?.current_item?.images?.[0]?.url}
+              src={playbackState.track_window?.current_track?.album?.images?.[0]?.url}
               alt="cover"
               className="rounded w-14 h-14"
             />
@@ -24,13 +24,13 @@ const NowPlaying = () => {
               <span className="text-sm">
                 {/* ALBUM / EPISODE */}
                 <Link to={albumEpisodeLink} className="hover:underline line-clamp-2 md:line-clamp-none">
-                  {playbackState.context.metadata?.current_item?.name}
+                  {playbackState.track_window.current_track.name}
                 </Link>
               </span>
               <span className="text-xs text-nobel">
                 {/* ARTIST / SHOW */}
                 <Link to={artistShowLink} className="hover:text-white hover:underline">
-                  {playbackState.context.metadata?.current_item?.artists?.[0]?.name}
+                  {playbackState.track_window?.current_track?.artists?.[0]?.name}
                 </Link>
               </span>
             </div>
