@@ -18,10 +18,13 @@ type Action = {
   redirectToAuth: () => Promise<void>;
   setAccessToken: (token: string, expires: number) => void;
   setRefreshToken: (token: string, expires: number) => void;
+  setAlreadyFetched: (alreadyFetched: boolean) => void;
 };
 
-const useAuthStore = create<State & Action>((set) => ({
+const useAuthStore = create<State & Action>((set, get) => ({
   alreadyFetched: false,
+
+  setAlreadyFetched: (alreadyFetched) => set({ alreadyFetched }),
 
   redirectToAuth: async () => {
     const verifier = generateCodeVerifier(128);
@@ -52,7 +55,8 @@ const useAuthStore = create<State & Action>((set) => ({
 
     const response = await AuthService.getToken(params);
 
-    set({ alreadyFetched: true });
+    get().setAlreadyFetched(true);
+
     return response;
   },
 
@@ -67,12 +71,18 @@ const useAuthStore = create<State & Action>((set) => ({
   },
 
   setAccessToken: (token, expires) => {
+    const tokenExpires = Date.now() + expires * 1000;
+    const tokenExpiresDate = new Date(tokenExpires);
+
     api.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-    Cookies.set('access_token', token, { expires });
+    Cookies.set('access_token', token, { expires: tokenExpiresDate });
   },
 
   setRefreshToken: (token, expires) => {
-    Cookies.set('refresh_token', token, { expires });
+    const tokenExpires = Date.now() + expires * 1000;
+    const tokenExpiresDate = new Date(tokenExpires);
+
+    Cookies.set('refresh_token', token, { expires: tokenExpiresDate });
   }
 }));
 

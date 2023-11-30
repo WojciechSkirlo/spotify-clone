@@ -15,14 +15,16 @@ const DefaultLayout = () => {
   const [isLoaded, setIsLoaded] = useState(false);
   const isCollapsed = useStore((state) => state.isCollapsed);
   const accessToken = Cookies.get('access_token');
-  const refreshToken = Cookies.get('refresh_token');
   const setUser = useUserStore((state) => state.setUser);
-  const [alreadyFetched, getRefreshToken, setAccessToken, setRefreshToken] = useAuthStore((state) => [
-    state.alreadyFetched,
-    state.getRefreshToken,
-    state.setAccessToken,
-    state.setRefreshToken
-  ]);
+  const [alreadyFetched, setAlreadyFetched, getRefreshToken, setAccessToken, setRefreshToken] = useAuthStore(
+    (state) => [
+      state.alreadyFetched,
+      state.setAlreadyFetched,
+      state.getRefreshToken,
+      state.setAccessToken,
+      state.setRefreshToken
+    ]
+  );
   const navigation = useNavigate();
   const getOAuthToken: Spotify.PlayerInit['getOAuthToken'] = useCallback(
     (cb: (token: string) => void) => cb(accessToken ?? ''),
@@ -31,6 +33,7 @@ const DefaultLayout = () => {
 
   useEffect(() => {
     const check = async () => {
+      const refreshToken = Cookies.get('refresh_token');
       if (!refreshToken) navigation('/auth/login');
       else {
         try {
@@ -38,6 +41,8 @@ const DefaultLayout = () => {
             const { access_token, refresh_token, expires_in } = await getRefreshToken(refreshToken);
             access_token && setAccessToken(access_token, expires_in);
             refresh_token && setRefreshToken(refresh_token, expires_in);
+
+            setAlreadyFetched(false);
           }
 
           const user = await AuthService.getProfile();
@@ -50,6 +55,11 @@ const DefaultLayout = () => {
     };
 
     check();
+
+    // 30 minutes
+    const interval = 30 * 60 * 1000;
+    setInterval(() => check(), interval);
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
