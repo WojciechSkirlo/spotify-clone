@@ -56,7 +56,7 @@ const Player = () => {
           {msToTime(playbackState.position)}
         </span>
         <div className="flex items-center flex-1 h-3 group item">
-          <div className="w-full h-1 rounded-full bg-tundora">
+          <div className="w-full h-1 overflow-hidden rounded-full bg-tundora">
             <div
               style={{
                 width: `${progress}%`

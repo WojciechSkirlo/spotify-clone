@@ -47,7 +47,7 @@ const AlbumPage = () => {
       header: <List.Header>Tytuł</List.Header>,
       item: (item) => {
         const track = item as SimplifiedTrack;
-        const isPlaying = playbackState?.context.metadata?.current_item?.uri === track?.uri;
+        const isPlaying = playbackState?.track_window?.current_track?.uri === track?.uri;
 
         return (
           <List.Item>
