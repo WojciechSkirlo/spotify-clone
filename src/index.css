@@ -64,7 +64,7 @@ body {
 }
 
 #root {
-  @apply flex flex-col h-[100svh];
+  @apply flex flex-col h-dvh;
 }
 
 .layout {
