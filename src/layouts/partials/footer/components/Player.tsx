@@ -24,7 +24,7 @@ const Player = () => {
   const progress = (playbackState?.position / playbackState?.duration) * 100;
 
   return (
-    <section className="flex flex-col items-center justify-center col-span-5 mr-5 md:mr-0 md:col-span-6 lg:ml-4 lg:col-span-4">
+    <section className="flex flex-col items-center justify-center col-span-5 mr-4 md:mr-0 md:col-span-6 lg:ml-4 lg:col-span-4">
       <div className="flex gap-2 mb-2 md:gap-4">
         <div className="flex gap-1 md:gap-2">
           <Button

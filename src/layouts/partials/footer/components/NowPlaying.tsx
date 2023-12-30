@@ -24,7 +24,7 @@ const NowPlaying = () => {
               <span className="text-sm">
                 {/* ALBUM / EPISODE */}
                 <Link to={albumEpisodeLink} className="hover:underline line-clamp-2 md:line-clamp-none">
-                  {playbackState.track_window.current_track.name}
+                  {playbackState.track_window?.current_track?.name}
                 </Link>
               </span>
               <span className="text-xs text-nobel">
