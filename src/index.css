@@ -69,11 +69,7 @@ body {
 
 .layout {
   grid-template-rows: minmax(0, 1fr) 72px;
-  @apply grid h-full col-span-1 gap-2 p-2;
-}
-
-.layout--collapsed {
-  /* grid-template-columns: 72px 1fr; */
+  @apply grid h-full grid-cols-1 gap-2 p-2;
 }
 
 h1,

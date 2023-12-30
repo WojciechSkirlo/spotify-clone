@@ -28,7 +28,7 @@ const NavigationBottom = () => {
       <OverlayScrollbarsComponent
         options={{ scrollbars: { autoHide: 'leave', autoHideDelay: 600 }, overflow: { x: 'hidden' } }}
         defer
-        style={{ height: 'calc(100vh - 272px)' }}
+        style={{ height: 'calc(100dvh - 272px)' }}
       >
         <div className={`flex flex-col gap-y-2 ${isCollapsed ? 'px-1' : 'px-1 md:px-2'}`}>
           {data.items.map((item) => (
