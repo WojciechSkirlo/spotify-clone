@@ -72,7 +72,7 @@ const DefaultLayout = () => {
       getOAuthToken={getOAuthToken}
       initialVolume={0.5}
     >
-      <div className={`layout ${isCollapsed ? 'layout--collapsed' : ''}`}>
+      <div className="layout">
         <div className="flex gap-2">
           <Navigation isCollapsed={isCollapsed} />
           <OverlayScrollbarsComponent
