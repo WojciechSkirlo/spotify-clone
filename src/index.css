@@ -60,27 +60,20 @@ body {
   color: var(--sp-body-color);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  @apply overflow-hidden text-base;
+  @apply overflow-hidden text-base h-dvh;
 }
 
 #root {
-  @apply flex flex-col h-dvh;
+  @apply flex flex-col h-full;
 }
 
 .layout {
-  grid-template-columns: 72px 1fr;
-  grid-template-rows: 1fr auto;
-  @apply grid h-full gap-2 p-2;
-}
-
-@media (min-width: 824px) {
-  .layout {
-    grid-template-columns: 420px 1fr;
-  }
+  grid-template-rows: minmax(0, 1fr) 72px;
+  @apply grid h-full col-span-1 gap-2 p-2;
 }
 
 .layout--collapsed {
-  grid-template-columns: 72px 1fr;
+  /* grid-template-columns: 72px 1fr; */
 }
 
 h1,

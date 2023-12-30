@@ -73,19 +73,21 @@ const DefaultLayout = () => {
       initialVolume={0.5}
     >
       <div className={`layout ${isCollapsed ? 'layout--collapsed' : ''}`}>
-        <Navigation />
-        <OverlayScrollbarsComponent
-          options={{ scrollbars: { autoHide: 'leave', autoHideDelay: 600 }, overflow: { x: 'hidden' } }}
-          defer
-          className="rounded-lg"
-        >
-          <div className="relative flex-1 min-h-full rounded-lg bg-cod-gray-500">
-            <Header />
-            <main className="px-2 pt-2 pb-2 lg:px-6 lg:pb-6 max-w-[1955px]">
-              <Outlet />
-            </main>
-          </div>
-        </OverlayScrollbarsComponent>
+        <div className="flex gap-2">
+          <Navigation isCollapsed={isCollapsed} />
+          <OverlayScrollbarsComponent
+            options={{ scrollbars: { autoHide: 'leave', autoHideDelay: 600 }, overflow: { x: 'hidden' } }}
+            defer
+            className="flex-1 rounded-lg"
+          >
+            <div className="relative flex-1 min-h-full rounded-lg bg-cod-gray-500">
+              <Header />
+              <main className="px-2 pt-2 pb-2 lg:px-6 lg:pb-6 max-w-[1955px]">
+                <Outlet />
+              </main>
+            </div>
+          </OverlayScrollbarsComponent>
+        </div>
         <Footer />
       </div>
     </WebPlaybackSDK>
